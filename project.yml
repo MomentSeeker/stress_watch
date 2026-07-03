@@ -1,0 +1,92 @@
+name: MyWatch
+options:
+  bundleIdPrefix: com.mywatch
+  createIntermediateGroups: true
+  deploymentTarget:
+    watchOS: "10.0"
+
+settings:
+  base:
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_VERSION: "5.0"
+    GENERATE_INFOPLIST_FILE: NO
+    SWIFT_EMIT_LOC_STRINGS: YES
+
+targets:
+  "MyWatch Watch App":
+    type: application
+    platform: watchOS
+    deploymentTarget: "10.0"
+    sources:
+      - "MyWatch Watch App"
+    dependencies:
+      - target: "MyWatchWidget"
+        embed: true
+    info:
+      path: "MyWatch Watch App/Info.plist"
+      properties:
+        CFBundleDisplayName: MyWatch
+        WKApplication: true
+        WKWatchOnly: true
+        # self-care: lets the hydration reminder run a self-care extended-runtime
+        #   session that wakes the app to the foreground to buzz + show the alert
+        #   (without it the session is rejected with "client not approved").
+        # workout-processing: lets the 60s stress measurement's HKWorkoutSession
+        #   keep the app alive when the wrist drops — without it watchOS suspends
+        #   the app and the countdown timer freezes until you tap again.
+        WKBackgroundModes:
+          - self-care
+          - workout-processing
+        UILaunchScreen: {}
+        NSHealthShareUsageDescription: "MyWatch reads your heart-rate variability and resting heart rate to estimate your stress level."
+        NSHealthUpdateUsageDescription: "MyWatch saves brief mindfulness workout sessions so it can read live heart rate during a stress measurement."
+        NSMotionUsageDescription: "MyWatch uses motion during a live stress measurement so the watch can sample heart rate more frequently."
+    entitlements:
+      path: "MyWatch Watch App/MyWatch.entitlements"
+      properties:
+        com.apple.developer.healthkit: true
+        com.apple.developer.healthkit.access: []
+        # NOTE: the time-sensitive notifications entitlement is intentionally NOT
+        # set — free/personal Apple teams can't provision it (build fails). The
+        # code still sets interruptionLevel = .timeSensitive, which is harmless
+        # without the entitlement (delivered as a normal notification). Re-add
+        # `com.apple.developer.usernotifications.time-sensitive: true` here if the
+        # account is ever upgraded to a paid Apple Developer Program team.
+        com.apple.security.application-groups:
+          - group.com.lichaochen.mywatch
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.lichaochen.mywatch.wk7c33q9
+        DEVELOPMENT_TEAM: 4G3UA8VU4M
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        CODE_SIGN_STYLE: Automatic
+        TARGETED_DEVICE_FAMILY: 4
+        INFOPLIST_KEY_WKApplication: YES
+
+  "MyWatchWidget":
+    type: app-extension
+    platform: watchOS
+    deploymentTarget: "10.0"
+    sources:
+      - "MyWatch Widget Extension"
+      - path: "MyWatch Watch App/SharedStore.swift"
+    info:
+      path: "MyWatch Widget Extension/Info.plist"
+      properties:
+        CFBundleDisplayName: MyWatch Widget
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: "MyWatch Widget Extension/MyWatchWidget.entitlements"
+      properties:
+        com.apple.security.application-groups:
+          - group.com.lichaochen.mywatch
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.lichaochen.mywatch.wk7c33q9.widget
+        DEVELOPMENT_TEAM: 4G3UA8VU4M
+        CODE_SIGN_STYLE: Automatic
+        TARGETED_DEVICE_FAMILY: 4
+        SKIP_INSTALL: NO

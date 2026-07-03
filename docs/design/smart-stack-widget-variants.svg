@@ -1,0 +1,136 @@
+<svg width="1760" height="1120" viewBox="0 0 880 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgA" x1="0" y1="0" x2="196" y2="84" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#151922"/>
+      <stop offset="0.58" stop-color="#0D1017"/>
+      <stop offset="1" stop-color="#171326"/>
+    </linearGradient>
+    <linearGradient id="bgB" x1="0" y1="0" x2="196" y2="84" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#11161E"/>
+      <stop offset="0.5" stop-color="#0C0E14"/>
+      <stop offset="1" stop-color="#131722"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="196" y2="84" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#55DFF0"/>
+      <stop offset="0.48" stop-color="#2E4252" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#8B7CFF"/>
+    </linearGradient>
+    <linearGradient id="icon" x1="0" y1="0" x2="18" y2="18" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#70E0D2"/>
+      <stop offset="1" stop-color="#8B7CFF"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="54" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#63E6FF"/>
+      <stop offset="1" stop-color="#2F9DFF"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-35%" width="140%" height="170%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <filter id="glow" x="-20%" y="-40%" width="140%" height="180%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="2.2" result="blur"/>
+      <feBlend in="SourceGraphic" in2="blur" mode="screen"/>
+    </filter>
+    <style>
+      .label { font: 700 17px -apple-system, BlinkMacSystemFont, "SF Pro Display", Helvetica, Arial, sans-serif; fill: #F5F5F7; }
+      .note { font: 500 10px -apple-system, BlinkMacSystemFont, "SF Pro Text", Helvetica, Arial, sans-serif; fill: #8E8E99; }
+      .title { font: 800 13px -apple-system, BlinkMacSystemFont, "SF Pro Display", Helvetica, Arial, sans-serif; fill: #F7F7FA; }
+      .num { font: 850 31px -apple-system, BlinkMacSystemFont, "SF Pro Display", Helvetica, Arial, sans-serif; fill: #FFFFFF; letter-spacing: -1px; }
+      .unit { font: 750 12px -apple-system, BlinkMacSystemFont, "SF Pro Text", Helvetica, Arial, sans-serif; fill: #B2B2B9; }
+      .small { font: 700 8px -apple-system, BlinkMacSystemFont, "SF Pro Text", Helvetica, Arial, sans-serif; fill: #9999A3; }
+      .status { font: 800 11px -apple-system, BlinkMacSystemFont, "SF Pro Text", Helvetica, Arial, sans-serif; fill: #D6AB40; }
+    </style>
+    <symbol id="ecgIcon" viewBox="0 0 18 18">
+      <rect x="0" y="0" width="18" height="18" rx="5.5" fill="url(#icon)"/>
+      <path d="M3.5 9.4H6.3L7.5 4.8L10.3 13.5L11.8 8.8H14.8" stroke="#05070A" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="dropIcon" viewBox="0 0 18 18">
+      <path d="M9 1.6C9 1.6 3.7 8 3.7 12.1C3.7 15.2 6 17.2 9 17.2C12 17.2 14.3 15.2 14.3 12.1C14.3 8 9 1.6 9 1.6Z" fill="#38BDF8"/>
+    </symbol>
+  </defs>
+
+  <rect width="880" height="520" fill="#050507"/>
+  <text x="36" y="34" class="label">Smart Stack widget redesign options</text>
+  <text x="36" y="50" class="note">Each card keeps the real widget ratio: 196 × 84pt. More graphic, fewer words.</text>
+
+  <!-- Option A -->
+  <g transform="translate(36 110)" filter="url(#shadow)">
+    <text x="0" y="-18" class="label">A · Stress hero + water gauge</text>
+    <rect x="0.75" y="0.75" width="194.5" height="82.5" rx="19" fill="url(#bgA)" stroke="url(#edge)" stroke-width="1.5"/>
+    <use href="#ecgIcon" x="13" y="12" width="18" height="18"/>
+    <text x="35" y="25" class="title">Stress</text>
+    <text x="13" y="59" class="num" fill="#FFFFFF">42</text>
+    <text x="58" y="57" class="status">Balanced</text>
+    <path d="M15 69H45" stroke="#5EE6A8" stroke-width="6.2" stroke-linecap="round"/>
+    <path d="M48 69H75" stroke="#D6AB40" stroke-width="6.2" stroke-linecap="round"/>
+    <path d="M78 69H96" stroke="#E15C5D" stroke-width="6.2" stroke-linecap="round"/>
+    <circle cx="59" cy="69" r="4.4" fill="#F4F5F7" stroke="#111318" stroke-width="1.1"/>
+    <path d="M124 15V69" stroke="#333743" stroke-width="1"/>
+    <use href="#dropIcon" x="130" y="12" width="18" height="18"/>
+    <text x="126" y="58" class="num">60</text>
+    <text x="158" y="57" class="unit">%</text>
+    <rect x="176" y="13" width="10" height="56" rx="5" fill="#171920" stroke="#51535D" stroke-width="1"/>
+    <rect x="176.8" y="36" width="8.4" height="32" rx="4.2" fill="url(#water)"/>
+    <path d="M177 36C179.5 33.9 182.3 33.9 185 36" stroke="#88EDFF" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Option B -->
+  <g transform="translate(452 110)" filter="url(#shadow)">
+    <text x="0" y="-18" class="label">B · Two clear meters</text>
+    <rect x="0.75" y="0.75" width="194.5" height="82.5" rx="19" fill="url(#bgB)" stroke="url(#edge)" stroke-width="1.5"/>
+    <g transform="translate(15 12)">
+      <circle cx="32" cy="31" r="29" stroke="#252831" stroke-width="7"/>
+      <path d="M15 54A29 29 0 0 1 51 8" stroke="#5EE6A8" stroke-width="7" stroke-linecap="round"/>
+      <path d="M53 10A29 29 0 0 1 58 46" stroke="#D6AB40" stroke-width="7" stroke-linecap="round"/>
+      <text x="32" y="41" text-anchor="middle" class="num">42</text>
+      <use href="#ecgIcon" x="23" y="4" width="17" height="17"/>
+      <text x="32" y="67" text-anchor="middle" class="status">Stress</text>
+    </g>
+    <g transform="translate(113 12)">
+      <circle cx="32" cy="31" r="29" stroke="#252831" stroke-width="7"/>
+      <path d="M32 60A29 29 0 1 1 58 43" stroke="#38BDF8" stroke-width="7" stroke-linecap="round"/>
+      <text x="32" y="41" text-anchor="middle" class="num">60</text>
+      <text x="55" y="40" class="unit">%</text>
+      <use href="#dropIcon" x="23" y="4" width="17" height="17"/>
+      <text x="32" y="67" text-anchor="middle" class="small" fill="#38BDF8">Water</text>
+    </g>
+    <path d="M98 17V67" stroke="#333743" stroke-width="1"/>
+  </g>
+
+  <!-- Option C -->
+  <g transform="translate(36 348)" filter="url(#shadow)">
+    <text x="0" y="-18" class="label">C · Minimal dashboard</text>
+    <rect x="0.75" y="0.75" width="194.5" height="82.5" rx="19" fill="#101217" stroke="url(#edge)" stroke-width="1.5"/>
+    <use href="#ecgIcon" x="14" y="13" width="16" height="16"/>
+    <text x="36" y="34" class="num">42</text>
+    <text x="82" y="32" class="status">Balanced</text>
+    <path d="M14 49H50" stroke="#5EE6A8" stroke-width="7" stroke-linecap="round"/>
+    <path d="M53 49H88" stroke="#D6AB40" stroke-width="7" stroke-linecap="round"/>
+    <path d="M91 49H125" stroke="#E15C5D" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="68" cy="49" r="4.4" fill="#F4F5F7" stroke="#111318" stroke-width="1.1"/>
+    <text x="14" y="69" class="small">HRV 48ms</text>
+    <use href="#dropIcon" x="139" y="13" width="18" height="18"/>
+    <text x="136" y="57" class="num">60</text>
+    <text x="176" y="55" class="unit">%</text>
+    <path d="M139 70H183" stroke="#1E2630" stroke-width="5.5" stroke-linecap="round"/>
+    <path d="M139 70H165" stroke="#38BDF8" stroke-width="5.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Option D -->
+  <g transform="translate(452 348)" filter="url(#shadow)">
+    <text x="0" y="-18" class="label">D · Icon-first split</text>
+    <rect x="0.75" y="0.75" width="194.5" height="82.5" rx="19" fill="url(#bgA)" stroke="url(#edge)" stroke-width="1.5"/>
+    <rect x="12" y="12" width="78" height="60" rx="15" fill="#151820" stroke="#292D37"/>
+    <use href="#ecgIcon" x="20" y="18" width="16" height="16"/>
+    <text x="20" y="61" class="num">42</text>
+    <circle cx="72" cy="26" r="8" fill="#D6AB40" filter="url(#glow)"/>
+    <path d="M20 68H43" stroke="#5EE6A8" stroke-width="4" stroke-linecap="round"/>
+    <path d="M46 68H63" stroke="#D6AB40" stroke-width="4" stroke-linecap="round"/>
+    <path d="M66 68H80" stroke="#E15C5D" stroke-width="4" stroke-linecap="round"/>
+    <rect x="106" y="12" width="78" height="60" rx="15" fill="#121821" stroke="#292D37"/>
+    <use href="#dropIcon" x="114" y="18" width="17" height="17"/>
+    <text x="113" y="61" class="num">60</text>
+    <text x="153" y="59" class="unit">%</text>
+    <rect x="169" y="19" width="8" height="42" rx="4" fill="#1C2029" stroke="#51535D" stroke-width="0.8"/>
+    <rect x="169.7" y="36" width="6.6" height="24" rx="3.3" fill="url(#water)"/>
+  </g>
+</svg>

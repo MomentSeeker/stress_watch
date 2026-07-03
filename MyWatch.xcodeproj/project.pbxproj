@@ -1,0 +1,518 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0AE824E42EEA322EE6FE235B /* WellnessWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654F4929D666150D8E62EC97 /* WellnessWidget.swift */; };
+		2687239EA19EB3943CA93D21 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751159BE362C61D2DAC1395 /* HealthManager.swift */; };
+		27895DBC14DF5311186C3B19 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC9B30273BA37BCE45EC613 /* Models.swift */; };
+		27AE8CD53CFA3492E51A0357 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0DFC97768E1CDDB01E5595 /* AppStore.swift */; };
+		318D32BEFD558DF6147D8FAB /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B14CA5C365FB8AD3FE559 /* MealView.swift */; };
+		4DD1DA47FCA5B05927159998 /* MedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B8B874EBE7ED2245E19B3 /* MedicationView.swift */; };
+		601E5FFE0A9DEDC2ACE036A9 /* WidgetPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103387A81C0956D17D8DB26D /* WidgetPreview.swift */; };
+		60C9A8D6ACCC18C58221FED5 /* StressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F069A8D2D089A3841C22F3E /* StressView.swift */; };
+		6F54BEC3B2D0DCE5AB611201 /* HydrationReminderSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98B4D11B9FA8AD80D26A2D /* HydrationReminderSession.swift */; };
+		8B29997E7A7E1D032AAD5E6C /* MyWatchWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E31A5E61ABBEC09FF10A811C /* MyWatchWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		91DA19207812885BFF1F2AD0 /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6023F14627C4AD6C0E3276 /* SharedStore.swift */; };
+		92377FFB354C6FEE48A60910 /* StressMeasurementSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E846738C93C76DDBD8A12ED /* StressMeasurementSession.swift */; };
+		A158F97962DF39E1E1AF5A0B /* MyWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8E8B4D36EE121C0E782479 /* MyWatchApp.swift */; };
+		ABF5D0E144531CDC2A56DF05 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2AC2BDE83B6BB1FB38FAF3 /* NotificationManager.swift */; };
+		BB717FDD8ECD22DCD6135ECE /* MyWatchWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E859C46C8B771984E8B0DEB /* MyWatchWidgetBundle.swift */; };
+		BC099E59FC48FC99E9C0089B /* HydrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55589D6D89FB34554475BDBB /* HydrationView.swift */; };
+		C8C6ABEC3D61F45A7642D0CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B15384F29C6BBA16789997D /* Assets.xcassets */; };
+		D9589773725BEA2F278D0D84 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756721D006CDB1A45A325CF4 /* Components.swift */; };
+		E0ACB4D6CA4F211CA234FC50 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34920D039AC57E8B0CFF67C /* ContentView.swift */; };
+		FCC676F939F078882DCD8B9A /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6023F14627C4AD6C0E3276 /* SharedStore.swift */; };
+		FF4935F197B7744D6FFE7073 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6810C1E66CD21BF8D254B5 /* Theme.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		81636EF28FED23C54BD4CDB6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FCFF6FBF472F7BE8BEEFFCB0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A05175151116537D86BBBDC;
+			remoteInfo = MyWatchWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A66A849B1B315DA75CAA2EF9 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8B29997E7A7E1D032AAD5E6C /* MyWatchWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		01A2ACEA0CB93F2272F02A10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0796B27341CC66A2F8B5A784 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0B15384F29C6BBA16789997D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		103387A81C0956D17D8DB26D /* WidgetPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPreview.swift; sourceTree = "<group>"; };
+		1B8E8B4D36EE121C0E782479 /* MyWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWatchApp.swift; sourceTree = "<group>"; };
+		2751159BE362C61D2DAC1395 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
+		2D9B8B874EBE7ED2245E19B3 /* MedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationView.swift; sourceTree = "<group>"; };
+		3E6023F14627C4AD6C0E3276 /* SharedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStore.swift; sourceTree = "<group>"; };
+		482B14CA5C365FB8AD3FE559 /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
+		4C98B4D11B9FA8AD80D26A2D /* HydrationReminderSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationReminderSession.swift; sourceTree = "<group>"; };
+		55589D6D89FB34554475BDBB /* HydrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationView.swift; sourceTree = "<group>"; };
+		5695BC989BCCA185B6D699BA /* MyWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A6810C1E66CD21BF8D254B5 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		654F4929D666150D8E62EC97 /* WellnessWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessWidget.swift; sourceTree = "<group>"; };
+		6E846738C93C76DDBD8A12ED /* StressMeasurementSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressMeasurementSession.swift; sourceTree = "<group>"; };
+		6F069A8D2D089A3841C22F3E /* StressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressView.swift; sourceTree = "<group>"; };
+		756721D006CDB1A45A325CF4 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		961F9B58BCE995D3121770BF /* MyWatchWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyWatchWidget.entitlements; sourceTree = "<group>"; };
+		9E859C46C8B771984E8B0DEB /* MyWatchWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWatchWidgetBundle.swift; sourceTree = "<group>"; };
+		D34920D039AC57E8B0CFF67C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DAC9B30273BA37BCE45EC613 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		E31A5E61ABBEC09FF10A811C /* MyWatchWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MyWatchWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB0DFC97768E1CDDB01E5595 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
+		ED2AC2BDE83B6BB1FB38FAF3 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		FEAEB43FB8ABF6E02018C57C /* MyWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyWatch.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2F56AF0C301F414312FE4363 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5695BC989BCCA185B6D699BA /* MyWatch Watch App.app */,
+				E31A5E61ABBEC09FF10A811C /* MyWatchWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		396450C8A0A6CF7666C011A6 /* MyWatch Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				EB0DFC97768E1CDDB01E5595 /* AppStore.swift */,
+				0B15384F29C6BBA16789997D /* Assets.xcassets */,
+				2751159BE362C61D2DAC1395 /* HealthManager.swift */,
+				4C98B4D11B9FA8AD80D26A2D /* HydrationReminderSession.swift */,
+				01A2ACEA0CB93F2272F02A10 /* Info.plist */,
+				DAC9B30273BA37BCE45EC613 /* Models.swift */,
+				FEAEB43FB8ABF6E02018C57C /* MyWatch.entitlements */,
+				1B8E8B4D36EE121C0E782479 /* MyWatchApp.swift */,
+				ED2AC2BDE83B6BB1FB38FAF3 /* NotificationManager.swift */,
+				3E6023F14627C4AD6C0E3276 /* SharedStore.swift */,
+				6E846738C93C76DDBD8A12ED /* StressMeasurementSession.swift */,
+				5A6810C1E66CD21BF8D254B5 /* Theme.swift */,
+				ACE70396FE8B0031B0C89E3B /* Views */,
+			);
+			path = "MyWatch Watch App";
+			sourceTree = "<group>";
+		};
+		7E19C7972E3FA5E158D19EAB = {
+			isa = PBXGroup;
+			children = (
+				396450C8A0A6CF7666C011A6 /* MyWatch Watch App */,
+				DB14293FDA052701567AB1AC /* MyWatch Widget Extension */,
+				2F56AF0C301F414312FE4363 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ACE70396FE8B0031B0C89E3B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				756721D006CDB1A45A325CF4 /* Components.swift */,
+				D34920D039AC57E8B0CFF67C /* ContentView.swift */,
+				55589D6D89FB34554475BDBB /* HydrationView.swift */,
+				482B14CA5C365FB8AD3FE559 /* MealView.swift */,
+				2D9B8B874EBE7ED2245E19B3 /* MedicationView.swift */,
+				6F069A8D2D089A3841C22F3E /* StressView.swift */,
+				103387A81C0956D17D8DB26D /* WidgetPreview.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DB14293FDA052701567AB1AC /* MyWatch Widget Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0796B27341CC66A2F8B5A784 /* Info.plist */,
+				961F9B58BCE995D3121770BF /* MyWatchWidget.entitlements */,
+				9E859C46C8B771984E8B0DEB /* MyWatchWidgetBundle.swift */,
+				654F4929D666150D8E62EC97 /* WellnessWidget.swift */,
+			);
+			path = "MyWatch Widget Extension";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		296DB90C9F12A8915721688A /* MyWatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2170470D06A26AA35F2DBC0 /* Build configuration list for PBXNativeTarget "MyWatch Watch App" */;
+			buildPhases = (
+				091123143D79936C15412080 /* Sources */,
+				8DD9068A0B3D445EF3EA0610 /* Resources */,
+				A66A849B1B315DA75CAA2EF9 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CFAE89C82398984C62C45FDD /* PBXTargetDependency */,
+			);
+			name = "MyWatch Watch App";
+			packageProductDependencies = (
+			);
+			productName = "MyWatch Watch App";
+			productReference = 5695BC989BCCA185B6D699BA /* MyWatch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8A05175151116537D86BBBDC /* MyWatchWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46F000D5E43276AD1D4A12BC /* Build configuration list for PBXNativeTarget "MyWatchWidget" */;
+			buildPhases = (
+				573AAB8926BC77C86C3D4022 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyWatchWidget;
+			packageProductDependencies = (
+			);
+			productName = MyWatchWidget;
+			productReference = E31A5E61ABBEC09FF10A811C /* MyWatchWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FCFF6FBF472F7BE8BEEFFCB0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					296DB90C9F12A8915721688A = {
+						ProvisioningStyle = Automatic;
+					};
+					8A05175151116537D86BBBDC = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 6720DF4D6604445694086AEE /* Build configuration list for PBXProject "MyWatch" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 7E19C7972E3FA5E158D19EAB;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 2F56AF0C301F414312FE4363 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				296DB90C9F12A8915721688A /* MyWatch Watch App */,
+				8A05175151116537D86BBBDC /* MyWatchWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8DD9068A0B3D445EF3EA0610 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8C6ABEC3D61F45A7642D0CB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		091123143D79936C15412080 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27AE8CD53CFA3492E51A0357 /* AppStore.swift in Sources */,
+				D9589773725BEA2F278D0D84 /* Components.swift in Sources */,
+				E0ACB4D6CA4F211CA234FC50 /* ContentView.swift in Sources */,
+				2687239EA19EB3943CA93D21 /* HealthManager.swift in Sources */,
+				6F54BEC3B2D0DCE5AB611201 /* HydrationReminderSession.swift in Sources */,
+				BC099E59FC48FC99E9C0089B /* HydrationView.swift in Sources */,
+				318D32BEFD558DF6147D8FAB /* MealView.swift in Sources */,
+				4DD1DA47FCA5B05927159998 /* MedicationView.swift in Sources */,
+				27895DBC14DF5311186C3B19 /* Models.swift in Sources */,
+				A158F97962DF39E1E1AF5A0B /* MyWatchApp.swift in Sources */,
+				ABF5D0E144531CDC2A56DF05 /* NotificationManager.swift in Sources */,
+				FCC676F939F078882DCD8B9A /* SharedStore.swift in Sources */,
+				92377FFB354C6FEE48A60910 /* StressMeasurementSession.swift in Sources */,
+				60C9A8D6ACCC18C58221FED5 /* StressView.swift in Sources */,
+				FF4935F197B7744D6FFE7073 /* Theme.swift in Sources */,
+				601E5FFE0A9DEDC2ACE036A9 /* WidgetPreview.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		573AAB8926BC77C86C3D4022 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB717FDD8ECD22DCD6135ECE /* MyWatchWidgetBundle.swift in Sources */,
+				91DA19207812885BFF1F2AD0 /* SharedStore.swift in Sources */,
+				0AE824E42EEA322EE6FE235B /* WellnessWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CFAE89C82398984C62C45FDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A05175151116537D86BBBDC /* MyWatchWidget */;
+			targetProxy = 81636EF28FED23C54BD4CDB6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2E21A5963763257DD01576E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		988D15AB3CF21FE9E6772DDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "MyWatch Widget Extension/MyWatchWidget.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QF8C3873KU;
+				INFOPLIST_FILE = "MyWatch Widget Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lichaochen.mywatch.wk7c33q9.widget;
+				SDKROOT = watchos;
+				SKIP_INSTALL = NO;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		C40383189668F781B467D8F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "MyWatch Watch App/MyWatch.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QF8C3873KU;
+				INFOPLIST_FILE = "MyWatch Watch App/Info.plist";
+				INFOPLIST_KEY_WKApplication = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lichaochen.mywatch.wk7c33q9;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		C734B20AD79AD74F230E0923 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "MyWatch Widget Extension/MyWatchWidget.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QF8C3873KU;
+				INFOPLIST_FILE = "MyWatch Widget Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lichaochen.mywatch.wk7c33q9.widget;
+				SDKROOT = watchos;
+				SKIP_INSTALL = NO;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		F4945E5FE766A17A0E8B949C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "MyWatch Watch App/MyWatch.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QF8C3873KU;
+				INFOPLIST_FILE = "MyWatch Watch App/Info.plist";
+				INFOPLIST_KEY_WKApplication = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lichaochen.mywatch.wk7c33q9;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		FE205684351DF12742CA1B84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		46F000D5E43276AD1D4A12BC /* Build configuration list for PBXNativeTarget "MyWatchWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				988D15AB3CF21FE9E6772DDD /* Debug */,
+				C734B20AD79AD74F230E0923 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		6720DF4D6604445694086AEE /* Build configuration list for PBXProject "MyWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E21A5963763257DD01576E4 /* Debug */,
+				FE205684351DF12742CA1B84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E2170470D06A26AA35F2DBC0 /* Build configuration list for PBXNativeTarget "MyWatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4945E5FE766A17A0E8B949C /* Debug */,
+				C40383189668F781B467D8F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FCFF6FBF472F7BE8BEEFFCB0 /* Project object */;
+}

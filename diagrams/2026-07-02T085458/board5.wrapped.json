@@ -1,0 +1,997 @@
+{
+  "code": 0,
+  "data": {
+    "to": "openapi",
+    "result": {
+      "nodes": [
+        {
+          "id": "o001:1",
+          "type": "composite_shape",
+          "x": 0,
+          "y": 0,
+          "width": 920,
+          "height": 450,
+          "text": {
+            "text": "",
+            "font_weight": "regular",
+            "font_size": 14,
+            "horizontal_align": "center",
+            "vertical_align": "mid",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#1f2329",
+            "text_color_type": 0,
+            "text_background_color_type": 0,
+            "theme_text_color_code": -1,
+            "theme_text_background_color_code": -1
+          },
+          "style": {
+            "border_style": "none",
+            "fill_opacity": 100,
+            "fill_color": "#f7f9fc",
+            "fill_color_type": 1
+          },
+          "composite_shape": {
+            "type": "rect"
+          }
+        },
+        {
+          "id": "a001:1",
+          "type": "text_shape",
+          "x": 142.5,
+          "y": 13.411000192165375,
+          "width": 635,
+          "height": 37.64799976348877,
+          "text": {
+            "text": "Aftersale GTM Strategy: V2 Return & Batch Return",
+            "font_weight": "bold",
+            "font_size": 26,
+            "horizontal_align": "center",
+            "vertical_align": "top",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#3b2609",
+            "text_color_type": 1,
+            "text_background_color_type": 0,
+            "theme_text_background_color_code": -1
+          }
+        },
+        {
+          "id": "a001:2",
+          "type": "text_shape",
+          "x": 193.5,
+          "y": 55.52900052070618,
+          "width": 533,
+          "height": 20.27199935913086,
+          "text": {
+            "text": "Close EU / SEA gaps and make Batch Return the primary path for new integrations",
+            "font_weight": "regular",
+            "font_size": 14,
+            "horizontal_align": "center",
+            "vertical_align": "top",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#7c5a2e",
+            "text_color_type": 1,
+            "text_background_color_type": 0,
+            "theme_text_background_color_code": -1
+          }
+        },
+        {
+          "id": "o001:2",
+          "type": "composite_shape",
+          "x": 70,
+          "y": 125,
+          "width": 230,
+          "height": 118,
+          "text": {
+            "text": "",
+            "font_weight": "regular",
+            "font_size": 14,
+            "horizontal_align": "center",
+            "vertical_align": "mid",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#1f2329",
+            "text_color_type": 0,
+            "text_background_color_type": 0,
+            "theme_text_color_code": -1,
+            "theme_text_background_color_code": -1
+          },
+          "style": {
+            "border_opacity": 100,
+            "border_width": "narrow",
+            "border_color": "#fed7aa",
+            "border_color_type": 1,
+            "border_style": "solid",
+            "fill_opacity": 100,
+            "fill_color": "#fffaf0",
+            "fill_color_type": 1
+          },
+          "composite_shape": {
+            "type": "round_rect"
+          }
+        },
+        {
+          "id": "o001:3",
+          "type": "composite_shape",
+          "x": 70,
+          "y": 125,
+          "width": 230,
+          "height": 8,
+          "text": {
+            "text": "",
+            "font_weight": "regular",
+            "font_size": 14,
+            "horizontal_align": "center",
+            "vertical_align": "mid",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#1f2329",
+            "text_color_type": 0,
+            "text_background_color_type": 0,
+            "theme_text_color_code": -1,
+            "theme_text_background_color_code": -1
+          },
+          "style": {
+            "border_style": "none",
+            "fill_opacity": 100,
+            "fill_color": "#f97316",
+            "fill_color_type": 1
+          },
+          "composite_shape": {
+            "type": "round_rect2"
+          }
+        },
+        {
+          "id": "a001:3",
+          "type": "text_shape",
+          "x": 138.5,
+          "y": 140.99950063228607,
+          "width": 93,
+          "height": 24.615999221801758,
+          "text": {
+            "text": "US / Global",
+            "font_weight": "bold",
+            "font_size": 17,
+            "horizontal_align": "center",
+            "vertical_align": "top",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#152033",
+            "text_color_type": 1,
+            "text_background_color_type": 0,
+            "theme_text_background_color_code": -1
+          }
+        },
+        {
+          "id": "a001:4",
+          "type": "text_shape",
+          "x": 103.5,
+          "y": 184.8820000588894,
+          "width": 163,
+          "height": 17.375999927520752,
+          "text": {
+            "text": "Existing aftersale capabilities",
+            "font_weight": "regular",
+            "font_size": 12,
+            "horizontal_align": "center",
+            "vertical_align": "top",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#58657a",
+            "text_color_type": 1,
+            "text_background_color_type": 0,
+            "theme_text_background_color_code": -1
+          }
+        },
+        {
+          "id": "a001:5",
+          "type": "text_shape",
+          "x": 103.5,
+          "y": 200.8820000588894,
+          "width": 163,
+          "height": 17.375999927520752,
+          "text": {
+            "text": "and proven solution patterns",
+            "font_weight": "regular",
+            "font_size": 12,
+            "horizontal_align": "center",
+            "vertical_align": "top",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#58657a",
+            "text_color_type": 1,
+            "text_background_color_type": 0,
+            "theme_text_background_color_code": -1
+          }
+        },
+        {
+          "id": "o001:4",
+          "type": "composite_shape",
+          "x": 345,
+          "y": 115,
+          "width": 230,
+          "height": 128,
+          "text": {
+            "text": "",
+            "font_weight": "regular",
+            "font_size": 14,
+            "horizontal_align": "center",
+            "vertical_align": "mid",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#1f2329",
+            "text_color_type": 0,
+            "text_background_color_type": 0,
+            "theme_text_color_code": -1,
+            "theme_text_background_color_code": -1
+          },
+          "style": {
+            "border_opacity": 100,
+            "border_width": "narrow",
+            "border_color": "#fed7aa",
+            "border_color_type": 1,
+            "border_style": "solid",
+            "fill_opacity": 100,
+            "fill_color": "#ffffff",
+            "fill_color_type": 1
+          },
+          "composite_shape": {
+            "type": "round_rect"
+          }
+        },
+        {
+          "id": "o001:5",
+          "type": "composite_shape",
+          "x": 345,
+          "y": 115,
+          "width": 230,
+          "height": 8,
+          "text": {
+            "text": "",
+            "font_weight": "regular",
+            "font_size": 14,
+            "horizontal_align": "center",
+            "vertical_align": "mid",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#1f2329",
+            "text_color_type": 0,
+            "text_background_color_type": 0,
+            "theme_text_color_code": -1,
+            "theme_text_background_color_code": -1
+          },
+          "style": {
+            "border_style": "none",
+            "fill_opacity": 100,
+            "fill_color": "#f59e0b",
+            "fill_color_type": 1
+          },
+          "composite_shape": {
+            "type": "round_rect2"
+          }
+        },
+        {
+          "id": "a001:6",
+          "type": "text_shape",
+          "x": 402.5,
+          "y": 130.99950063228607,
+          "width": 115,
+          "height": 24.615999221801758,
+          "text": {
+            "text": "EU / SEA Gaps",
+            "font_weight": "bold",
+            "font_size": 17,
+            "horizontal_align": "center",
+            "vertical_align": "top",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#152033",
+            "text_color_type": 1,
+            "text_background_color_type": 0,
+            "theme_text_background_color_code": -1
+          }
+        },
+        {
+          "id": "a001:7",
+          "type": "text_shape",
+          "x": 385,
+          "y": 174.8820000588894,
+          "width": 150,
+          "height": 17.375999927520752,
+          "text": {
+            "text": "EU: Samsung own logistics",
+            "font_weight": "regular",
+            "font_size": 12,
+            "horizontal_align": "center",
+            "vertical_align": "top",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#58657a",
+            "text_color_type": 1,
+            "text_background_color_type": 0,
+            "theme_text_background_color_code": -1
+          }
+        },
+        {
+          "id": "a001:8",
+          "type": "text_shape",
+          "x": 400,
+          "y": 190.8820000588894,
+          "width": 120,
+          "height": 17.375999927520752,
+          "text": {
+            "text": "SEA: Apple 3PL needs",
+            "font_weight": "regular",
+            "font_size": 12,
+            "horizontal_align": "center",
+            "vertical_align": "top",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#58657a",
+            "text_color_type": 1,
+            "text_background_color_type": 0,
+            "theme_text_background_color_code": -1
+          }
+        },
+        {
+          "id": "o001:6",
+          "type": "composite_shape",
+          "x": 620,
+          "y": 125,
+          "width": 230,
+          "height": 118,
+          "text": {
+            "text": "",
+            "font_weight": "regular",
+            "font_size": 14,
+            "horizontal_align": "center",
+            "vertical_align": "mid",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#1f2329",
+            "text_color_type": 0,
+            "text_background_color_type": 0,
+            "theme_text_color_code": -1,
+            "theme_text_background_color_code": -1
+          },
+          "style": {
+            "border_opacity": 100,
+            "border_width": "narrow",
+            "border_color": "#fed7aa",
+            "border_color_type": 1,
+            "border_style": "solid",
+            "fill_opacity": 100,
+            "fill_color": "#fffaf0",
+            "fill_color_type": 1
+          },
+          "composite_shape": {
+            "type": "round_rect"
+          }
+        },
+        {
+          "id": "o001:7",
+          "type": "composite_shape",
+          "x": 620,
+          "y": 125,
+          "width": 230,
+          "height": 8,
+          "text": {
+            "text": "",
+            "font_weight": "regular",
+            "font_size": 14,
+            "horizontal_align": "center",
+            "vertical_align": "mid",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#1f2329",
+            "text_color_type": 0,
+            "text_background_color_type": 0,
+            "theme_text_color_code": -1,
+            "theme_text_background_color_code": -1
+          },
+          "style": {
+            "border_style": "none",
+            "fill_opacity": 100,
+            "fill_color": "#ea580c",
+            "fill_color_type": 1
+          },
+          "composite_shape": {
+            "type": "round_rect2"
+          }
+        },
+        {
+          "id": "a001:9",
+          "type": "text_shape",
+          "x": 680,
+          "y": 140.99950063228607,
+          "width": 110,
+          "height": 24.615999221801758,
+          "text": {
+            "text": "Primary Plan",
+            "font_weight": "bold",
+            "font_size": 17,
+            "horizontal_align": "center",
+            "vertical_align": "top",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#152033",
+            "text_color_type": 1,
+            "text_background_color_type": 0,
+            "theme_text_background_color_code": -1
+          }
+        },
+        {
+          "id": "a001:10",
+          "type": "text_shape",
+          "x": 665,
+          "y": 184.8820000588894,
+          "width": 140,
+          "height": 17.375999927520752,
+          "text": {
+            "text": "V2 Return + Batch Return",
+            "font_weight": "regular",
+            "font_size": 12,
+            "horizontal_align": "center",
+            "vertical_align": "top",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#58657a",
+            "text_color_type": 1,
+            "text_background_color_type": 0,
+            "theme_text_background_color_code": -1
+          }
+        },
+        {
+          "id": "a001:11",
+          "type": "text_shape",
+          "x": 682,
+          "y": 200.8820000588894,
+          "width": 106,
+          "height": 17.375999927520752,
+          "text": {
+            "text": "3PL / 4PL coverage",
+            "font_weight": "regular",
+            "font_size": 12,
+            "horizontal_align": "center",
+            "vertical_align": "top",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#58657a",
+            "text_color_type": 1,
+            "text_background_color_type": 0,
+            "theme_text_background_color_code": -1
+          }
+        },
+        {
+          "id": "c001:1",
+          "type": "connector",
+          "x": 300,
+          "y": 185,
+          "width": 45,
+          "height": 0,
+          "style": {
+            "border_opacity": 100,
+            "border_width": "medium",
+            "border_color": "#f97316",
+            "border_color_type": 1,
+            "border_style": "solid"
+          },
+          "connector": {
+            "start": {
+              "position": {
+                "x": 300,
+                "y": 185
+              },
+              "arrow_style": "none"
+            },
+            "end": {
+              "position": {
+                "x": 345,
+                "y": 185
+              },
+              "arrow_style": "triangle_arrow"
+            },
+            "shape": "straight",
+            "turning_points": [],
+            "caption_auto_direction": false,
+            "specified_coordinate": true
+          }
+        },
+        {
+          "id": "c001:2",
+          "type": "connector",
+          "x": 575,
+          "y": 185,
+          "width": 45,
+          "height": 0,
+          "style": {
+            "border_opacity": 100,
+            "border_width": "medium",
+            "border_color": "#f97316",
+            "border_color_type": 1,
+            "border_style": "solid"
+          },
+          "connector": {
+            "start": {
+              "position": {
+                "x": 575,
+                "y": 185
+              },
+              "arrow_style": "none"
+            },
+            "end": {
+              "position": {
+                "x": 620,
+                "y": 185
+              },
+              "arrow_style": "triangle_arrow"
+            },
+            "shape": "straight",
+            "turning_points": [],
+            "caption_auto_direction": false,
+            "specified_coordinate": true
+          }
+        },
+        {
+          "id": "o001:8",
+          "type": "composite_shape",
+          "x": 80,
+          "y": 315,
+          "width": 178,
+          "height": 52,
+          "text": {
+            "text": "",
+            "font_weight": "regular",
+            "font_size": 14,
+            "horizontal_align": "center",
+            "vertical_align": "mid",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#1f2329",
+            "text_color_type": 0,
+            "text_background_color_type": 0,
+            "theme_text_color_code": -1,
+            "theme_text_background_color_code": -1
+          },
+          "style": {
+            "border_opacity": 100,
+            "border_width": "narrow",
+            "border_color": "#fdba74",
+            "border_color_type": 1,
+            "border_style": "solid",
+            "fill_opacity": 100,
+            "fill_color": "#ffffff",
+            "fill_color_type": 1
+          },
+          "composite_shape": {
+            "type": "round_rect"
+          }
+        },
+        {
+          "id": "a001:12",
+          "type": "text_shape",
+          "x": 115,
+          "y": 333.0585007965565,
+          "width": 108,
+          "height": 15.927999019622803,
+          "text": {
+            "text": "1. Reuse US / Global",
+            "font_weight": "bold",
+            "font_size": 11,
+            "horizontal_align": "center",
+            "vertical_align": "top",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#7c2d12",
+            "text_color_type": 1,
+            "text_background_color_type": 0,
+            "theme_text_background_color_code": -1
+          }
+        },
+        {
+          "id": "o001:9",
+          "type": "composite_shape",
+          "x": 285,
+          "y": 315,
+          "width": 178,
+          "height": 52,
+          "text": {
+            "text": "",
+            "font_weight": "regular",
+            "font_size": 14,
+            "horizontal_align": "center",
+            "vertical_align": "mid",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#1f2329",
+            "text_color_type": 0,
+            "text_background_color_type": 0,
+            "theme_text_color_code": -1,
+            "theme_text_background_color_code": -1
+          },
+          "style": {
+            "border_opacity": 100,
+            "border_width": "narrow",
+            "border_color": "#fdba74",
+            "border_color_type": 1,
+            "border_style": "solid",
+            "fill_opacity": 100,
+            "fill_color": "#ffffff",
+            "fill_color_type": 1
+          },
+          "composite_shape": {
+            "type": "round_rect"
+          }
+        },
+        {
+          "id": "a001:13",
+          "type": "text_shape",
+          "x": 301.5,
+          "y": 333.0585007965565,
+          "width": 145,
+          "height": 15.927999019622803,
+          "text": {
+            "text": "2. Close EU / SEA GTM gaps",
+            "font_weight": "bold",
+            "font_size": 11,
+            "horizontal_align": "center",
+            "vertical_align": "top",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#7c2d12",
+            "text_color_type": 1,
+            "text_background_color_type": 0,
+            "theme_text_background_color_code": -1
+          }
+        },
+        {
+          "id": "o001:10",
+          "type": "composite_shape",
+          "x": 490,
+          "y": 315,
+          "width": 178,
+          "height": 52,
+          "text": {
+            "text": "",
+            "font_weight": "regular",
+            "font_size": 14,
+            "horizontal_align": "center",
+            "vertical_align": "mid",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#1f2329",
+            "text_color_type": 0,
+            "text_background_color_type": 0,
+            "theme_text_color_code": -1,
+            "theme_text_background_color_code": -1
+          },
+          "style": {
+            "border_opacity": 100,
+            "border_width": "narrow",
+            "border_color": "#fdba74",
+            "border_color_type": 1,
+            "border_style": "solid",
+            "fill_opacity": 100,
+            "fill_color": "#ffffff",
+            "fill_color_type": 1
+          },
+          "composite_shape": {
+            "type": "round_rect"
+          }
+        },
+        {
+          "id": "a001:14",
+          "type": "text_shape",
+          "x": 514,
+          "y": 333.0585007965565,
+          "width": 130,
+          "height": 15.927999019622803,
+          "text": {
+            "text": "3. Push V2 Batch Return",
+            "font_weight": "bold",
+            "font_size": 11,
+            "horizontal_align": "center",
+            "vertical_align": "top",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#7c2d12",
+            "text_color_type": 1,
+            "text_background_color_type": 0,
+            "theme_text_background_color_code": -1
+          }
+        },
+        {
+          "id": "a001:15",
+          "type": "text_shape",
+          "x": 523.5,
+          "y": 346.8085007965565,
+          "width": 111,
+          "height": 15.927999019622803,
+          "text": {
+            "text": "for new integrations",
+            "font_weight": "bold",
+            "font_size": 11,
+            "horizontal_align": "center",
+            "vertical_align": "top",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#7c2d12",
+            "text_color_type": 1,
+            "text_background_color_type": 0,
+            "theme_text_background_color_code": -1
+          }
+        },
+        {
+          "id": "o001:11",
+          "type": "composite_shape",
+          "x": 695,
+          "y": 315,
+          "width": 178,
+          "height": 52,
+          "text": {
+            "text": "",
+            "font_weight": "regular",
+            "font_size": 14,
+            "horizontal_align": "center",
+            "vertical_align": "mid",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#1f2329",
+            "text_color_type": 0,
+            "text_background_color_type": 0,
+            "theme_text_color_code": -1,
+            "theme_text_background_color_code": -1
+          },
+          "style": {
+            "border_opacity": 100,
+            "border_width": "narrow",
+            "border_color": "#fdba74",
+            "border_color_type": 1,
+            "border_style": "solid",
+            "fill_opacity": 100,
+            "fill_color": "#ffffff",
+            "fill_color_type": 1
+          },
+          "composite_shape": {
+            "type": "round_rect"
+          }
+        },
+        {
+          "id": "a001:16",
+          "type": "text_shape",
+          "x": 727,
+          "y": 333.0585007965565,
+          "width": 114,
+          "height": 15.927999019622803,
+          "text": {
+            "text": "4. Gradually upgrade",
+            "font_weight": "bold",
+            "font_size": 11,
+            "horizontal_align": "center",
+            "vertical_align": "top",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#7c2d12",
+            "text_color_type": 1,
+            "text_background_color_type": 0,
+            "theme_text_background_color_code": -1
+          }
+        },
+        {
+          "id": "a001:17",
+          "type": "text_shape",
+          "x": 749.5,
+          "y": 346.8085007965565,
+          "width": 69,
+          "height": 15.927999019622803,
+          "text": {
+            "text": "existing ISVs",
+            "font_weight": "bold",
+            "font_size": 11,
+            "horizontal_align": "center",
+            "vertical_align": "top",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#7c2d12",
+            "text_color_type": 1,
+            "text_background_color_type": 0,
+            "theme_text_background_color_code": -1
+          }
+        },
+        {
+          "id": "c001:3",
+          "type": "connector",
+          "x": 258,
+          "y": 342,
+          "width": 27,
+          "height": 0,
+          "style": {
+            "border_opacity": 100,
+            "border_width": "medium",
+            "border_color": "#f97316",
+            "border_color_type": 1,
+            "border_style": "solid"
+          },
+          "connector": {
+            "start": {
+              "position": {
+                "x": 258,
+                "y": 342
+              },
+              "arrow_style": "none"
+            },
+            "end": {
+              "position": {
+                "x": 285,
+                "y": 342
+              },
+              "arrow_style": "triangle_arrow"
+            },
+            "shape": "straight",
+            "turning_points": [],
+            "caption_auto_direction": false,
+            "specified_coordinate": true
+          }
+        },
+        {
+          "id": "c001:4",
+          "type": "connector",
+          "x": 463,
+          "y": 342,
+          "width": 27,
+          "height": 0,
+          "style": {
+            "border_opacity": 100,
+            "border_width": "medium",
+            "border_color": "#f97316",
+            "border_color_type": 1,
+            "border_style": "solid"
+          },
+          "connector": {
+            "start": {
+              "position": {
+                "x": 463,
+                "y": 342
+              },
+              "arrow_style": "none"
+            },
+            "end": {
+              "position": {
+                "x": 490,
+                "y": 342
+              },
+              "arrow_style": "triangle_arrow"
+            },
+            "shape": "straight",
+            "turning_points": [],
+            "caption_auto_direction": false,
+            "specified_coordinate": true
+          }
+        },
+        {
+          "id": "c001:5",
+          "type": "connector",
+          "x": 668,
+          "y": 342,
+          "width": 27,
+          "height": 0,
+          "style": {
+            "border_opacity": 100,
+            "border_width": "medium",
+            "border_color": "#f97316",
+            "border_color_type": 1,
+            "border_style": "solid"
+          },
+          "connector": {
+            "start": {
+              "position": {
+                "x": 668,
+                "y": 342
+              },
+              "arrow_style": "none"
+            },
+            "end": {
+              "position": {
+                "x": 695,
+                "y": 342
+              },
+              "arrow_style": "triangle_arrow"
+            },
+            "shape": "straight",
+            "turning_points": [],
+            "caption_auto_direction": false,
+            "specified_coordinate": true
+          }
+        },
+        {
+          "id": "a001:18",
+          "type": "text_shape",
+          "x": 169.5,
+          "y": 389.7055000960827,
+          "width": 581,
+          "height": 18.823999881744385,
+          "text": {
+            "text": "Recommendation: use Batch Return for SEA aftersale 3PL instead of rebuilding legacy links",
+            "font_weight": "bold",
+            "font_size": 13,
+            "horizontal_align": "center",
+            "vertical_align": "top",
+            "line_through": false,
+            "underline": false,
+            "italic": false,
+            "angle": 0,
+            "text_color": "#9a3412",
+            "text_color_type": 1,
+            "text_background_color_type": 0,
+            "theme_text_background_color_code": -1
+          }
+        }
+      ]
+    },
+    "metadata": {
+      "width": 0,
+      "height": 0,
+      "nodeCount": 34,
+      "connectorCount": 5
+    }
+  },
+  "error": ""
+}

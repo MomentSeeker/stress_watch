@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created_node_ids": "o1:20,a1:38,a1:39,o1:21,a1:40,o1:22,o1:23,o1:24,a1:41,a1:42,a1:43,a1:44,a1:45,o1:25,o1:26,o1:27,a1:46,a1:47,a1:48,a1:49,a1:50,o1:28,o1:29,o1:30,a1:51,a1:52,a1:53,a1:54,a1:55,o1:31,o1:32,o1:33,a1:56,a1:57,a1:58,a1:59,a1:60,o1:34,o1:35,o1:36,a1:61,a1:62,a1:63,a1:64,a1:65,o1:37,o1:38,o1:39,a1:66,a1:67,a1:68,a1:69,o1:40,o1:41,o1:42,a1:70,a1:71,a1:72,a1:73,o1:43,o1:44,o1:45,a1:74,a1:75,a1:76,a1:77,a1:78"
+  },
+  "_notice": {
+    "update": {
+      "command": "lark-cli update",
+      "current": "1.0.32",
+      "latest": "1.0.63",
+      "message": "lark-cli 1.0.63 available, current 1.0.32, run: lark-cli update"
+    }
+  }
+}

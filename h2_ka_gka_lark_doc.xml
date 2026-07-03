@@ -1,0 +1,397 @@
+<title>KA/GKA H2 重要事项识别与流道分流</title>
+
+<callout emoji="📌" background-color="light-blue" border-color="blue">
+  <p>基于源 Wiki P0 List Discussion 及补充输入整理，面向 KA/GKA 大客视角识别 H2 重点事项。整理原则：Onboarding / Set Up 与 Sandbox / API 合并为“开发者工具”项目；集成方案迁移 SOP 从数据流道中独立出来；其余事项分流到 GKA 多店铺管理、物流、数据、财务、商品等方向。</p>
+</callout>
+
+<bookmark name="源 Wiki：P0 List Discussion" href="https://bytedance.larkoffice.com/wiki/KYFRwF1DNiV50UkKhg6cfkw0n1c"></bookmark>
+
+<h1>一、H2 重要事项地图</h1>
+<p>从 KA/GKA 集成效率、集团多店管理、履约链路、数据可观测、迁移 SOP、财务对账、商品同步七个方向看，H2 当前识别出的重点集中在“降低集成摩擦”和“支撑集团化、多店铺规模化运营”。</p>
+
+<whiteboard type="svg"><svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#405B7A"/>
+    </marker>
+    <style>
+      .title{font:700 30px Arial, sans-serif;fill:#18324A}
+      .sub{font:400 17px Arial, sans-serif;fill:#5D6B78}
+      .nodeTitle{font:700 22px Arial, sans-serif;fill:#172B3A}
+      .nodeText{font:400 16px Arial, sans-serif;fill:#243B53}
+      .pill{font:700 14px Arial, sans-serif;fill:#FFFFFF}
+      .lane{font:700 16px Arial, sans-serif;fill:#405B7A}
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1280" height="760" fill="#F7FAFC"/>
+  <text x="56" y="62" class="title">KA/GKA H2 重要事项流道地图</text>
+  <text x="56" y="95" class="sub">目标：提升大客快速入驻、集成验证、多店授权、履约与经营数据可用性</text>
+
+  <rect x="500" y="130" width="280" height="130" rx="18" fill="#E8F3FF" stroke="#4F8FD9" stroke-width="2"/>
+  <text x="640" y="170" text-anchor="middle" class="nodeTitle">开发者工具</text>
+  <text x="640" y="202" text-anchor="middle" class="nodeText">Onboarding / Set Up</text>
+  <text x="640" y="226" text-anchor="middle" class="nodeText">Sandbox / API</text>
+  <rect x="590" y="238" width="100" height="26" rx="13" fill="#2563EB"/>
+  <text x="640" y="256" text-anchor="middle" class="pill">P0/P1</text>
+
+  <rect x="70" y="350" width="250" height="142" rx="16" fill="#F0FDF4" stroke="#2E9D59" stroke-width="2"/>
+  <text x="195" y="388" text-anchor="middle" class="nodeTitle">GKA 多店铺管理</text>
+  <text x="195" y="420" text-anchor="middle" class="nodeText">ISV / TSP / Brand Portal</text>
+  <text x="195" y="444" text-anchor="middle" class="nodeText">Seller Center 批量管理</text>
+  <rect x="145" y="464" width="100" height="26" rx="13" fill="#16A34A"/>
+  <text x="195" y="482" text-anchor="middle" class="pill">P0</text>
+
+  <rect x="365" y="350" width="250" height="142" rx="16" fill="#FFF7ED" stroke="#EA7B25" stroke-width="2"/>
+  <text x="490" y="388" text-anchor="middle" class="nodeTitle">物流</text>
+  <text x="490" y="420" text-anchor="middle" class="nodeText">Bundle 拆单发货</text>
+  <text x="490" y="444" text-anchor="middle" class="nodeText">FBT 测试与 webhook</text>
+  <rect x="440" y="464" width="100" height="26" rx="13" fill="#EA580C"/>
+  <text x="490" y="482" text-anchor="middle" class="pill">P0</text>
+
+  <rect x="665" y="350" width="250" height="142" rx="16" fill="#F5F3FF" stroke="#7C5AC7" stroke-width="2"/>
+  <text x="790" y="388" text-anchor="middle" class="nodeTitle">数据</text>
+  <text x="790" y="420" text-anchor="middle" class="nodeText">诊断指标 / webhook 字段</text>
+  <text x="790" y="444" text-anchor="middle" class="nodeText">访问稳定性与字段补齐</text>
+  <rect x="740" y="464" width="100" height="26" rx="13" fill="#7C3AED"/>
+  <text x="790" y="482" text-anchor="middle" class="pill">P0/P1</text>
+
+  <rect x="960" y="350" width="250" height="142" rx="16" fill="#ECFEFF" stroke="#0891B2" stroke-width="2"/>
+  <text x="1085" y="388" text-anchor="middle" class="nodeTitle">财务</text>
+  <text x="1085" y="420" text-anchor="middle" class="nodeText">Settlement 数据字典</text>
+  <text x="1085" y="444" text-anchor="middle" class="nodeText">ERP / GL 对账映射</text>
+  <rect x="1035" y="464" width="100" height="26" rx="13" fill="#0891B2"/>
+  <text x="1085" y="482" text-anchor="middle" class="pill">P0</text>
+
+  <rect x="515" y="575" width="250" height="124" rx="16" fill="#FEF2F2" stroke="#DC4C4C" stroke-width="2"/>
+  <text x="640" y="612" text-anchor="middle" class="nodeTitle">商品</text>
+  <text x="640" y="644" text-anchor="middle" class="nodeText">商品同步诊断</text>
+  <text x="640" y="668" text-anchor="middle" class="nodeText">失败重试与韧性</text>
+  <rect x="590" y="684" width="100" height="26" rx="13" fill="#DC2626"/>
+  <text x="640" y="702" text-anchor="middle" class="pill">P1</text>
+
+  <rect x="70" y="575" width="250" height="124" rx="16" fill="#FFFBEB" stroke="#D99B16" stroke-width="2"/>
+  <text x="195" y="612" text-anchor="middle" class="nodeTitle">集成方案迁移 SOP</text>
+  <text x="195" y="644" text-anchor="middle" class="nodeText">迁移推荐方案 / FAQ</text>
+  <text x="195" y="668" text-anchor="middle" class="nodeText">scripts 与工具沉淀</text>
+  <rect x="145" y="684" width="100" height="26" rx="13" fill="#CA8A04"/>
+  <text x="195" y="702" text-anchor="middle" class="pill">P0</text>
+
+  <path d="M555 260 C410 310, 300 320, 210 350" stroke="#405B7A" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <path d="M610 260 C560 305, 520 320, 500 350" stroke="#405B7A" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <path d="M670 260 C715 305, 760 320, 785 350" stroke="#405B7A" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <path d="M725 260 C860 305, 1005 320, 1075 350" stroke="#405B7A" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <path d="M640 260 C640 385, 640 490, 640 575" stroke="#405B7A" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <path d="M560 260 C430 405, 290 495, 205 575" stroke="#405B7A" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+
+  <text x="56" y="726" class="lane">建议治理方式：一个 H2 大客项目池 + 七个业务方向，每周刷新状态、owner、依赖和阻塞项。</text>
+</svg></whiteboard>
+
+<h1>二、流道总览表</h1>
+<table>
+  <colgroup><col width="150"/><col width="230"/><col width="330"/><col width="230"/><col width="120"/><col width="120"/></colgroup>
+  <thead>
+    <tr>
+      <th background-color="light-gray">流道</th>
+      <th background-color="light-gray">H2 重要项目</th>
+      <th background-color="light-gray">KA/GKA 视角价值</th>
+      <th background-color="light-gray">源 Domain / 归并来源</th>
+      <th background-color="light-gray">优先级</th>
+      <th background-color="light-gray">状态</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>开发者工具</b></td>
+      <td>快速入驻、App 授权、沙箱/测试店铺搭建</td>
+      <td>帮助 KA、1P 商家在正式入驻前完成集成方案设计、验证和运营配置验证，降低 SA/CSM 人工介入。</td>
+      <td>Onboarding / Set Up；Sandbox / API</td>
+      <td>P0 / P1</td>
+      <td>Open</td>
+    </tr>
+    <tr>
+      <td><b>GKA 多店铺管理</b></td>
+      <td>集团/品牌视角多店铺授权与管理</td>
+      <td>解决 GKA 跨地区、多账号、多店铺逐店配置问题，支撑 ISV、TSP、Brand Portal、Seller Center 全局生效。</td>
+      <td>GKA / Multi-Shop Management；Brand Portal；Seller Center</td>
+      <td>P0</td>
+      <td>Planning / Open</td>
+    </tr>
+    <tr>
+      <td><b>物流</b></td>
+      <td>拆单发货、FBT 测试环境、售后履约字段</td>
+      <td>减少企业级履约链路阻塞，降低上线风险，让 OMS 能区分 FBT 与 seller-fulfilled 处理路径。</td>
+      <td>Fulfillment；FBT；Aftersale for FBT</td>
+      <td>P0</td>
+      <td>Open</td>
+    </tr>
+    <tr>
+      <td><b>数据</b></td>
+      <td>诊断指标、webhook 字段、访问稳定性</td>
+      <td>提升排障和运营诊断效率，让大客在商品同步、履约通知和外部访问链路上有更稳定的数据可见性。</td>
+      <td>Listing；Aftersale；3P Gateway Proxy</td>
+      <td>P0 / P1</td>
+      <td>Planning / Open</td>
+    </tr>
+    <tr>
+      <td><b>集成方案迁移 SOP</b></td>
+      <td>迁移推荐方案、FAQ、scripts 和工具沉淀</td>
+      <td>把 SFCC 1P integration to AfterShip、SFCC V2 Migration 等方案标准化，降低 GKA/SKM 切换成本和交付不一致风险。</td>
+      <td>reference solution of Integration migration</td>
+      <td>P0</td>
+      <td>Planning</td>
+    </tr>
+    <tr>
+      <td><b>财务</b></td>
+      <td>Settlement Data Dictionary</td>
+      <td>让大客能稳定把结算报表字段映射到 ERP/GL 系统，降低财务对账不确定性。</td>
+      <td>Finance / Settlement</td>
+      <td>P0</td>
+      <td>Open</td>
+    </tr>
+    <tr>
+      <td><b>商品</b></td>
+      <td>商品同步诊断、失败重试与韧性</td>
+      <td>减少商品卡在草稿、同步失败后人工介入的问题，提高 SFCC 1P 商品上架稳定性。</td>
+      <td>Listing</td>
+      <td>P1</td>
+      <td>Open</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1>三、开发者工具：快速入驻与集成验证</h1>
+<callout emoji="✅" background-color="light-green" border-color="green">
+  <p>归并范围：Onboarding / Set Up 与 Sandbox / API 集中到一个 H2 项目。目标是帮助集成 KA、1P 商家快速完成入驻前验证、App 授权、沙箱店铺搭建与订单/逆向场景测试。</p>
+</callout>
+<table>
+  <colgroup><col width="180"/><col width="290"/><col width="330"/><col width="170"/><col width="120"/></colgroup>
+  <thead>
+    <tr>
+      <th background-color="light-gray">事项</th>
+      <th background-color="light-gray">H2 识别需求</th>
+      <th background-color="light-gray">当前痛点 / 影响</th>
+      <th background-color="light-gray">受影响对象</th>
+      <th background-color="light-gray">优先级</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>快速生成 App 与测试店铺</td>
+      <td>对尚未入驻 Seller Center 的商家，提供快速生成 App、测试店铺（免资质）的能力。</td>
+      <td>现有 SFCC 1P 测试店铺由 SA/CSM 创建并在后台标记为 test，未纳入 TTSPC sandbox，限制开发店铺和集成测试能力。</td>
+      <td>All SFCC 1P Sellers</td>
+      <td>P0</td>
+    </tr>
+    <tr>
+      <td>授权信息明确化</td>
+      <td>店铺授权时明确展示授权店铺信息，避免 KA/GKA 多店铺场景授权错店铺。</td>
+      <td>Token 与授权配置经常失败或产生歧义，影响入驻和测试进度。</td>
+      <td>All API Sellers；KA/GKA 多店铺商家</td>
+      <td>P1</td>
+    </tr>
+    <tr>
+      <td>测试订单与逆向场景</td>
+      <td>完善测试店铺订单状态推进能力，覆盖 Delivered、部分 Cancel、Return / 逆向等场景。</td>
+      <td>商家依赖 CSM/SA 使用内部工具手动推进测试订单，且 1P 订单、部分取消、退货场景支持不足，拖慢集成验证。</td>
+      <td>All Sellers</td>
+      <td>P0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1>四、GKA 多店铺管理</h1>
+<table>
+  <colgroup><col width="160"/><col width="280"/><col width="330"/><col width="150"/><col width="120"/></colgroup>
+  <thead>
+    <tr>
+      <th background-color="light-gray">子流道</th>
+      <th background-color="light-gray">H2 事项</th>
+      <th background-color="light-gray">KA/GKA 业务价值</th>
+      <th background-color="light-gray">源状态</th>
+      <th background-color="light-gray">优先级</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ISV（App 授权）</td>
+      <td>多店铺 App 授权机制全局生效</td>
+      <td>让集团型商家减少逐店授权和重复配置，降低授权错店铺风险。</td>
+      <td>Planning</td>
+      <td>P0</td>
+    </tr>
+    <tr>
+      <td>TSP</td>
+      <td>GKA 附身登录与多店铺授权</td>
+      <td>支持服务商从集团/品牌视角处理多店铺配置、授权与运营动作。</td>
+      <td>Planning</td>
+      <td>P0</td>
+    </tr>
+    <tr>
+      <td>Brand Portal</td>
+      <td>集团多店铺授权、API 能力暴露、与 TSP/ISV 打通</td>
+      <td>明确 Brand Portal H2 规划与共建计划，推动集团授权和生态打通落地。</td>
+      <td>Planning</td>
+      <td>P0</td>
+    </tr>
+    <tr>
+      <td>Seller Center</td>
+      <td>一个邮箱管理多店铺；SSO 登录选项</td>
+      <td>满足大企业账号安全和统一登录需求，减少“一店一邮箱”的运营负担。</td>
+      <td>Open</td>
+      <td>P0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1>五、物流</h1>
+<table>
+  <colgroup><col width="180"/><col width="300"/><col width="320"/><col width="150"/><col width="120"/></colgroup>
+  <thead>
+    <tr>
+      <th background-color="light-gray">事项</th>
+      <th background-color="light-gray">需求</th>
+      <th background-color="light-gray">KA/GKA 影响</th>
+      <th background-color="light-gray">受影响对象</th>
+      <th background-color="light-gray">优先级</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bundle split shipment</td>
+      <td>支持 bundle 拆单发货。</td>
+      <td>当前 bundle 模型不支持 split shipment，会阻塞企业级卖家复杂履约场景。</td>
+      <td>SFCC 1P</td>
+      <td>P0</td>
+    </tr>
+    <tr>
+      <td>FBT 测试环境</td>
+      <td>提供专用测试环境，避免仅能生产验证。</td>
+      <td>生产环境验证风险高，影响 Bissell、Funko 等商家上线安全性。</td>
+      <td>Bissell, Funko</td>
+      <td>P0</td>
+    </tr>
+    <tr>
+      <td>履约类型 webhook</td>
+      <td>在 webhook notification 中增加 fulfillment type。</td>
+      <td>OMS 需要判断 FBT 与 seller-fulfilled 的处理路径，当前字段缺失导致下游分流困难。</td>
+      <td>Bissell, Funko, SharkNinja</td>
+      <td>P0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1>六、数据</h1>
+<table>
+  <colgroup><col width="190"/><col width="300"/><col width="320"/><col width="140"/><col width="120"/></colgroup>
+  <thead>
+    <tr>
+      <th background-color="light-gray">事项</th>
+      <th background-color="light-gray">需求</th>
+      <th background-color="light-gray">KA/GKA 影响</th>
+      <th background-color="light-gray">状态</th>
+      <th background-color="light-gray">优先级</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>商品同步诊断指标</td>
+      <td>提供 V2 product sync diagnostics and metrics。</td>
+      <td>当前商品不同步或卡在草稿时可见性不足，排障困难。</td>
+      <td>Open</td>
+      <td>P1</td>
+    </tr>
+    <tr>
+      <td>固定代理与访问稳定性</td>
+      <td>为 1P outbound calls（含图片下载请求）落地 fixed proxy rollout。</td>
+      <td>动态 IP 导致 CDN/WAF 拦截，商家频繁处理 allowlist，影响集成稳定性。</td>
+      <td>In Progress</td>
+      <td>P0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1>七、集成方案迁移 SOP</h1>
+<callout emoji="📝" background-color="light-yellow" border-color="yellow">
+  <p>该方向从原文 “reference solution of Integration migration” 独立拆出，定位不是单点数据能力，而是 KA/GKA 集成方案切换的标准作业体系：推荐路径、常见问题、脚本工具和交付 checklist。</p>
+</callout>
+<table>
+  <colgroup><col width="190"/><col width="320"/><col width="330"/><col width="140"/><col width="120"/></colgroup>
+  <thead>
+    <tr>
+      <th background-color="light-gray">事项</th>
+      <th background-color="light-gray">需求</th>
+      <th background-color="light-gray">KA/GKA 影响</th>
+      <th background-color="light-gray">状态</th>
+      <th background-color="light-gray">优先级</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Integration migration SOP</td>
+      <td>沉淀集成 solution 切换的参考推荐方案、FAQ、排障策略、scripts 和工具，例如 SFCC 1P integration to AfterShip、SFCC V2 Migration。</td>
+      <td>当前缺乏标准化切换方案，主要依赖 SA/CSM 个人经验，导致迁移效率低、易出错、交付质量不一致，难以规模化支撑 GKA/SKM。</td>
+      <td>Planning</td>
+      <td>P0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1>八、财务</h1>
+<table>
+  <colgroup><col width="200"/><col width="320"/><col width="330"/><col width="150"/><col width="120"/></colgroup>
+  <thead>
+    <tr>
+      <th background-color="light-gray">事项</th>
+      <th background-color="light-gray">需求</th>
+      <th background-color="light-gray">KA/GKA 影响</th>
+      <th background-color="light-gray">受影响对象</th>
+      <th background-color="light-gray">优先级</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Settlement Data Dictionary</td>
+      <td>补齐结算报表字段的数据字典。</td>
+      <td>当前 settlement reports 中很多字段文档不足，商家无法有信心地映射到 ERP/GL 系统。</td>
+      <td>Disney, Levis, Funko</td>
+      <td>P0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1>九、商品</h1>
+<table>
+  <colgroup><col width="200"/><col width="320"/><col width="330"/><col width="150"/><col width="120"/></colgroup>
+  <thead>
+    <tr>
+      <th background-color="light-gray">事项</th>
+      <th background-color="light-gray">需求</th>
+      <th background-color="light-gray">KA/GKA 影响</th>
+      <th background-color="light-gray">受影响对象</th>
+      <th background-color="light-gray">优先级</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Product sync diagnostics</td>
+      <td>为 V2 商品同步提供诊断和指标。</td>
+      <td>减少商品不同步、卡草稿时的排障盲区。</td>
+      <td>All SFCC Sellers</td>
+      <td>P1</td>
+    </tr>
+    <tr>
+      <td>Product sync retries</td>
+      <td>提供高效的 V2 商品同步失败重试机制，优雅处理同步错误。</td>
+      <td>当前失败同步需要人工介入，系统韧性不足，影响大客规模化上品。</td>
+      <td>All SFCC Sellers</td>
+      <td>P1</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1>十、建议推进口径</h1>
+<ul>
+  <li>项目池：以 KA/GKA H2 重要事项池统一管理，优先锁定 P0 事项 owner、依赖方和里程碑。</li>
+  <li>治理节奏：开发者工具、GKA 多店铺管理、集成方案迁移 SOP 建议作为 H2 第一层主线；物流、数据、财务、商品作为业务流道周度刷新。</li>
+  <li>验收方式：每个事项补齐“大客场景、受影响商家、可验证结果、上线形态、依赖方”。</li>
+</ul>

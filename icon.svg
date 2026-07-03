@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5FE0CB"/>
+      <stop offset="0.55" stop-color="#5BB6E8"/>
+      <stop offset="1" stop-color="#8C73F5"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.35" cy="0.3" r="0.9">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.28"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="22"/>
+      <feOffset dx="0" dy="18" result="off"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.35"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- background -->
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+  <rect width="1024" height="1024" fill="url(#glow)"/>
+
+  <!-- heart -->
+  <g filter="url(#soft)">
+    <path fill="#ffffff" d="
+      M512 786
+      C 470 748, 300 624, 232 528
+      C 188 466, 188 372, 252 322
+      C 314 274, 410 286, 458 350
+      L 512 420
+      L 566 350
+      C 614 286, 710 274, 772 322
+      C 836 372, 836 466, 792 528
+      C 724 624, 554 748, 512 786 Z"/>
+  </g>
+
+  <!-- ECG / heartbeat pulse line crossing the heart -->
+  <polyline fill="none" stroke="#FF5E7A" stroke-width="34"
+            stroke-linecap="round" stroke-linejoin="round"
+            points="250,520 396,520 446,520 486,420 540,628 590,520 642,520 690,440 726,520 786,520"/>
+</svg>

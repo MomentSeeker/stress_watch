@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>羽伴 RallyMate · Watch + iOS UI 设计稿</title>
+<style>
+  :root{
+    --bg:#07110d;
+    --bg2:#0b1712;
+    --panel:#101f18;
+    --panel2:#15291f;
+    --line:rgba(255,255,255,.12);
+    --line2:rgba(111,224,208,.26);
+    --ink:#effff7;
+    --dim:#a7c9b8;
+    --mut:#6e917f;
+    --lime:#a8f06b;
+    --teal:#2fd9a6;
+    --green:#34c97a;
+    --cyan:#6fe0d0;
+    --amber:#ffb24d;
+    --coral:#ff6b6b;
+    --gold:#ffd25a;
+    --violet:#8e7bef;
+    --shadow:0 24px 80px rgba(0,0,0,.42);
+    --radius:8px;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    color:var(--ink);
+    background:
+      radial-gradient(1000px 580px at 78% -8%, rgba(47,217,166,.18), transparent 60%),
+      radial-gradient(760px 520px at 4% 8%, rgba(168,240,107,.11), transparent 58%),
+      linear-gradient(180deg,var(--bg),#050907 62%,#030504);
+    font:15px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Segoe UI",sans-serif;
+    letter-spacing:0;
+  }
+
+  a{color:inherit}
+  svg{display:block}
+  .page{max-width:1500px;margin:0 auto;padding:28px 24px 72px}
+
+  .hero{
+    min-height:560px;
+    display:grid;
+    grid-template-columns:minmax(320px,.82fr) minmax(560px,1.18fr);
+    gap:38px;
+    align-items:center;
+    padding:34px 0 28px;
+  }
+  .hero-copy{max-width:620px}
+  .kicker{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:var(--cyan);
+    border:1px solid var(--line2);
+    background:rgba(47,217,166,.08);
+    padding:7px 12px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:700;
+  }
+  .brand{
+    margin:20px 0 6px;
+    font-size:72px;
+    line-height:.95;
+    font-weight:900;
+    letter-spacing:0;
+  }
+  .brand .grad{
+    background:linear-gradient(110deg,var(--lime),var(--teal) 54%,var(--green));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .subtitle{
+    color:var(--ink);
+    font-size:22px;
+    font-weight:760;
+    margin:0 0 14px;
+  }
+  .desc{
+    color:var(--dim);
+    font-size:16px;
+    max-width:560px;
+    margin:0 0 22px;
+  }
+  .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+  .chip{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    min-height:36px;
+    padding:0 13px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.06);
+    color:var(--dim);
+    font-size:13px;
+    font-weight:700;
+  }
+
+  .hero-board{
+    position:relative;
+    min-height:520px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+    background:
+      linear-gradient(90deg, rgba(111,224,208,.10) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(111,224,208,.08) 1px, transparent 1px),
+      linear-gradient(145deg, rgba(21,41,31,.96), rgba(8,18,14,.96));
+    background-size:82px 82px,82px 82px,auto;
+    box-shadow:var(--shadow);
+  }
+  .court{
+    position:absolute;
+    inset:24px;
+    border:2px solid rgba(168,240,107,.34);
+    border-radius:8px;
+    opacity:.9;
+  }
+  .court:before,.court:after{
+    content:"";
+    position:absolute;
+    inset:16% 0 auto;
+    height:2px;
+    background:rgba(168,240,107,.28);
+    box-shadow:0 104px 0 rgba(168,240,107,.28),0 208px 0 rgba(168,240,107,.28);
+  }
+  .court:after{
+    inset:0 auto 0 50%;
+    width:2px;
+    height:auto;
+    box-shadow:-148px 0 0 rgba(168,240,107,.22),148px 0 0 rgba(168,240,107,.22);
+  }
+  .hero-devices{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:22px;padding:30px}
+  .hero-devices .phone-frame{transform:rotate(-3deg)}
+  .hero-devices .watch-frame{transform:rotate(5deg);margin-top:86px}
+
+  h2{
+    margin:64px 0 14px;
+    font-size:29px;
+    line-height:1.1;
+    letter-spacing:0;
+  }
+  .section-lead{color:var(--dim);max-width:920px;margin:0 0 22px}
+  .section-top{display:flex;align-items:end;justify-content:space-between;gap:24px}
+  .section-top .section-lead{margin-bottom:0}
+
+  .system-grid{
+    display:grid;
+    grid-template-columns:1.1fr .9fr 1fr;
+    gap:14px;
+  }
+  .spec-panel{
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:linear-gradient(180deg,rgba(16,31,24,.92),rgba(11,20,16,.92));
+    padding:18px;
+  }
+  .spec-panel h3{margin:0 0 12px;font-size:15px;color:#fff}
+  .spec-panel p{margin:0;color:var(--dim)}
+  .swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+  .swatch{min-height:76px;border:1px solid var(--line);border-radius:8px;padding:10px;background:rgba(255,255,255,.05)}
+  .swatch .color{height:28px;border-radius:6px;margin-bottom:8px}
+  .swatch b{display:block;font-size:12px}
+  .swatch span{display:block;color:var(--mut);font-size:11px;margin-top:2px}
+  .type-sample{
+    display:grid;
+    grid-template-columns:132px 1fr;
+    gap:10px;
+    align-items:center;
+    margin-top:8px;
+    color:var(--dim);
+    font-size:13px;
+  }
+  .type-sample b{font-size:42px;line-height:1;color:#fff}
+  .tokens{display:grid;gap:8px}
+  .token-row{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:8px;color:var(--dim);font-size:13px}
+  .token-row:last-child{border-bottom:0;padding-bottom:0}
+  .token-row code{color:var(--cyan);font-family:"SF Mono",Menlo,monospace;font-size:12px;background:rgba(111,224,208,.09);padding:2px 6px;border-radius:5px}
+
+  .flow-strip{
+    display:grid;
+    grid-template-columns:repeat(7,minmax(124px,1fr));
+    gap:10px;
+    margin-top:18px;
+  }
+  .flow-step{
+    min-height:86px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:rgba(255,255,255,.05);
+    padding:12px;
+    position:relative;
+  }
+  .flow-step span{display:block;color:var(--cyan);font-size:12px;font-weight:850;margin-bottom:6px}
+  .flow-step b{display:block;font-size:14px}
+  .flow-step small{display:block;color:var(--mut);margin-top:4px}
+
+  .board-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(246px,1fr));
+    gap:22px;
+    align-items:start;
+  }
+  .phone-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    gap:30px 24px;
+    align-items:start;
+  }
+  .shot{
+    display:grid;
+    justify-items:center;
+    gap:12px;
+  }
+  .shot-title{
+    width:100%;
+    max-width:330px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    color:var(--dim);
+  }
+  .shot-title b{color:#fff}
+  .shot-title code{
+    color:#04140d;
+    background:linear-gradient(135deg,var(--lime),var(--teal));
+    border-radius:6px;
+    padding:4px 8px;
+    font-size:12px;
+    font-family:"SF Mono",Menlo,monospace;
+    font-weight:900;
+  }
+
+  .watch-frame{
+    width:218px;
+    height:264px;
+    border-radius:54px;
+    padding:12px;
+    background:linear-gradient(145deg,#252b28,#050605 54%,#202521);
+    box-shadow:0 26px 48px rgba(0,0,0,.46), inset 0 0 0 1px rgba(255,255,255,.12);
+    position:relative;
+  }
+  .watch-frame:before{
+    content:"";
+    position:absolute;
+    width:8px;
+    height:62px;
+    border-radius:0 8px 8px 0;
+    background:linear-gradient(#2c332f,#0a0c0b);
+    right:-6px;
+    top:86px;
+  }
+  .watch-screen{
+    width:100%;
+    height:100%;
+    border-radius:44px;
+    overflow:hidden;
+    background:#000;
+    position:relative;
+    border:1px solid rgba(255,255,255,.08);
+    padding:15px;
+  }
+  .watch-screen:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:linear-gradient(130deg,rgba(255,255,255,.08),transparent 31%);
+    mix-blend-mode:screen;
+  }
+  .watch-label{font-size:11px;color:var(--mut);font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+  .watch-head{display:flex;justify-content:space-between;align-items:center;color:var(--mut);font-size:11px;font-weight:800}
+  .watch-large{
+    font-size:58px;
+    line-height:.92;
+    font-weight:950;
+    letter-spacing:0;
+    font-variant-numeric:tabular-nums;
+  }
+  .watch-mid{font-size:30px;line-height:1;font-weight:900}
+  .watch-sub{color:var(--dim);font-size:12px;font-weight:700}
+  .watch-btn{
+    min-height:43px;
+    border:0;
+    border-radius:999px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    color:#03140d;
+    background:linear-gradient(135deg,var(--lime),var(--teal));
+    font-size:14px;
+    font-weight:900;
+    width:100%;
+  }
+  .watch-ghost{
+    min-height:34px;
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:999px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--dim);
+    font-size:12px;
+    font-weight:800;
+    background:rgba(255,255,255,.07);
+  }
+  .metric-row{display:flex;gap:7px;align-items:center}
+  .metric-pill{
+    flex:1;
+    min-height:34px;
+    border-radius:8px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.09);
+    display:grid;
+    place-items:center;
+    color:var(--dim);
+    font-size:11px;
+    font-weight:800;
+  }
+  .metric-pill b{display:block;color:#fff;font-size:14px;line-height:1.1}
+  .spark{
+    display:flex;
+    align-items:end;
+    gap:3px;
+    height:34px;
+  }
+  .spark i{
+    display:block;
+    width:100%;
+    min-width:5px;
+    border-radius:4px 4px 2px 2px;
+    background:linear-gradient(180deg,var(--gold),var(--teal));
+  }
+  .mini-line{
+    position:relative;
+    height:54px;
+    border-radius:8px;
+    overflow:hidden;
+    background:linear-gradient(180deg,rgba(47,217,166,.14),rgba(255,255,255,.04));
+    border:1px solid rgba(255,255,255,.08);
+  }
+  .mini-line svg{position:absolute;inset:0;width:100%;height:100%}
+  .watch-alert{
+    position:absolute;
+    inset:0;
+    padding:24px 18px;
+    display:grid;
+    align-content:center;
+    justify-items:center;
+    text-align:center;
+    background:linear-gradient(155deg,rgba(255,178,77,.98),rgba(255,107,107,.96));
+    color:#160b05;
+  }
+  .watch-alert .alert-icon{font-size:46px;font-weight:900;line-height:1}
+  .watch-alert b{font-size:18px;line-height:1.14;margin-top:12px}
+  .watch-alert span{font-size:12px;font-weight:800;opacity:.78;margin-top:8px}
+  .toggle-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    min-height:34px;
+    color:#fff;
+    font-size:12px;
+    font-weight:750;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .toggle-row:last-child{border-bottom:0}
+  .toggle{
+    width:34px;
+    height:20px;
+    border-radius:999px;
+    background:rgba(255,255,255,.18);
+    padding:2px;
+  }
+  .toggle:after{
+    content:"";
+    display:block;
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    background:#fff;
+  }
+  .toggle.on{background:linear-gradient(135deg,var(--lime),var(--teal))}
+  .toggle.on:after{margin-left:14px;background:#06120d}
+
+  .phone-frame{
+    width:312px;
+    height:654px;
+    border-radius:44px;
+    padding:12px;
+    background:linear-gradient(145deg,#2b302d,#050605 55%,#222824);
+    box-shadow:0 28px 70px rgba(0,0,0,.42), inset 0 0 0 1px rgba(255,255,255,.14);
+    position:relative;
+  }
+  .phone-frame:before{
+    content:"";
+    position:absolute;
+    width:96px;
+    height:26px;
+    border-radius:0 0 18px 18px;
+    left:50%;
+    top:12px;
+    transform:translateX(-50%);
+    background:#050605;
+    z-index:4;
+  }
+  .phone-screen{
+    width:100%;
+    height:100%;
+    border-radius:34px;
+    overflow:hidden;
+    position:relative;
+    border:1px solid rgba(255,255,255,.08);
+    background:
+      radial-gradient(220px 190px at 70% 0%,rgba(47,217,166,.16),transparent 65%),
+      linear-gradient(180deg,#0b1712,#07100d);
+    padding:28px 16px 76px;
+  }
+  .status{display:flex;justify-content:space-between;color:rgba(255,255,255,.74);font-size:11px;font-weight:800;margin-bottom:12px}
+  .app-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+  .app-title b{display:block;font-size:22px;line-height:1.05}
+  .app-title span{display:block;color:var(--mut);font-size:12px;margin-top:2px}
+  .icon-btn{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.07);
+    display:grid;
+    place-items:center;
+    color:var(--cyan);
+  }
+  .phone-card{
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:8px;
+    background:rgba(255,255,255,.065);
+    padding:12px;
+    margin-bottom:10px;
+  }
+  .phone-card.hero-card{
+    min-height:170px;
+    background:
+      radial-gradient(160px 140px at 82% 12%,rgba(255,210,90,.20),transparent 62%),
+      linear-gradient(150deg,rgba(47,217,166,.18),rgba(255,255,255,.055));
+  }
+  .phone-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+  .kpi-box{
+    min-height:58px;
+    border-radius:8px;
+    background:rgba(0,0,0,.20);
+    border:1px solid rgba(255,255,255,.07);
+    padding:8px;
+  }
+  .kpi-box b{display:block;font-size:18px;line-height:1.1}
+  .kpi-box span{display:block;color:var(--mut);font-size:10px;margin-top:3px}
+  .phone-big{
+    font-size:48px;
+    line-height:1;
+    font-weight:950;
+    letter-spacing:0;
+    font-variant-numeric:tabular-nums;
+  }
+  .phone-caption{color:var(--dim);font-size:12px;margin:4px 0 0}
+  .segment{
+    display:flex;
+    gap:4px;
+    padding:4px;
+    background:rgba(0,0,0,.24);
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,.08);
+    margin-bottom:10px;
+  }
+  .segment span{
+    flex:1;
+    min-height:30px;
+    display:grid;
+    place-items:center;
+    border-radius:999px;
+    color:var(--mut);
+    font-size:12px;
+    font-weight:850;
+  }
+  .segment span.active{background:linear-gradient(135deg,var(--lime),var(--teal));color:#06140d}
+  .chart{
+    height:112px;
+    border-radius:8px;
+    background:
+      linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px),
+      linear-gradient(180deg,rgba(255,255,255,.05) 1px,transparent 1px),
+      rgba(0,0,0,.16);
+    background-size:42px 42px,42px 42px,auto;
+    border:1px solid rgba(255,255,255,.08);
+    position:relative;
+    overflow:hidden;
+  }
+  .chart svg{position:absolute;inset:0;width:100%;height:100%}
+  .chart .zone{
+    position:absolute;
+    bottom:0;
+    width:16%;
+    height:100%;
+    background:rgba(47,217,166,.09);
+    border-left:1px solid rgba(111,224,208,.16);
+  }
+  .bar-week{display:flex;align-items:end;gap:8px;height:82px;padding:8px 4px 0}
+  .bar-week i{
+    flex:1;
+    border-radius:6px 6px 2px 2px;
+    background:linear-gradient(180deg,var(--lime),var(--teal));
+    min-height:10px;
+  }
+  .story{
+    border-left:3px solid var(--cyan);
+    padding:8px 10px;
+    color:#dffff4;
+    background:rgba(111,224,208,.08);
+    border-radius:0 8px 8px 0;
+    font-size:12px;
+    font-weight:720;
+  }
+  .history-item{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:10px;
+    align-items:center;
+    min-height:74px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    padding:9px 0;
+  }
+  .history-item:last-child{border-bottom:0}
+  .history-item b{display:block}
+  .history-item span{display:block;color:var(--mut);font-size:11px;margin-top:2px}
+  .mini-spark{width:76px;height:34px}
+  .coach-list{display:grid;gap:8px;margin-top:10px}
+  .coach{
+    display:flex;
+    gap:9px;
+    align-items:flex-start;
+    min-height:44px;
+    padding:9px;
+    border-radius:8px;
+    background:rgba(255,255,255,.055);
+    color:var(--dim);
+    font-size:11px;
+  }
+  .coach mark{
+    width:7px;
+    height:26px;
+    border-radius:999px;
+    background:var(--amber);
+    flex:none;
+  }
+  .calendar{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:5px;
+    margin-top:12px;
+  }
+  .day{
+    aspect-ratio:1;
+    border-radius:5px;
+    background:rgba(255,255,255,.06);
+  }
+  .day.hit1{background:rgba(47,217,166,.28)}
+  .day.hit2{background:rgba(47,217,166,.54)}
+  .day.hit3{background:linear-gradient(135deg,var(--lime),var(--teal))}
+  .badge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:10px}
+  .badge{
+    aspect-ratio:1;
+    border-radius:8px;
+    display:grid;
+    place-items:center;
+    border:1px solid rgba(255,255,255,.11);
+    background:radial-gradient(circle at 35% 25%,rgba(255,255,255,.24),transparent 26%),linear-gradient(145deg,rgba(255,210,90,.28),rgba(47,217,166,.18));
+    color:var(--gold);
+    font-weight:950;
+  }
+  .bottom-tab{
+    position:absolute;
+    left:14px;
+    right:14px;
+    bottom:12px;
+    min-height:56px;
+    border-radius:22px;
+    background:rgba(5,10,8,.86);
+    border:1px solid rgba(255,255,255,.10);
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    padding:6px;
+    gap:4px;
+    backdrop-filter:blur(14px);
+  }
+  .tab-item{
+    display:grid;
+    place-items:center;
+    color:var(--mut);
+    font-size:10px;
+    font-weight:800;
+  }
+  .tab-item.active{color:var(--lime)}
+  .tab-dot{
+    width:22px;
+    height:5px;
+    border-radius:999px;
+    background:currentColor;
+    opacity:.95;
+    margin-top:3px;
+  }
+  .form-row{
+    min-height:42px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    font-weight:760;
+  }
+  .form-row:last-child{border-bottom:0}
+  .form-row span{color:var(--mut);font-size:12px;font-weight:750}
+  .primary-cta{
+    min-height:46px;
+    border-radius:999px;
+    background:linear-gradient(135deg,var(--lime),var(--teal));
+    color:#04130c;
+    display:grid;
+    place-items:center;
+    font-weight:950;
+    margin-top:12px;
+  }
+
+  .notes{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:14px;
+  }
+  .note{
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px;
+    background:rgba(255,255,255,.055);
+  }
+  .note b{display:block;margin-bottom:6px}
+  .note span{display:block;color:var(--dim);font-size:13px}
+
+  @media(max-width:1000px){
+    .hero{grid-template-columns:1fr;min-height:0}
+    .hero-board{min-height:510px}
+    .system-grid{grid-template-columns:1fr}
+    .flow-strip{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:620px){
+    .page{padding:18px 14px 48px}
+    .brand{font-size:52px}
+    .hero-devices{transform:scale(.78)}
+    .hero-board{min-height:430px}
+    .phone-grid{grid-template-columns:1fr}
+    .section-top{display:block}
+    .flow-strip{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-heart" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M12 21s-6.7-4.1-9.4-8.4C.5 9.2 2.4 5 6.4 5c2 0 3.5 1 4.4 2.3C11.7 6 13.2 5 15.2 5c4 0 5.9 4.2 3.8 7.6C16.7 16.9 12 21 12 21z"/>
+    </symbol>
+    <symbol id="i-racket" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M15.8 3.2c2.9 1.3 4.2 4.9 2.8 8.1-1.5 3.5-5.5 5.5-8.8 4-3.1-1.4-4.2-5.1-2.7-8.3 1.4-3.2 5.6-5.3 8.7-3.8zM9.7 15.3 4 21m8.8-17.4 4.9 9.7M8.3 6.2l7.9 3.6M6.7 9.2l9.4 4.2"/>
+    </symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 7h18s-3 0-3-7M10 20h4"/>
+    </symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M4 18V6m0 12h16M7 15l3-4 3 2 4-7 3 4"/>
+    </symbol>
+    <symbol id="i-user" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main class="page">
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="kicker"><svg width="17" height="17"><use href="#i-racket"/></svg>Watch + iOS UI Design Board</span>
+      <h1 class="brand"><span class="grad">羽伴</span><br>RallyMate</h1>
+      <p class="subtitle">会陪练、会护着你、让你坚持的羽毛球应用</p>
+      <p class="desc">根据 RallyMate PRD 输出的完整双端设计稿。Watch 负责开打、实时反馈、即时小结；iPhone 负责复盘、趋势、成就与设置。整体气质是清爽运动、温暖陪伴、深色 OLED 优先。</p>
+      <div class="hero-actions">
+        <a class="chip" href="#watch">Watch W1-W8</a>
+        <a class="chip" href="#iphone">iPhone P0-P7</a>
+        <a class="chip" href="#system">Design System</a>
+        <a class="chip" href="#handoff">Handoff Notes</a>
+      </div>
+    </div>
+
+    <div class="hero-board" aria-label="RallyMate preview">
+      <div class="court"></div>
+      <div class="hero-devices">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="status"><span>9:41</span><span>100%</span></div>
+            <div class="app-bar">
+              <div class="app-title"><b>今天</b><span>连续打球 5 天</span></div>
+              <div class="icon-btn"><svg width="17" height="17"><use href="#i-bell"/></svg></div>
+            </div>
+            <div class="phone-card hero-card">
+              <div class="phone-caption">最近一场 · 19:28</div>
+              <div class="phone-big">742</div>
+              <div class="phone-caption">挥拍 · 46 分钟 · 平均心率 142</div>
+              <div class="chart" style="height:74px;margin-top:12px">
+                <svg viewBox="0 0 260 74" preserveAspectRatio="none">
+                  <path d="M0 58 C24 44 31 62 48 35 S82 20 100 38 128 58 148 25 181 18 199 35 225 56 260 24" fill="none" stroke="url(#gradLinePreview)" stroke-width="5" stroke-linecap="round"/>
+                  <defs><linearGradient id="gradLinePreview" x1="0" x2="1"><stop stop-color="#2fd9a6"/><stop offset=".55" stop-color="#ffd25a"/><stop offset="1" stop-color="#ff6b6b"/></linearGradient></defs>
+                </svg>
+              </div>
+            </div>
+            <div class="story">后半场强度有下滑，下一次第 30 分钟可以主动歇 1 分钟。</div>
+            <div class="bottom-tab">
+              <div class="tab-item active">首页<div class="tab-dot"></div></div>
+              <div class="tab-item">历史</div>
+              <div class="tab-item">趋势</div>
+              <div class="tab-item">我的</div>
+            </div>
+          </div>
+        </div>
+        <div class="watch-frame">
+          <div class="watch-screen">
+            <div class="watch-head"><span>RallyMate</span><span>18:42</span></div>
+            <div style="height:20px"></div>
+            <div class="watch-label">本场挥拍</div>
+            <div class="watch-large">518</div>
+            <div class="metric-row" style="margin:10px 0 12px">
+              <div class="metric-pill"><b>32:18</b>时长</div>
+              <div class="metric-pill"><b>148</b>心率</div>
+            </div>
+            <div class="spark">
+              <i style="height:26%"></i><i style="height:48%"></i><i style="height:32%"></i><i style="height:78%"></i><i style="height:62%"></i><i style="height:92%;background:linear-gradient(180deg,var(--coral),var(--amber))"></i><i style="height:42%"></i><i style="height:58%"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="system">
+    <div class="section-top">
+      <div>
+        <h2>设计系统</h2>
+        <p class="section-lead">共用一套运动感深色系统：强数据、少噪音、关键反馈足够醒目。强度不显示球速单位，只显示 0-100 的相对力度。</p>
+      </div>
+    </div>
+    <div class="system-grid">
+      <div class="spec-panel">
+        <h3>颜色</h3>
+        <div class="swatches">
+          <div class="swatch"><div class="color" style="background:linear-gradient(135deg,#a8f06b,#2fd9a6)"></div><b>Brand</b><span>Lime to Teal</span></div>
+          <div class="swatch"><div class="color" style="background:#34c97a"></div><b>Success</b><span>#34C97A</span></div>
+          <div class="swatch"><div class="color" style="background:#6fe0d0"></div><b>Data</b><span>#6FE0D0</span></div>
+          <div class="swatch"><div class="color" style="background:#ffb24d"></div><b>Fatigue</b><span>#FFB24D</span></div>
+          <div class="swatch"><div class="color" style="background:#ff6b6b"></div><b>Injury</b><span>#FF6B6B</span></div>
+          <div class="swatch"><div class="color" style="background:#ffd25a"></div><b>Record</b><span>#FFD25A</span></div>
+        </div>
+      </div>
+      <div class="spec-panel">
+        <h3>字体与数字</h3>
+        <div class="type-sample"><b>742</b><span>核心数字使用大号、紧凑、等宽感。Watch 上挥拍数永远是第一视觉。</span></div>
+        <div class="type-sample"><b style="font-size:28px">回合 7 拍</b><span>短句、口语、行动导向。避免算法术语直接暴露给用户。</span></div>
+      </div>
+      <div class="spec-panel">
+        <h3>组件 Token</h3>
+        <div class="tokens">
+          <div class="token-row"><span>Phone cards</span><code>radius 8 / 12px padding</code></div>
+          <div class="token-row"><span>Watch cards</span><code>radius 12 / OLED black</code></div>
+          <div class="token-row"><span>Primary CTA</span><code>44-50px pill</code></div>
+          <div class="token-row"><span>Intensity</span><code>teal / lime / gold / coral</code></div>
+          <div class="token-row"><span>Feedback</span><code>full-screen color card</code></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-strip">
+      <div class="flow-step"><span>01</span><b>首次引导</b><small>权限、佩戴手、陪练模式</small></div>
+      <div class="flow-step"><span>02</span><b>手表开打</b><small>确认状态后 3 秒倒计时</small></div>
+      <div class="flow-step"><span>03</span><b>运动中记录</b><small>挥拍、心率、强度、回合</small></div>
+      <div class="flow-step"><span>04</span><b>实时反馈</b><small>疲劳、防伤、里程碑</small></div>
+      <div class="flow-step"><span>05</span><b>结束小结</b><small>手表内完成轻量复盘</small></div>
+      <div class="flow-step"><span>06</span><b>手机详情</b><small>曲线、回合、教练点评</small></div>
+      <div class="flow-step"><span>07</span><b>长期陪伴</b><small>趋势、成就、提醒</small></div>
+    </div>
+  </section>
+
+  <section id="watch">
+    <h2>Watch App 屏幕稿</h2>
+    <p class="section-lead">按 45-49mm 表盘设计，运动中 W3/W4/W5 横向分页。信息层级极简：正在打球时只保留一眼能读的数据。</p>
+    <div class="board-grid">
+      <article class="shot">
+        <div class="shot-title"><code>W1</code><b>今日首页</b><span>快捷开始</span></div>
+        <div class="watch-frame">
+          <div class="watch-screen">
+            <div class="watch-head"><span>今天</span><span>09:41</span></div>
+            <div style="height:20px"></div>
+            <div class="watch-label">今日挥拍</div>
+            <div class="watch-large">286</div>
+            <div class="watch-sub">连续打球 5 天 · 本周 2 场</div>
+            <div style="height:16px"></div>
+            <button class="watch-btn"><svg width="16" height="16"><use href="#i-racket"/></svg>开始打球</button>
+            <div class="watch-ghost" style="margin-top:10px">最近一场 742 拍</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="shot">
+        <div class="shot-title"><code>W2</code><b>开始前准备</b><span>佩戴手</span></div>
+        <div class="watch-frame">
+          <div class="watch-screen">
+            <div class="watch-head"><span>准备开打</span><span>陪练开</span></div>
+            <div style="height:12px"></div>
+            <div class="metric-row">
+              <div class="metric-pill" style="background:rgba(47,217,166,.18);color:var(--cyan)"><b>持拍手</b>当前</div>
+              <div class="metric-pill"><b>非持拍</b>切换</div>
+            </div>
+            <div style="display:grid;place-items:center;margin:18px 0 14px">
+              <div style="width:94px;height:94px;border-radius:50%;border:8px solid rgba(47,217,166,.22);border-top-color:var(--lime);display:grid;place-items:center;font-size:48px;font-weight:950">3</div>
+            </div>
+            <button class="watch-btn">立即开始</button>
+            <div class="watch-sub" style="text-align:center;margin-top:8px">倒计时后自动进入记录</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="shot">
+        <div class="shot-title"><code>W3</code><b>运动中主表盘</b><span>一瞥即得</span></div>
+        <div class="watch-frame">
+          <div class="watch-screen">
+            <div class="watch-head"><span>本场挥拍</span><span>直播中</span></div>
+            <div style="height:14px"></div>
+            <div class="watch-large">518</div>
+            <div class="metric-row" style="margin:10px 0 12px">
+              <div class="metric-pill"><b>32:18</b>时长</div>
+              <div class="metric-pill"><b>148</b>bpm</div>
+            </div>
+            <div class="watch-label">最近强度</div>
+            <div class="spark">
+              <i style="height:26%"></i><i style="height:48%"></i><i style="height:32%"></i><i style="height:78%"></i><i style="height:62%"></i><i style="height:92%;background:linear-gradient(180deg,var(--coral),var(--amber))"></i><i style="height:42%"></i><i style="height:58%"></i>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="shot">
+        <div class="shot-title"><code>W4</code><b>运动中节奏页</b><span>回合感知</span></div>
+        <div class="watch-frame">
+          <div class="watch-screen">
+            <div class="watch-head"><span>节奏</span><span>回合中</span></div>
+            <div style="height:16px"></div>
+            <div class="watch-label">本回合</div>
+            <div class="watch-mid">7 拍</div>
+            <div class="metric-row" style="margin:13px 0">
+              <div class="metric-pill"><b>21</b>最长</div>
+              <div class="metric-pill"><b>0:12</b>间歇</div>
+            </div>
+            <div class="mini-line">
+              <svg viewBox="0 0 184 54" preserveAspectRatio="none">
+                <path d="M0 40 C18 32 24 42 37 25 S67 13 80 28 101 45 115 19 142 15 155 26 171 38 184 20" fill="none" stroke="#6fe0d0" stroke-width="4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="watch-sub" style="margin-top:8px">打 / 歇比 2.4</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="shot">
+        <div class="shot-title"><code>W5</code><b>控制页</b><span>防误触</span></div>
+        <div class="watch-frame">
+          <div class="watch-screen">
+            <div class="watch-head"><span>控制</span><span>32:18</span></div>
+            <div style="height:28px"></div>
+            <button class="watch-btn" style="background:linear-gradient(135deg,var(--gold),var(--amber))">暂停</button>
+            <div style="height:12px"></div>
+            <button class="watch-btn" style="background:linear-gradient(135deg,var(--coral),#ff8f6b);color:#170806">长按结束</button>
+            <div class="watch-sub" style="margin-top:20px;text-align:center">结束后保存本场记录，并同步到手机</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="shot">
+        <div class="shot-title"><code>W6</code><b>实时反馈弹层</b><span>少而准</span></div>
+        <div class="watch-frame">
+          <div class="watch-screen" style="padding:0">
+            <div class="watch-alert">
+              <div class="alert-icon">!</div>
+              <b>你累了，注意动作别变形</b>
+              <span>建议歇一下 · 2 秒后返回</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="shot">
+        <div class="shot-title"><code>W7</code><b>结束即时小结</b><span>成就感</span></div>
+        <div class="watch-frame">
+          <div class="watch-screen">
+            <div class="watch-head"><span>打得不错</span><span>已保存</span></div>
+            <div style="height:8px"></div>
+            <div class="metric-row">
+              <div class="metric-pill"><b>742</b>挥拍</div>
+              <div class="metric-pill"><b>46m</b>时长</div>
+            </div>
+            <div class="metric-row" style="margin-top:8px">
+              <div class="metric-pill"><b>143</b>均心</div>
+              <div class="metric-pill"><b>312</b>千卡</div>
+            </div>
+            <div class="phone-card" style="margin:12px 0 0;padding:10px;background:rgba(47,217,166,.10)">
+              <div class="watch-sub">新纪录：最长连拍 21 拍</div>
+            </div>
+            <button class="watch-btn" style="margin-top:10px;min-height:38px">完成</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="shot">
+        <div class="shot-title"><code>W8</code><b>表端设置</b><span>运动高频项</span></div>
+        <div class="watch-frame">
+          <div class="watch-screen">
+            <div class="watch-head"><span>设置</span><span></span></div>
+            <div style="height:10px"></div>
+            <div class="toggle-row"><span>持拍手佩戴</span><div class="toggle on"></div></div>
+            <div class="toggle-row"><span>实时陪练</span><div class="toggle on"></div></div>
+            <div class="toggle-row"><span>疲劳提醒</span><div class="toggle on"></div></div>
+            <div class="toggle-row"><span>防伤提醒</span><div class="toggle on"></div></div>
+            <div class="toggle-row"><span>触觉强度</span><span style="color:var(--cyan)">中</span></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="iphone">
+    <h2>iPhone App 屏幕稿</h2>
+    <p class="section-lead">iPhone 是复盘和陪伴主场。底部四 Tab：首页、历史、趋势、我的。P5 成就和 P7 设置归入“我的”，P6 提醒也可从首页和我的进入。</p>
+    <div class="phone-grid">
+      <article class="shot">
+        <div class="shot-title"><code>P0</code><b>引导 Onboarding</b><span>权限与模式</span></div>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="status"><span>9:41</span><span>100%</span></div>
+            <div style="height:36px"></div>
+            <div class="kicker" style="border-radius:8px">RallyMate</div>
+            <h2 style="margin:18px 0 8px;font-size:34px">戴上手表，开一场会说话的羽毛球</h2>
+            <p class="phone-caption" style="font-size:14px;line-height:1.5">记录挥拍、心率、回合节奏。在你累了或杀球太多时，轻轻提醒一下。</p>
+            <div class="phone-card" style="margin-top:24px">
+              <div class="form-row"><b>健康权限</b><span>心率 / 运动写入</span></div>
+              <div class="form-row"><b>通知权限</b><span>打球提醒</span></div>
+              <div class="form-row"><b>佩戴模式</b><span>持拍手</span></div>
+            </div>
+            <div class="segment"><span class="active">实时陪练</span><span>安静复盘</span></div>
+            <div class="primary-cta">开始设置</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="shot">
+        <div class="shot-title"><code>P1</code><b>首页仪表盘</b><span>今日状态</span></div>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="status"><span>9:41</span><span>100%</span></div>
+            <div class="app-bar">
+              <div class="app-title"><b>今天</b><span>连续打球 5 天</span></div>
+              <div class="icon-btn"><svg width="17" height="17"><use href="#i-bell"/></svg></div>
+            </div>
+            <div class="phone-card hero-card">
+              <div class="phone-caption">最近一场 · 昨晚 19:28</div>
+              <div class="phone-big">742</div>
+              <div class="phone-caption">挥拍 · 46 分钟 · 运动负荷 68</div>
+              <div class="chart" style="height:74px;margin-top:12px">
+                <svg viewBox="0 0 260 74" preserveAspectRatio="none">
+                  <path d="M0 58 C24 44 31 62 48 35 S82 20 100 38 128 58 148 25 181 18 199 35 225 56 260 24" fill="none" stroke="url(#gradP1)" stroke-width="5" stroke-linecap="round"/>
+                  <defs><linearGradient id="gradP1" x1="0" x2="1"><stop stop-color="#2fd9a6"/><stop offset=".55" stop-color="#ffd25a"/><stop offset="1" stop-color="#ff6b6b"/></linearGradient></defs>
+                </svg>
+              </div>
+            </div>
+            <div class="story">平均回合从 4 拍涨到 7 拍，相持能力在变稳。</div>
+            <div class="phone-card">
+              <b>本周挥拍</b>
+              <div class="bar-week"><i style="height:36%"></i><i style="height:14%"></i><i style="height:58%"></i><i style="height:22%"></i><i style="height:86%"></i><i style="height:8%"></i><i style="height:44%"></i></div>
+            </div>
+            <div class="bottom-tab">
+              <div class="tab-item active">首页<div class="tab-dot"></div></div>
+              <div class="tab-item">历史</div>
+              <div class="tab-item">趋势</div>
+              <div class="tab-item">我的</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="shot">
+        <div class="shot-title"><code>P2</code><b>历史列表</b><span>全部场次</span></div>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="status"><span>9:41</span><span>100%</span></div>
+            <div class="app-bar">
+              <div class="app-title"><b>历史</b><span>共 18 场 · 12,486 拍</span></div>
+              <div class="icon-btn"><svg width="17" height="17"><use href="#i-chart"/></svg></div>
+            </div>
+            <div class="phone-card">
+              <div class="history-item">
+                <div><b>今天 19:28</b><span>46 分钟 · 742 拍 · 新纪录</span></div>
+                <svg class="mini-spark" viewBox="0 0 76 34"><path d="M0 25 C10 8 18 30 28 14 S48 7 56 19 66 28 76 10" fill="none" stroke="#ffd25a" stroke-width="3" stroke-linecap="round"/></svg>
+              </div>
+              <div class="history-item">
+                <div><b>周三 20:10</b><span>38 分钟 · 588 拍</span></div>
+                <svg class="mini-spark" viewBox="0 0 76 34"><path d="M0 22 C12 18 18 9 27 17 S43 30 53 14 65 9 76 18" fill="none" stroke="#6fe0d0" stroke-width="3" stroke-linecap="round"/></svg>
+              </div>
+              <div class="history-item">
+                <div><b>周一 18:42</b><span>41 分钟 · 612 拍 · 疲劳事件 1</span></div>
+                <svg class="mini-spark" viewBox="0 0 76 34"><path d="M0 14 C11 8 17 14 26 11 S44 26 55 22 66 18 76 25" fill="none" stroke="#ffb24d" stroke-width="3" stroke-linecap="round"/></svg>
+              </div>
+              <div class="history-item">
+                <div><b>上周六 16:00</b><span>52 分钟 · 803 拍</span></div>
+                <svg class="mini-spark" viewBox="0 0 76 34"><path d="M0 26 C12 19 20 28 29 12 S44 6 53 16 64 31 76 8" fill="none" stroke="#2fd9a6" stroke-width="3" stroke-linecap="round"/></svg>
+              </div>
+            </div>
+            <div class="bottom-tab">
+              <div class="tab-item">首页</div>
+              <div class="tab-item active">历史<div class="tab-dot"></div></div>
+              <div class="tab-item">趋势</div>
+              <div class="tab-item">我的</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="shot">
+        <div class="shot-title"><code>P3</code><b>单场详情</b><span>核心报告页</span></div>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="status"><span>9:41</span><span>100%</span></div>
+            <div class="app-bar">
+              <div class="app-title"><b>今天这场</b><span>19:28-20:14 · 实时陪练</span></div>
+              <div class="icon-btn"><svg width="17" height="17"><use href="#i-chart"/></svg></div>
+            </div>
+            <div class="phone-kpi">
+              <div class="kpi-box"><b>742</b><span>挥拍</span></div>
+              <div class="kpi-box"><b>46m</b><span>时长</span></div>
+              <div class="kpi-box"><b>68</b><span>负荷</span></div>
+            </div>
+            <div class="phone-card" style="margin-top:10px">
+              <b>强度曲线</b>
+              <div class="chart" style="margin-top:8px">
+                <div class="zone" style="left:12%"></div><div class="zone" style="left:42%"></div><div class="zone" style="left:72%"></div>
+                <svg viewBox="0 0 260 112" preserveAspectRatio="none">
+                  <path d="M0 88 C19 68 27 92 42 48 S74 30 91 56 118 92 136 38 169 20 188 44 213 83 260 31" fill="none" stroke="url(#gradP3)" stroke-width="5" stroke-linecap="round"/>
+                  <defs><linearGradient id="gradP3" x1="0" x2="1"><stop stop-color="#2fd9a6"/><stop offset=".45" stop-color="#ffd25a"/><stop offset="1" stop-color="#ff6b6b"/></linearGradient></defs>
+                </svg>
+              </div>
+            </div>
+            <div class="phone-card">
+              <b>回合节奏</b>
+              <div class="phone-kpi">
+                <div class="kpi-box"><b>38</b><span>回合</span></div>
+                <div class="kpi-box"><b>7.1</b><span>均拍</span></div>
+                <div class="kpi-box"><b>21</b><span>最长</span></div>
+              </div>
+            </div>
+            <div class="coach-list">
+              <div class="coach"><mark></mark><span>第 31 分钟后强度下降明显，体能可能是下一步短板。</span></div>
+              <div class="coach"><mark style="background:var(--coral)"></mark><span>连续大力挥拍偏多，下一次注意手腕和肩部放松。</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="shot">
+        <div class="shot-title"><code>P4</code><b>趋势</b><span>周 / 月进步</span></div>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="status"><span>9:41</span><span>100%</span></div>
+            <div class="app-bar">
+              <div class="app-title"><b>趋势</b><span>6 月 · 8 场</span></div>
+            </div>
+            <div class="segment"><span class="active">周</span><span>月</span></div>
+            <div class="phone-kpi">
+              <div class="kpi-box"><b>4,218</b><span>累计挥拍</span></div>
+              <div class="kpi-box"><b>6h</b><span>总时长</span></div>
+              <div class="kpi-box"><b>5</b><span>打球天</span></div>
+            </div>
+            <div class="phone-card" style="margin-top:10px">
+              <b>平均回合长度</b>
+              <div class="chart" style="margin-top:8px">
+                <svg viewBox="0 0 260 112" preserveAspectRatio="none">
+                  <path d="M0 84 C28 78 42 72 62 66 S96 62 116 48 146 34 166 42 210 30 260 22" fill="none" stroke="#a8f06b" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M0 112 L0 84 C28 78 42 72 62 66 S96 62 116 48 146 34 166 42 210 30 260 22 L260 112Z" fill="rgba(168,240,107,.14)"/>
+                </svg>
+              </div>
+            </div>
+            <div class="story">本月平均回合 4.2 到 6.8 拍，相持能力在涨。</div>
+            <div class="phone-card">
+              <b>运动负荷</b>
+              <div class="bar-week"><i style="height:30%"></i><i style="height:64%"></i><i style="height:48%"></i><i style="height:78%"></i><i style="height:44%"></i><i style="height:82%"></i><i style="height:58%"></i></div>
+            </div>
+            <div class="bottom-tab">
+              <div class="tab-item">首页</div>
+              <div class="tab-item">历史</div>
+              <div class="tab-item active">趋势<div class="tab-dot"></div></div>
+              <div class="tab-item">我的</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="shot">
+        <div class="shot-title"><code>P5</code><b>成就陪伴</b><span>坚持感</span></div>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="status"><span>9:41</span><span>100%</span></div>
+            <div class="app-bar">
+              <div class="app-title"><b>我的成就</b><span>连续打球 5 天</span></div>
+              <div class="icon-btn"><svg width="17" height="17"><use href="#i-user"/></svg></div>
+            </div>
+            <div class="phone-card hero-card" style="min-height:138px">
+              <div class="phone-caption">当前连续</div>
+              <div class="phone-big">5 天</div>
+              <div class="phone-caption">再打一场，本周目标就完成了</div>
+            </div>
+            <div class="phone-card">
+              <b>打球热力</b>
+              <div class="calendar">
+                <div class="day hit1"></div><div class="day"></div><div class="day hit2"></div><div class="day"></div><div class="day hit3"></div><div class="day"></div><div class="day hit1"></div>
+                <div class="day"></div><div class="day hit1"></div><div class="day hit2"></div><div class="day"></div><div class="day hit2"></div><div class="day hit3"></div><div class="day"></div>
+                <div class="day hit1"></div><div class="day"></div><div class="day"></div><div class="day hit2"></div><div class="day"></div><div class="day hit1"></div><div class="day hit3"></div>
+              </div>
+            </div>
+            <div class="phone-card">
+              <b>里程碑</b>
+              <div class="badge-grid">
+                <div class="badge">1K</div><div class="badge">21</div><div class="badge">5D</div>
+              </div>
+            </div>
+            <div class="bottom-tab">
+              <div class="tab-item">首页</div>
+              <div class="tab-item">历史</div>
+              <div class="tab-item">趋势</div>
+              <div class="tab-item active">我的<div class="tab-dot"></div></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="shot">
+        <div class="shot-title"><code>P6</code><b>提醒约球</b><span>温和督促</span></div>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="status"><span>9:41</span><span>100%</span></div>
+            <div class="app-bar">
+              <div class="app-title"><b>提醒</b><span>把打球变成习惯</span></div>
+              <div class="icon-btn"><svg width="17" height="17"><use href="#i-bell"/></svg></div>
+            </div>
+            <div class="phone-card">
+              <div class="form-row"><b>每周固定提醒</b><div class="toggle on"></div></div>
+              <div class="form-row"><b>星期二</b><span>19:30</span></div>
+              <div class="form-row"><b>星期六</b><span>16:00</span></div>
+            </div>
+            <div class="phone-card hero-card" style="min-height:138px">
+              <div class="phone-caption">下次约球</div>
+              <div style="font-size:31px;font-weight:950;line-height:1.05;margin-top:8px">周六 16:00</div>
+              <div class="phone-caption">奥体羽毛球馆 · 3 号场</div>
+            </div>
+            <div class="story">提醒文案：今晚有球局，戴上手表去打一场轻松的。</div>
+            <div class="primary-cta">新增约球时间</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="shot">
+        <div class="shot-title"><code>P7</code><b>设置</b><span>偏好与数据</span></div>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="status"><span>9:41</span><span>100%</span></div>
+            <div class="app-bar">
+              <div class="app-title"><b>设置</b><span>RallyMate 0.1</span></div>
+            </div>
+            <div class="phone-card">
+              <div class="form-row"><b>佩戴手</b><span>持拍手</span></div>
+              <div class="form-row"><b>默认模式</b><span>实时陪练</span></div>
+              <div class="form-row"><b>触觉强度</b><span>中</span></div>
+            </div>
+            <div class="phone-card">
+              <div class="form-row"><b>疲劳预警</b><div class="toggle on"></div></div>
+              <div class="form-row"><b>防伤提醒</b><div class="toggle on"></div></div>
+              <div class="form-row"><b>里程碑提示</b><div class="toggle on"></div></div>
+            </div>
+            <div class="phone-card">
+              <div class="form-row"><b>HealthKit</b><span>已授权</span></div>
+              <div class="form-row"><b>iCloud 备份</b><div class="toggle"></div></div>
+              <div class="form-row"><b>导出数据</b><span>CSV</span></div>
+              <div class="form-row"><b>关于</b><span>隐私与版本</span></div>
+            </div>
+            <div class="bottom-tab">
+              <div class="tab-item">首页</div>
+              <div class="tab-item">历史</div>
+              <div class="tab-item">趋势</div>
+              <div class="tab-item active">我的<div class="tab-dot"></div></div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="handoff">
+    <h2>交付说明</h2>
+    <p class="section-lead">这份设计稿可直接作为 SwiftUI 实现或 Figma 复刻的蓝本。下面是关键实现边界，避免后续偏离 PRD 的核心定位。</p>
+    <div class="notes">
+      <div class="note"><b>Watch 优先保证可读性</b><span>运动中数字足够大，次级信息最多两行。实时反馈 2-3 秒自动消失，避免打球时打扰。</span></div>
+      <div class="note"><b>强度是相对值</b><span>所有 UI 文案使用“力度 / 强度 / 轻中重”，不要出现 km/h、m/s 或真实球速暗示。</span></div>
+      <div class="note"><b>陪伴文案要像人话</b><span>教练点评聚焦“下一场可以怎么做”，少给冷冰冰的统计描述。</span></div>
+      <div class="note"><b>设置双端同步</b><span>佩戴手、实时反馈、疲劳、防伤、触觉强度在 Watch 和 iPhone 都应同步。</span></div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

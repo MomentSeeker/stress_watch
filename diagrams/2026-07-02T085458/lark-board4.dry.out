@@ -1,0 +1,846 @@
+{
+  "api": [
+    {
+      "desc": "create all nodes of the whiteboard.",
+      "method": "POST",
+      "url": "/open-apis/board/v1/whiteboards/Vb9C...ngYc/nodes",
+      "body": {
+        "nodes": [
+          {
+            "composite_shape": {
+              "type": "rect"
+            },
+            "height": 470,
+            "id": "o001:1",
+            "style": {
+              "border_style": "none",
+              "fill_color": "#f7f9fc",
+              "fill_color_type": 1,
+              "fill_opacity": 100
+            },
+            "text": {
+              "angle": 0,
+              "font_size": 14,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "",
+              "text_background_color_type": 0,
+              "text_color": "#1f2329",
+              "text_color_type": 0,
+              "theme_text_background_color_code": -1,
+              "theme_text_color_code": -1,
+              "underline": false,
+              "vertical_align": "mid"
+            },
+            "type": "composite_shape",
+            "width": 900,
+            "x": 0,
+            "y": 0
+          },
+          {
+            "height": 37.64799976348877,
+            "id": "a001:1",
+            "text": {
+              "angle": 0,
+              "font_size": 26,
+              "font_weight": "bold",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "AI-Driven Multi-Stage SKM Support",
+              "text_background_color_type": 0,
+              "text_color": "#14342b",
+              "text_color_type": 1,
+              "theme_text_background_color_code": -1,
+              "underline": false,
+              "vertical_align": "top"
+            },
+            "type": "text_shape",
+            "width": 447,
+            "x": 226.5,
+            "y": 13.411000192165375
+          },
+          {
+            "height": 20.27199935913086,
+            "id": "a001:2",
+            "text": {
+              "angle": 0,
+              "font_size": 14,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "AI support across the merchant journey: self-service, testing, troubleshooting, and knowledge reuse",
+              "text_background_color_type": 0,
+              "text_color": "#5f746d",
+              "text_color_type": 1,
+              "theme_text_background_color_code": -1,
+              "underline": false,
+              "vertical_align": "top"
+            },
+            "type": "text_shape",
+            "width": 649,
+            "x": 125.5,
+            "y": 55.52900052070618
+          },
+          {
+            "connector": {
+              "caption_auto_direction": false,
+              "end": {
+                "arrow_style": "none",
+                "position": {
+                  "x": 692,
+                  "y": 225
+                }
+              },
+              "shape": "right_angled_polyline",
+              "specified_coordinate": true,
+              "start": {
+                "arrow_style": "none",
+                "position": {
+                  "x": 118,
+                  "y": 225
+                }
+              },
+              "turning_points": [
+                {
+                  "x": 287,
+                  "y": 0
+                }
+              ]
+            },
+            "height": 0,
+            "id": "c001:1",
+            "style": {
+              "border_color": "#10b981",
+              "border_color_type": 1,
+              "border_opacity": 100,
+              "border_style": "solid",
+              "border_width": "bold"
+            },
+            "type": "connector",
+            "width": 574,
+            "x": 118,
+            "y": 225
+          },
+          {
+            "composite_shape": {
+              "type": "ellipse"
+            },
+            "height": 70,
+            "id": "o001:2",
+            "style": {
+              "border_color": "#3b82f6",
+              "border_color_type": 1,
+              "border_opacity": 100,
+              "border_style": "solid",
+              "border_width": "medium",
+              "fill_color": "#ffffff",
+              "fill_color_type": 1,
+              "fill_opacity": 100
+            },
+            "text": {
+              "angle": 0,
+              "font_size": 14,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "",
+              "text_background_color_type": 0,
+              "text_color": "#1f2329",
+              "text_color_type": 0,
+              "theme_text_background_color_code": -1,
+              "theme_text_color_code": -1,
+              "underline": false,
+              "vertical_align": "mid"
+            },
+            "type": "composite_shape",
+            "width": 70,
+            "x": 130,
+            "y": 190
+          },
+          {
+            "height": 37.64799976348877,
+            "id": "a001:3",
+            "text": {
+              "angle": 0,
+              "font_size": 26,
+              "font_weight": "bold",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "1",
+              "text_background_color_type": 0,
+              "text_color": "#3b82f6",
+              "text_color_type": 1,
+              "theme_text_background_color_code": -1,
+              "underline": false,
+              "vertical_align": "top"
+            },
+            "type": "text_shape",
+            "width": 16,
+            "x": 157,
+            "y": 203.41100019216537
+          },
+          {
+            "composite_shape": {
+              "type": "round_rect"
+            },
+            "height": 122,
+            "id": "o001:3",
+            "style": {
+              "border_color": "#d7eee5",
+              "border_color_type": 1,
+              "border_opacity": 100,
+              "border_style": "solid",
+              "border_width": "narrow",
+              "fill_color": "#ffffff",
+              "fill_color_type": 1,
+              "fill_opacity": 100
+            },
+            "text": {
+              "angle": 0,
+              "font_size": 14,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "",
+              "text_background_color_type": 0,
+              "text_color": "#1f2329",
+              "text_color_type": 0,
+              "theme_text_background_color_code": -1,
+              "theme_text_color_code": -1,
+              "underline": false,
+              "vertical_align": "mid"
+            },
+            "type": "composite_shape",
+            "width": 190,
+            "x": 70,
+            "y": 275
+          },
+          {
+            "composite_shape": {
+              "type": "round_rect2"
+            },
+            "height": 8,
+            "id": "o001:4",
+            "style": {
+              "border_style": "none",
+              "fill_color": "#3b82f6",
+              "fill_color_type": 1,
+              "fill_opacity": 100
+            },
+            "text": {
+              "angle": 0,
+              "font_size": 14,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "",
+              "text_background_color_type": 0,
+              "text_color": "#1f2329",
+              "text_color_type": 0,
+              "theme_text_background_color_code": -1,
+              "theme_text_color_code": -1,
+              "underline": false,
+              "vertical_align": "mid"
+            },
+            "type": "composite_shape",
+            "width": 190,
+            "x": 70,
+            "y": 275
+          },
+          {
+            "height": 24.615999221801758,
+            "id": "a001:4",
+            "text": {
+              "angle": 0,
+              "font_size": 17,
+              "font_weight": "bold",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "Pre-Integration",
+              "text_background_color_type": 0,
+              "text_color": "#152033",
+              "text_color_type": 1,
+              "theme_text_background_color_code": -1,
+              "underline": false,
+              "vertical_align": "top"
+            },
+            "type": "text_shape",
+            "width": 130,
+            "x": 100,
+            "y": 290.9995006322861
+          },
+          {
+            "height": 17.375999927520752,
+            "id": "a001:5",
+            "text": {
+              "angle": 0,
+              "font_size": 12,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "Partner Center",
+              "text_background_color_type": 0,
+              "text_color": "#58657a",
+              "text_color_type": 1,
+              "theme_text_background_color_code": -1,
+              "underline": false,
+              "vertical_align": "top"
+            },
+            "type": "text_shape",
+            "width": 83,
+            "x": 123.5,
+            "y": 334.8820000588894
+          },
+          {
+            "height": 17.375999927520752,
+            "id": "a001:6",
+            "text": {
+              "angle": 0,
+              "font_size": 12,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "Assistant",
+              "text_background_color_type": 0,
+              "text_color": "#58657a",
+              "text_color_type": 1,
+              "theme_text_background_color_code": -1,
+              "underline": false,
+              "vertical_align": "top"
+            },
+            "type": "text_shape",
+            "width": 51,
+            "x": 139.5,
+            "y": 350.8820000588894
+          },
+          {
+            "height": 17.375999927520752,
+            "id": "a001:7",
+            "text": {
+              "angle": 0,
+              "font_size": 12,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "Customer self-service Q\u0026A",
+              "text_background_color_type": 0,
+              "text_color": "#58657a",
+              "text_color_type": 1,
+              "theme_text_background_color_code": -1,
+              "underline": false,
+              "vertical_align": "top"
+            },
+            "type": "text_shape",
+            "width": 148,
+            "x": 91,
+            "y": 366.8820000588894
+          },
+          {
+            "height": 17.375999927520752,
+            "id": "a001:8",
+            "text": {
+              "angle": 0,
+              "font_size": 12,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "Basic consultation",
+              "text_background_color_type": 0,
+              "text_color": "#58657a",
+              "text_color_type": 1,
+              "theme_text_background_color_code": -1,
+              "underline": false,
+              "vertical_align": "top"
+            },
+            "type": "text_shape",
+            "width": 104,
+            "x": 113,
+            "y": 382.8820000588894
+          },
+          {
+            "composite_shape": {
+              "type": "ellipse"
+            },
+            "height": 70,
+            "id": "o001:5",
+            "style": {
+              "border_color": "#10b981",
+              "border_color_type": 1,
+              "border_opacity": 100,
+              "border_style": "solid",
+              "border_width": "medium",
+              "fill_color": "#ffffff",
+              "fill_color_type": 1,
+              "fill_opacity": 100
+            },
+            "text": {
+              "angle": 0,
+              "font_size": 14,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "",
+              "text_background_color_type": 0,
+              "text_color": "#1f2329",
+              "text_color_type": 0,
+              "theme_text_background_color_code": -1,
+              "theme_text_color_code": -1,
+              "underline": false,
+              "vertical_align": "mid"
+            },
+            "type": "composite_shape",
+            "width": 70,
+            "x": 415,
+            "y": 190
+          },
+          {
+            "height": 37.64799976348877,
+            "id": "a001:9",
+            "text": {
+              "angle": 0,
+              "font_size": 26,
+              "font_weight": "bold",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "2",
+              "text_background_color_type": 0,
+              "text_color": "#10b981",
+              "text_color_type": 1,
+              "theme_text_background_color_code": -1,
+              "underline": false,
+              "vertical_align": "top"
+            },
+            "type": "text_shape",
+            "width": 16,
+            "x": 442,
+            "y": 203.41100019216537
+          },
+          {
+            "composite_shape": {
+              "type": "round_rect"
+            },
+            "height": 122,
+            "id": "o001:6",
+            "style": {
+              "border_color": "#d7eee5",
+              "border_color_type": 1,
+              "border_opacity": 100,
+              "border_style": "solid",
+              "border_width": "narrow",
+              "fill_color": "#ffffff",
+              "fill_color_type": 1,
+              "fill_opacity": 100
+            },
+            "text": {
+              "angle": 0,
+              "font_size": 14,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "",
+              "text_background_color_type": 0,
+              "text_color": "#1f2329",
+              "text_color_type": 0,
+              "theme_text_background_color_code": -1,
+              "theme_text_color_code": -1,
+              "underline": false,
+              "vertical_align": "mid"
+            },
+            "type": "composite_shape",
+            "width": 190,
+            "x": 355,
+            "y": 275
+          },
+          {
+            "composite_shape": {
+              "type": "round_rect2"
+            },
+            "height": 8,
+            "id": "o001:7",
+            "style": {
+              "border_style": "none",
+              "fill_color": "#10b981",
+              "fill_color_type": 1,
+              "fill_opacity": 100
+            },
+            "text": {
+              "angle": 0,
+              "font_size": 14,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "",
+              "text_background_color_type": 0,
+              "text_color": "#1f2329",
+              "text_color_type": 0,
+              "theme_text_background_color_code": -1,
+              "theme_text_color_code": -1,
+              "underline": false,
+              "vertical_align": "mid"
+            },
+            "type": "composite_shape",
+            "width": 190,
+            "x": 355,
+            "y": 275
+          },
+          {
+            "height": 24.615999221801758,
+            "id": "a001:10",
+            "text": {
+              "angle": 0,
+              "font_size": 17,
+              "font_weight": "bold",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "During Integration",
+              "text_background_color_type": 0,
+              "text_color": "#152033",
+              "text_color_type": 1,
+              "theme_text_background_color_code": -1,
+              "underline": false,
+              "vertical_align": "top"
+            },
+            "type": "text_shape",
+            "width": 156,
+            "x": 372,
+            "y": 290.9995006322861
+          },
+          {
+            "height": 17.375999927520752,
+            "id": "a001:11",
+            "text": {
+              "angle": 0,
+              "font_size": 12,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "Lumi / AI Toolkit",
+              "text_background_color_type": 0,
+              "text_color": "#58657a",
+              "text_color_type": 1,
+              "theme_text_background_color_code": -1,
+              "underline": false,
+              "vertical_align": "top"
+            },
+            "type": "text_shape",
+            "width": 92,
+            "x": 404,
+            "y": 334.8820000588894
+          },
+          {
+            "height": 17.375999927520752,
+            "id": "a001:12",
+            "text": {
+              "angle": 0,
+              "font_size": 12,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "Consulting \u0026 testing",
+              "text_background_color_type": 0,
+              "text_color": "#58657a",
+              "text_color_type": 1,
+              "theme_text_background_color_code": -1,
+              "underline": false,
+              "vertical_align": "top"
+            },
+            "type": "text_shape",
+            "width": 113,
+            "x": 393.5,
+            "y": 350.8820000588894
+          },
+          {
+            "height": 17.375999927520752,
+            "id": "a001:13",
+            "text": {
+              "angle": 0,
+              "font_size": 12,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "Triage and unblock",
+              "text_background_color_type": 0,
+              "text_color": "#58657a",
+              "text_color_type": 1,
+              "theme_text_background_color_code": -1,
+              "underline": false,
+              "vertical_align": "top"
+            },
+            "type": "text_shape",
+            "width": 108,
+            "x": 396,
+            "y": 366.8820000588894
+          },
+          {
+            "composite_shape": {
+              "type": "ellipse"
+            },
+            "height": 70,
+            "id": "o001:8",
+            "style": {
+              "border_color": "#f59e0b",
+              "border_color_type": 1,
+              "border_opacity": 100,
+              "border_style": "solid",
+              "border_width": "medium",
+              "fill_color": "#ffffff",
+              "fill_color_type": 1,
+              "fill_opacity": 100
+            },
+            "text": {
+              "angle": 0,
+              "font_size": 14,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "",
+              "text_background_color_type": 0,
+              "text_color": "#1f2329",
+              "text_color_type": 0,
+              "theme_text_background_color_code": -1,
+              "theme_text_color_code": -1,
+              "underline": false,
+              "vertical_align": "mid"
+            },
+            "type": "composite_shape",
+            "width": 70,
+            "x": 700,
+            "y": 190
+          },
+          {
+            "height": 37.64799976348877,
+            "id": "a001:14",
+            "text": {
+              "angle": 0,
+              "font_size": 26,
+              "font_weight": "bold",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "3",
+              "text_background_color_type": 0,
+              "text_color": "#f59e0b",
+              "text_color_type": 1,
+              "theme_text_background_color_code": -1,
+              "underline": false,
+              "vertical_align": "top"
+            },
+            "type": "text_shape",
+            "width": 16,
+            "x": 727,
+            "y": 203.41100019216537
+          },
+          {
+            "composite_shape": {
+              "type": "round_rect"
+            },
+            "height": 122,
+            "id": "o001:9",
+            "style": {
+              "border_color": "#d7eee5",
+              "border_color_type": 1,
+              "border_opacity": 100,
+              "border_style": "solid",
+              "border_width": "narrow",
+              "fill_color": "#ffffff",
+              "fill_color_type": 1,
+              "fill_opacity": 100
+            },
+            "text": {
+              "angle": 0,
+              "font_size": 14,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "",
+              "text_background_color_type": 0,
+              "text_color": "#1f2329",
+              "text_color_type": 0,
+              "theme_text_background_color_code": -1,
+              "theme_text_color_code": -1,
+              "underline": false,
+              "vertical_align": "mid"
+            },
+            "type": "composite_shape",
+            "width": 190,
+            "x": 640,
+            "y": 275
+          },
+          {
+            "composite_shape": {
+              "type": "round_rect2"
+            },
+            "height": 8,
+            "id": "o001:10",
+            "style": {
+              "border_style": "none",
+              "fill_color": "#f59e0b",
+              "fill_color_type": 1,
+              "fill_opacity": 100
+            },
+            "text": {
+              "angle": 0,
+              "font_size": 14,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "",
+              "text_background_color_type": 0,
+              "text_color": "#1f2329",
+              "text_color_type": 0,
+              "theme_text_background_color_code": -1,
+              "theme_text_color_code": -1,
+              "underline": false,
+              "vertical_align": "mid"
+            },
+            "type": "composite_shape",
+            "width": 190,
+            "x": 640,
+            "y": 275
+          },
+          {
+            "height": 24.615999221801758,
+            "id": "a001:15",
+            "text": {
+              "angle": 0,
+              "font_size": 17,
+              "font_weight": "bold",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "Long-Term \u0026 Internal",
+              "text_background_color_type": 0,
+              "text_color": "#152033",
+              "text_color_type": 1,
+              "theme_text_background_color_code": -1,
+              "underline": false,
+              "vertical_align": "top"
+            },
+            "type": "text_shape",
+            "width": 180,
+            "x": 645,
+            "y": 290.9995006322861
+          },
+          {
+            "height": 17.375999927520752,
+            "id": "a001:16",
+            "text": {
+              "angle": 0,
+              "font_size": 12,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "CSM Workbench",
+              "text_background_color_type": 0,
+              "text_color": "#58657a",
+              "text_color_type": 1,
+              "theme_text_background_color_code": -1,
+              "underline": false,
+              "vertical_align": "top"
+            },
+            "type": "text_shape",
+            "width": 92,
+            "x": 689,
+            "y": 334.8820000588894
+          },
+          {
+            "height": 17.375999927520752,
+            "id": "a001:17",
+            "text": {
+              "angle": 0,
+              "font_size": 12,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "Info sharing · Issues",
+              "text_background_color_type": 0,
+              "text_color": "#58657a",
+              "text_color_type": 1,
+              "theme_text_background_color_code": -1,
+              "underline": false,
+              "vertical_align": "top"
+            },
+            "type": "text_shape",
+            "width": 119,
+            "x": 675.5,
+            "y": 350.8820000588894
+          },
+          {
+            "height": 17.375999927520752,
+            "id": "a001:18",
+            "text": {
+              "angle": 0,
+              "font_size": 12,
+              "font_weight": "regular",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "SOP capture \u0026 reuse",
+              "text_background_color_type": 0,
+              "text_color": "#58657a",
+              "text_color_type": 1,
+              "theme_text_background_color_code": -1,
+              "underline": false,
+              "vertical_align": "top"
+            },
+            "type": "text_shape",
+            "width": 115,
+            "x": 677.5,
+            "y": 366.8820000588894
+          },
+          {
+            "height": 21.719999313354492,
+            "id": "a001:19",
+            "text": {
+              "angle": 0,
+              "font_size": 15,
+              "font_weight": "bold",
+              "horizontal_align": "center",
+              "italic": false,
+              "line_through": false,
+              "text": "Keywords: self-serve · testing · triage · collaboration · reuse",
+              "text_background_color_type": 0,
+              "text_color": "#047857",
+              "text_color_type": 1,
+              "theme_text_background_color_code": -1,
+              "underline": false,
+              "vertical_align": "top"
+            },
+            "type": "text_shape",
+            "width": 479,
+            "x": 210.5,
+            "y": 417.3525005578995
+          }
+        ],
+        "overwrite": true
+      }
+    }
+  ],
+  "description": "will call whiteboard open api to update content."
+}

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="560" viewBox="0 0 980 560"><rect x="0" y="0" width="980" height="560" fill="#f7f9fc"/><text x="490" y="48.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#111827">H2 GKA / KA Priority Planning</text><text x="490" y="78.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="500" fill="#6b7280">Eight focus areas across integration efficiency, multi-shop management, and end-to-end merchant experience</text><rect x="105" y="110" width="770" height="54" rx="20" fill="#eef4ff" stroke="#c7d7fe"/><text x="490" y="144.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="800" fill="#1d4ed8">End-to-End Journey: Onboard → Integrate → Fulfill → Reconcile</text><rect x="55" y="205" width="190" height="120" rx="16" fill="#ffffff" stroke="#d7deea" stroke-width="1.5"/>
+<rect x="55" y="205" width="190" height="8" rx="4" fill="#3b82f6"/>
+<circle cx="81" cy="243" r="16" fill="#3b82f6" opacity="0.16"/>
+<text x="81" y="248.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#3b82f6">1</text>
+<text x="105" y="239" text-anchor="start" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#172033">Developer</text><text x="105" y="256" text-anchor="start" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#172033">Tools</text>
+<text x="105" y="287" text-anchor="start" font-family="Arial, sans-serif" font-size="10" font-weight="500" fill="#58657a">Onboarding</text><text x="105" y="300" text-anchor="start" font-family="Arial, sans-serif" font-size="10" font-weight="500" fill="#58657a">App auth · Sandbox</text><rect x="285" y="205" width="190" height="120" rx="16" fill="#ffffff" stroke="#d7deea" stroke-width="1.5"/>
+<rect x="285" y="205" width="190" height="8" rx="4" fill="#8b5cf6"/>
+<circle cx="311" cy="243" r="16" fill="#8b5cf6" opacity="0.16"/>
+<text x="311" y="248.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#8b5cf6">2</text>
+<text x="335" y="239" text-anchor="start" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#172033">Multi-Shop</text><text x="335" y="256" text-anchor="start" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#172033">Management</text>
+<text x="335" y="287" text-anchor="start" font-family="Arial, sans-serif" font-size="10" font-weight="500" fill="#58657a">Group / brand view</text><text x="335" y="300" text-anchor="start" font-family="Arial, sans-serif" font-size="10" font-weight="500" fill="#58657a">Batch authorization</text><rect x="515" y="205" width="190" height="120" rx="16" fill="#ffffff" stroke="#d7deea" stroke-width="1.5"/>
+<rect x="515" y="205" width="190" height="8" rx="4" fill="#06b6d4"/>
+<circle cx="541" cy="243" r="16" fill="#06b6d4" opacity="0.16"/>
+<text x="541" y="248.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#06b6d4">3</text>
+<text x="565" y="239" text-anchor="start" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#172033">Migration</text><text x="565" y="256" text-anchor="start" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#172033">SOP</text>
+<text x="565" y="287" text-anchor="start" font-family="Arial, sans-serif" font-size="10" font-weight="500" fill="#58657a">Reference plans</text><text x="565" y="300" text-anchor="start" font-family="Arial, sans-serif" font-size="10" font-weight="500" fill="#58657a">Scripts · Triage</text><rect x="745" y="205" width="190" height="120" rx="16" fill="#ffffff" stroke="#d7deea" stroke-width="1.5"/>
+<rect x="745" y="205" width="190" height="8" rx="4" fill="#10b981"/>
+<circle cx="771" cy="243" r="16" fill="#10b981" opacity="0.16"/>
+<text x="771" y="248.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#10b981">4</text>
+<text x="795" y="239" text-anchor="start" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#172033">AI SKM</text><text x="795" y="256" text-anchor="start" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#172033">Support</text>
+<text x="795" y="287" text-anchor="start" font-family="Arial, sans-serif" font-size="10" font-weight="500" fill="#58657a">Pre · During</text><text x="795" y="300" text-anchor="start" font-family="Arial, sans-serif" font-size="10" font-weight="500" fill="#58657a">Long-term service</text><rect x="55" y="365" width="190" height="120" rx="16" fill="#ffffff" stroke="#d7deea" stroke-width="1.5"/>
+<rect x="55" y="365" width="190" height="8" rx="4" fill="#f59e0b"/>
+<circle cx="81" cy="403" r="16" fill="#f59e0b" opacity="0.16"/>
+<text x="81" y="408.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#f59e0b">5</text>
+<text x="105" y="399" text-anchor="start" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#172033">Aftersale</text><text x="105" y="416" text-anchor="start" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#172033">GTM</text>
+<text x="105" y="447" text-anchor="start" font-family="Arial, sans-serif" font-size="10" font-weight="500" fill="#58657a">V2 Return</text><text x="105" y="460" text-anchor="start" font-family="Arial, sans-serif" font-size="10" font-weight="500" fill="#58657a">Batch Return</text><rect x="285" y="365" width="190" height="120" rx="16" fill="#ffffff" stroke="#d7deea" stroke-width="1.5"/>
+<rect x="285" y="365" width="190" height="8" rx="4" fill="#ef4444"/>
+<circle cx="311" cy="403" r="16" fill="#ef4444" opacity="0.16"/>
+<text x="311" y="408.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#ef4444">6</text>
+<text x="335" y="399" text-anchor="start" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#172033">Fulfillment</text>
+<text x="335" y="447" text-anchor="start" font-family="Arial, sans-serif" font-size="10" font-weight="500" fill="#58657a">Split shipment</text><text x="335" y="460" text-anchor="start" font-family="Arial, sans-serif" font-size="10" font-weight="500" fill="#58657a">Webhook · FBT</text><rect x="515" y="365" width="190" height="120" rx="16" fill="#ffffff" stroke="#d7deea" stroke-width="1.5"/>
+<rect x="515" y="365" width="190" height="8" rx="4" fill="#64748b"/>
+<circle cx="541" cy="403" r="16" fill="#64748b" opacity="0.16"/>
+<text x="541" y="408.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#64748b">7</text>
+<text x="565" y="399" text-anchor="start" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#172033">BrandPortal</text>
+<text x="565" y="447" text-anchor="start" font-family="Arial, sans-serif" font-size="10" font-weight="500" fill="#58657a">Shop auth</text><text x="565" y="460" text-anchor="start" font-family="Arial, sans-serif" font-size="10" font-weight="500" fill="#58657a">Account mgmt</text><rect x="745" y="365" width="190" height="120" rx="16" fill="#ffffff" stroke="#d7deea" stroke-width="1.5"/>
+<rect x="745" y="365" width="190" height="8" rx="4" fill="#ec4899"/>
+<circle cx="771" cy="403" r="16" fill="#ec4899" opacity="0.16"/>
+<text x="771" y="408.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#ec4899">8</text>
+<text x="795" y="399" text-anchor="start" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#172033">Finance</text><text x="795" y="416" text-anchor="start" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#172033">Recon</text>
+<text x="795" y="447" text-anchor="start" font-family="Arial, sans-serif" font-size="10" font-weight="500" fill="#58657a">Settlement dict</text><text x="795" y="460" text-anchor="start" font-family="Arial, sans-serif" font-size="10" font-weight="500" fill="#58657a">ERP / GL mapping</text></svg>

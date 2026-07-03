@@ -1,0 +1,59 @@
+<svg width="392" height="168" viewBox="0 0 196 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cardBg" x1="16" y1="4" x2="184" y2="88" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#171A20"/>
+      <stop offset="0.55" stop-color="#101116"/>
+      <stop offset="1" stop-color="#15131D"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="6" y1="8" x2="190" y2="78" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#55DFF0"/>
+      <stop offset="0.54" stop-color="#33485A" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#8B7CFF"/>
+    </linearGradient>
+    <linearGradient id="icon" x1="0" y1="0" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#70E0D2"/>
+      <stop offset="1" stop-color="#8B7CFF"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5DE6FF"/>
+      <stop offset="1" stop-color="#2F9DFF"/>
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-30%" width="140%" height="160%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feBlend in="SourceGraphic" in2="blur" mode="screen"/>
+    </filter>
+    <clipPath id="waterClip">
+      <rect x="176" y="13" width="11" height="58" rx="5.5"/>
+    </clipPath>
+  </defs>
+
+  <rect x="2.5" y="2.5" width="191" height="79" rx="20" fill="url(#cardBg)"/>
+  <rect x="2.5" y="2.5" width="191" height="79" rx="20" stroke="url(#edge)" stroke-width="2"/>
+  <path d="M97.5 15V69" stroke="#343741" stroke-width="1"/>
+
+  <!-- Stress -->
+  <rect x="12" y="12" width="16" height="16" rx="5" fill="url(#icon)"/>
+  <path d="M15.2 20.2H18.2L19.5 15.5L22.3 24.2L24 19.4H27" stroke="#05070A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="12" y="47" font-family="-apple-system, BlinkMacSystemFont, SF Pro Display, Helvetica, Arial, sans-serif" font-size="29" font-weight="800" fill="#FFFFFF">36</text>
+  <circle cx="64" cy="35" r="5.5" fill="#D6AB40" filter="url(#softGlow)"/>
+  <path d="M13 61H39" stroke="#5EE6A8" stroke-width="6" stroke-linecap="round"/>
+  <path d="M41 61H67" stroke="#D6AB40" stroke-width="6" stroke-linecap="round"/>
+  <path d="M69 61H90" stroke="#E15C5D" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="45" cy="61" r="4.2" fill="#F2F3F5" stroke="#101116" stroke-width="1"/>
+  <text x="13" y="74" font-family="-apple-system, BlinkMacSystemFont, SF Pro Text, Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#D6AB40">Balanced</text>
+  <text x="75" y="74" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, SF Pro Text, Helvetica, Arial, sans-serif" font-size="8.5" font-weight="600" fill="#8E8E99">47ms</text>
+
+  <!-- Water -->
+  <path d="M116 14C116 14 110 21.2 110 26.4C110 30.3 112.8 33 116 33C119.2 33 122 30.3 122 26.4C122 21.2 116 14 116 14Z" fill="#38BDF8"/>
+  <text x="109" y="53" font-family="-apple-system, BlinkMacSystemFont, SF Pro Display, Helvetica, Arial, sans-serif" font-size="31" font-weight="800" fill="#FFFFFF">42</text>
+  <text x="147" y="52" font-family="-apple-system, BlinkMacSystemFont, SF Pro Text, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#B3B3BA">%</text>
+  <text x="111" y="72" font-family="-apple-system, BlinkMacSystemFont, SF Pro Text, Helvetica, Arial, sans-serif" font-size="9" font-weight="700" fill="#38BDF8">14:30</text>
+  <path d="M156 66C160.5 61.5 162.5 57.5 162.5 51.5" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
+
+  <rect x="176" y="13" width="11" height="58" rx="5.5" fill="#17191F" stroke="#4A4B55" stroke-width="1"/>
+  <g clip-path="url(#waterClip)">
+    <rect x="176" y="47" width="11" height="24" fill="url(#water)"/>
+    <path d="M176 47C179 44.2 182.5 44.2 187 47V50H176V47Z" fill="#73E8FF" opacity="0.9"/>
+  </g>
+  <path d="M179 27H184M179 40H184M179 55H184" stroke="#70717A" stroke-width="0.8" stroke-linecap="round"/>
+</svg>

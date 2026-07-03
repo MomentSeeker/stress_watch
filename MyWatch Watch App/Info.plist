@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>MyWatch</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>MyWatch reads your heart-rate variability and resting heart rate to estimate your stress level.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>MyWatch saves brief mindfulness workout sessions so it can read live heart rate during a stress measurement.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>MyWatch uses motion during a live stress measurement so the watch can sample heart rate more frequently.</string>
+	<key>UILaunchScreen</key>
+	<dict/>
+	<key>WKApplication</key>
+	<true/>
+	<key>WKBackgroundModes</key>
+	<array>
+		<string>self-care</string>
+		<string>workout-processing</string>
+	</array>
+	<key>WKWatchOnly</key>
+	<true/>
+</dict>
+</plist>

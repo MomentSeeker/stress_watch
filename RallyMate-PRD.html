@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>羽伴 RallyMate · 产品需求文档 (PRD)</title>
+<style>
+  :root{
+    --bg:#0b1410; --panel:#10211a; --panel2:#16291f; --line:#264033;
+    --ink:#eafff4; --dim:#9fc7b4; --mut:#6b8f7e;
+    --lime:#A8F06B; --teal:#2FD9A6; --green:#34C97A; --cyan:#6FE0D0;
+    --amber:#FFB24D; --coral:#FF6B6B; --violet:#8E7BEF; --gold:#FFD25A;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(1200px 700px at 72% -10%, #15301f 0%, var(--bg) 55%);
+    color:var(--ink);font:15px/1.65 -apple-system,"PingFang SC",Segoe UI,Roboto,sans-serif;padding:0 0 90px}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+  header.hero{padding:56px 22px 26px;text-align:center}
+  .hero h1{font-size:42px;margin:0 0 6px;font-weight:850;
+    background:linear-gradient(100deg,var(--lime),var(--teal),var(--green));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .sub{font-size:17px;color:var(--cyan);font-weight:600;margin:0 0 8px}
+  .hero p{color:var(--dim);max-width:720px;margin:6px auto}
+  .meta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+  .pill{padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.06);
+    border:1px solid var(--line);color:var(--cyan);font-size:13px}
+  h2{font-size:25px;margin:50px 0 6px;display:flex;align-items:center;gap:10px;scroll-margin-top:20px}
+  h2 .n{font-size:14px;min-width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--teal),var(--green));color:#04140d;font-weight:800}
+  h3{font-size:18px;margin:26px 0 4px;color:#fff}
+  h4{margin:0 0 6px}
+  .lead{color:var(--dim);margin:2px 0 16px}
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);
+    border-radius:16px;padding:20px 22px;margin:14px 0}
+  .grid{display:grid;gap:14px}
+  .g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}
+  @media(max-width:820px){.g2,.g3{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.g2,.g3{grid-template-columns:1fr}}
+  code{background:rgba(255,255,255,.07);padding:1px 6px;border-radius:5px;font-size:13px;
+    font-family:"SF Mono",ui-monospace,Menlo,monospace;color:#d5ffe9}
+  b{color:#fff} .dim{color:var(--dim)} .mut{color:var(--mut)}
+  ul{margin:8px 0;padding-left:20px} li{margin:5px 0}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--cyan);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+  td b{color:#fff}
+  .center{text-align:center}
+  .note{border-left:3px solid var(--amber);background:rgba(255,178,77,.08);padding:12px 16px;
+    border-radius:0 10px 10px 0;margin:14px 0;color:#ffe6c4;font-size:14px}
+  .note.warn{border-color:var(--coral);background:rgba(255,107,107,.08);color:#ffd6d6}
+  .note.ok{border-color:var(--green);background:rgba(52,201,122,.08);color:#c9ffe0}
+  .note.info{border-color:var(--teal);background:rgba(47,217,166,.07);color:#c9fff0}
+  .swatch{display:flex;align-items:center;gap:10px;margin:6px 0;font-size:13px}
+  .sw{width:64px;height:30px;border-radius:8px;border:1px solid rgba(255,255,255,.15);flex:none}
+  /* feature cards */
+  .feat{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--panel);margin:12px 0}
+  .feat h4{font-size:16px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .pri{font-size:11px;padding:2px 8px;border-radius:6px;font-weight:800;letter-spacing:.02em}
+  .p0{background:rgba(52,201,122,.20);color:var(--green)}
+  .p1{background:rgba(255,178,77,.20);color:var(--amber)}
+  .p2{background:rgba(107,143,126,.30);color:var(--dim)}
+  .fid{font-family:"SF Mono",monospace;font-size:12px;color:var(--cyan);background:rgba(111,224,208,.12);padding:2px 7px;border-radius:6px}
+  .ac{font-size:13.5px;color:var(--dim);margin-top:8px}
+  .ac b{color:var(--cyan);font-weight:700}
+  /* flows */
+  .flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+  .step{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px 11px;font-size:13px}
+  .arr{color:var(--teal);font-weight:800}
+  /* screen spec blocks */
+  .screen{border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--panel),#0e1f17);margin:14px 0;overflow:hidden}
+  .screen .sh{display:flex;align-items:center;gap:10px;padding:13px 18px;background:rgba(47,217,166,.07);border-bottom:1px solid var(--line)}
+  .screen .sid{font-family:"SF Mono",monospace;font-size:12px;font-weight:800;color:#04140d;background:var(--teal);padding:3px 9px;border-radius:7px}
+  .screen .sh b{font-size:15.5px}
+  .screen .sbody{padding:14px 18px}
+  .screen .sbody p{margin:4px 0}
+  .lbl{display:inline-block;min-width:74px;color:var(--cyan);font-size:12px;font-weight:700;vertical-align:top}
+  hr{border:0;border-top:1px solid var(--line);margin:46px 0}
+  .toc{columns:2;column-gap:30px;font-size:14px}
+  @media(max-width:560px){.toc{columns:1}}
+  .toc a{color:var(--cyan);text-decoration:none} .toc a:hover{text-decoration:underline}
+  .small{font-size:12.5px;color:var(--mut)}
+  .kpi{display:flex;gap:18px;flex-wrap:wrap}
+  .kpi .k{flex:1;min-width:120px;text-align:center;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .kpi .k .v{font-size:26px;font-weight:850;color:#fff}
+  .kpi .k .t{font-size:12px;color:var(--dim);margin-top:2px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>羽伴 · RallyMate</h1>
+  <p class="sub">会陪练、会护着你、让你坚持的羽毛球 Apple Watch 应用</p>
+  <p>不做"打完看一堆数字"的量化报告工具，而做<b>实时陪练（教练）</b>＋<b>习惯陪伴</b>。手表负责"挥拍的那一下"——计数、强度、节奏、疲劳；手机负责复盘、趋势与坚持。本 PRD 供后续 Watch UI / App UI Agent 接力设计，独立自洽、无需额外上下文。</p>
+  <div class="meta">
+    <span class="pill">v0.1 草案 · 2026-06</span>
+    <span class="pill">watchOS 10+ · iOS 16+（表 + 机）</span>
+    <span class="pill">SwiftUI · CoreMotion · HealthKit · WidgetKit</span>
+    <span class="pill">目标用户：羽毛球初学 / 进阶爱好者</span>
+    <span class="pill">名称为占位，可改</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="card">
+  <h3 style="margin-top:0">📑 目录</h3>
+  <div class="toc">
+    <a href="#s1">1. 产品定位与差异化</a><br>
+    <a href="#s2">2. 核心概念与术语</a><br>
+    <a href="#s3">3. 功能需求清单（N1–N13）</a><br>
+    <a href="#s4">4. 信息架构（IA）</a><br>
+    <a href="#s5">5. Watch 端屏幕规格（W1–W8）</a><br>
+    <a href="#s6">6. iPhone 端屏幕规格（P0–P7）</a><br>
+    <a href="#s7">7. 实时反馈设计（陪练核心）</a><br>
+    <a href="#s8">8. 关键用户流程</a><br>
+    <a href="#s9">9. 视觉设计语言</a><br>
+    <a href="#s10">10. 数据模型</a><br>
+    <a href="#s11">11. 技术约束与依赖</a><br>
+    <a href="#s12">12. 范围外 / 未来</a><br>
+    <a href="#s13">13. 待定问题</a><br>
+  </div>
+</div>
+
+<!-- ============ 1 ============ -->
+<h2 id="s1"><span class="n">1</span> 产品定位与差异化</h2>
+<p class="lead">为什么再做一个羽毛球 app —— 因为现有玩家都没做的地方，正是用户最痛的地方。</p>
+
+<div class="card">
+  <h3 style="margin-top:0">一句话定位</h3>
+  <p style="font-size:17px"><b>"陪你打、护着你、让你坚持"</b>的羽毛球手表应用：实时陪练（B）＋ 习惯陪伴（C）。</p>
+  <p class="dim">我们<b>不卷</b>"数得准不准、拍速多炫"（这是现有产品的红海，且口碑普遍塌房）。我们卷"过程中给你反馈、防你受伤、记录你的进步、督促你别三天打鱼"。</p>
+</div>
+
+<h3>竞品对比矩阵（✅有 / ⚠️弱或残缺 / ❌无）</h3>
+<table>
+  <tr><th>能力</th><th>挥拍吧</th><th>开球</th><th>球搭子</th><th>GoodShot</th><th>TennisKeeper</th><th>Apple原生</th><th class="center">羽伴定位</th></tr>
+  <tr><td>挥拍计数</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>❌</td><td class="center">✅ 基础盘</td></tr>
+  <tr><td>正反手 / 上下手</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>⚠️网球术语</td><td>❌</td><td class="center">⚠️ 后置</td></tr>
+  <tr><td>动作细分(杀/高远/吊)</td><td>❌</td><td>⚠️</td><td>✅最全</td><td>✅</td><td>⚠️</td><td>❌</td><td class="center">❌ 不卷</td></tr>
+  <tr><td>拍速估算</td><td>✅虚高争议</td><td>✅</td><td>✅"粗略"</td><td>✅</td><td>✅</td><td>❌</td><td class="center">⚠️ 仅相对强度</td></tr>
+  <tr><td>心率 / 卡路里</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td class="center">✅</td></tr>
+  <tr><td><b>实时反馈 / 教练</b></td><td>❌</td><td>⚠️仅心率</td><td>❌</td><td>⚠️仅屏显</td><td>❌</td><td>❌</td><td class="center" style="color:var(--lime)"><b>✅ 主打空白</b></td></tr>
+  <tr><td><b>疲劳 / 负荷预警</b></td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td class="center" style="color:var(--lime)"><b>✅ 全行业空白</b></td></tr>
+  <tr><td>徽章 / 成就 / 陪伴</td><td>✅亮点</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td><td>⚠️圆环</td><td class="center">✅ 差异化</td></tr>
+  <tr><td>约球 / 提醒</td><td>⚠️微信群</td><td>❌</td><td>✅找搭子</td><td>⚠️未上线</td><td>❌</td><td>❌</td><td class="center">✅ 复用提醒机制</td></tr>
+  <tr><td>落点 / 热力图 / 轨迹</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>⚠️挥拍路径</td><td>❌</td><td class="center">🔭 未来(手机摄像头)</td></tr>
+  <tr><td>双手佩戴自适应</td><td>❌硬伤</td><td>⚠️</td><td>❌硬伤</td><td>❌硬伤</td><td>—</td><td>—</td><td class="center" style="color:var(--lime)"><b>✅ 解决硬伤</b></td></tr>
+  <tr><td>数据可靠 / 云同步</td><td>⚠️有bug</td><td>⚠️闪退</td><td>⚠️耗电</td><td>❌丢数据</td><td>✅</td><td>✅</td><td class="center" style="color:var(--lime)"><b>✅ 不丢为底线</b></td></tr>
+</table>
+
+<div class="note ok"><b>从对比读出的 4 个空白区（= 我们的护城河）：</b>
+① 全行业没有"实时陪练"，只有赛后报告；
+② 全行业没有"疲劳/防伤预警"；
+③ "持拍手佩戴"是所有纯手表方案的最高频抱怨；
+④ 工程可靠性集体翻车（丢数据、闪退、无云同步）。<b>羽伴对准这四点。</b></div>
+
+<h3>目标用户</h3>
+<div class="grid g2">
+  <div class="card"><h4>🎯 主：羽毛球初学 / 进阶爱好者</h4><p class="dim">每周打 1–3 次，关心"我运动量够不够、动作会不会受伤、有没有进步、能不能坚持"。<b>不</b>需要 0.1m/s 的拍速精度。</p></div>
+  <div class="card"><h4>👥 次：想养成运动习惯的人</h4><p class="dim">把打球当健康习惯，看重打卡、连续天数、成就感与温和督促（与陪伴路线契合）。</p></div>
+</div>
+
+<!-- ============ 2 ============ -->
+<h2 id="s2"><span class="n">2</span> 核心概念与术语</h2>
+<p class="lead">下游 UI / 文案 Agent 请<b>统一使用</b>以下术语，避免同义混用。</p>
+<table>
+  <tr><th>术语</th><th>定义</th><th>UI 展示用词</th></tr>
+  <tr><td><b>挥拍 Swing</b></td><td>一次被传感器识别为有效击球意图的手腕动作（含空挥）。识别基于加速度峰值波形。</td><td>挥拍 / 拍</td></tr>
+  <tr><td><b>强度 Intensity</b></td><td>单次挥拍的相对力度，由加速度峰值归一化到 0–100（<b>非</b>真实球速）。用于区分轻挥与大力杀。</td><td>力度 / 强度</td></tr>
+  <tr><td><b>回合 Rally</b></td><td>一段密集连续挥拍（间隔 &lt; 阈值）。回合之间是"间歇"。</td><td>回合 / 多拍</td></tr>
+  <tr><td><b>间歇 Rest</b></td><td>两个回合之间的休息时间（无挥拍）。</td><td>间歇 / 休息</td></tr>
+  <tr><td><b>一场 Session</b></td><td>一次从"开始打球"到"结束"的完整运动记录。</td><td>这场 / 本场</td></tr>
+  <tr><td><b>运动负荷 Load</b></td><td>本场累计强度（挥拍数 × 平均强度的综合量），反映身体消耗。</td><td>运动量 / 负荷</td></tr>
+  <tr><td><b>疲劳信号 Fatigue</b></td><td>挥拍强度相对本场基线持续下滑，判定为体力下降。</td><td>累了 / 状态下滑</td></tr>
+  <tr><td><b>连续打球 Streak</b></td><td>连续保持打球的天数 / 周数（陪伴激励）。</td><td>连续打球 N 天</td></tr>
+</table>
+<div class="note info"><b>强度 ≠ 球速。</b>UI 上严禁出现"km/h""m/s"这类绝对球速单位（这正是竞品被质疑虚高的雷区）。统一用 0–100 的"力度"或"轻/中/重"分级表达。</div>
+
+<!-- ============ 3 ============ -->
+<h2 id="s3"><span class="n">3</span> 功能需求清单（N1–N13）</h2>
+<p class="lead">三层优先级：<span class="pri p0">P0 MVP</span> 立得住的基础盘 ｜ <span class="pri p1">P1 差异化</span> 别人都没有的核心 ｜ <span class="pri p2">P2 未来</span> 验证后再做。每条含验收标准（AC）。</p>
+
+<h3>P0 — MVP 基础盘</h3>
+
+<div class="feat">
+  <h4><span class="fid">N1</span> 挥拍计数 + 基础运动数据 <span class="pri p0">P0</span></h4>
+  <p class="dim">开一场"羽毛球"运动 session，实时统计：挥拍总数、运动时长、实时心率、消耗卡路里。心率/卡路里来自 HealthKit。</p>
+  <p class="ac"><b>AC：</b>真机佩戴打球，挥拍计数与实际明显挥拍次数误差 ≤ 15%；时长/心率/卡路里写入 Apple 健康；息屏后台持续计数不中断。</p>
+</div>
+
+<div class="feat">
+  <h4><span class="fid">N2</span> 挥拍强度曲线 <span class="pri p0">P0</span></h4>
+  <p class="dim">每次挥拍记录归一化强度(0–100)，全场聚合成一条随时间变化的强度曲线；区分轻挥 / 中等 / 大力(如杀球)三档。手机端为核心图表。</p>
+  <p class="ac"><b>AC：</b>详情页能看到整场强度曲线；大力挥拍在曲线上明显高于轻挥；曲线点可与回合对应。</p>
+</div>
+
+<div class="feat">
+  <h4><span class="fid">N3</span> 双手佩戴自适应 <span class="pri p0">P0</span></h4>
+  <p class="dim">不强制戴持拍手。支持"持拍手 / 非持拍手"两种佩戴模式，识别算法各自适配；首次启动引导用户选择，设置内可改。<b>这是直接解决全行业硬伤的差异点。</b></p>
+  <p class="ac"><b>AC：</b>两种佩戴模式下计数都可用；切换模式后即时生效；UI 明确告知当前模式及对精度的影响。</p>
+</div>
+
+<div class="feat">
+  <h4><span class="fid">N4</span> 数据可靠 + 永不丢 <span class="pri p0">P0</span></h4>
+  <p class="dim">每场结束立即本地落盘；表→机同步具备重试与断点；后续支持 iCloud 备份。宁可朴素，绝不丢数据。</p>
+  <p class="ac"><b>AC：</b>杀进程 / 灭表后重开，已结束的场次仍在；同步失败有可见状态与手动重试；历史不会归零。</p>
+</div>
+
+<h3>P1 — 差异化核心（陪练 B + 陪伴 C）</h3>
+
+<div class="feat">
+  <h4><span class="fid">N5</span> 疲劳预警（陪练）<span class="pri p1">P1</span></h4>
+  <p class="dim">实时追踪强度基线，当近 N 个回合的峰值强度相对基线持续下滑到阈值，判定"累了"，触发震动 + 表盘提示。<b>全行业空白。</b></p>
+  <p class="ac"><b>AC：</b>主动制造体力下降场景能触发一次预警；不误报到每个轻挥；尊重"实时反馈开关"。详见 §7。</p>
+</div>
+
+<div class="feat">
+  <h4><span class="fid">N6</span> 回合节奏感知（陪练）<span class="pri p1">P1</span></h4>
+  <p class="dim">自动切分"回合 vs 间歇"，统计：回合数、平均每回合拍数、最长连拍、平均间歇时长、打/歇比。初学者常"回合短、歇太久"，这组数据很有用。</p>
+  <p class="ac"><b>AC：</b>一场能输出回合数与平均回合长度；最长连拍与详情曲线一致；间歇时长合理。</p>
+</div>
+
+<div class="feat">
+  <h4><span class="fid">N7</span> 过度使用 / 防伤提醒（陪练）<span class="pri p1">P1</span></h4>
+  <p class="dim">短时间内连续大力挥拍（如连续杀球）超阈值，提示"注意护腕/护肩，悠着点"。针对初学者最易受伤的场景。</p>
+  <p class="ac"><b>AC：</b>连续高强度挥拍达阈值触发一次防伤提醒；提示文案温和非恐吓；可在设置关闭。</p>
+</div>
+
+<div class="feat">
+  <h4><span class="fid">N8</span> 陪伴叙事 + 打卡（陪伴）<span class="pri p1">P1</span></h4>
+  <p class="dim">把数据讲成故事：里程碑("本周挥拍 1200 次")、连续打球天数、进步叙事("平均回合 4→7 拍，进步啦")。重点是情绪价值，不是冷数字。</p>
+  <p class="ac"><b>AC：</b>首页/详情出现至少 1 条人话叙事；连续打球天数正确累计与中断；里程碑达成有正向反馈。</p>
+</div>
+
+<div class="feat">
+  <h4><span class="fid">N9</span> 约球 / 打卡提醒（陪伴）<span class="pri p1">P1</span></h4>
+  <p class="dim">温和提醒用户去打球 / 记录约球时间。<b>复用 MyWatch 已验证的通知 + 后台唤醒机制</b>，工程成本低。</p>
+  <p class="ac"><b>AC：</b>可设置每周固定提醒；到点本地通知触达；提醒文案契合陪伴语气。</p>
+</div>
+
+<h3>P2 — 未来（验证后再做）</h3>
+<div class="grid g2">
+  <div class="feat"><h4><span class="fid">N10</span> 实时/赛后模式开关 <span class="pri p2">P2</span></h4><p class="dim">让用户自选"打球时震动陪练" vs "安静记录、赛后复盘"，解决"被打扰"的张力。建议 MVP 即提供基础开关，高级策略后置。</p></div>
+  <div class="feat"><h4><span class="fid">N11</span> 对局记分 <span class="pri p2">P2</span></h4><p class="dim">竞品标配（单/双/混打计分），但非我们核心，后置。</p></div>
+  <div class="feat"><h4><span class="fid">N12</span> 击球位置热力图 <span class="pri p2">P2</span></h4><p class="dim">手机摄像头标定球场 + 视觉追踪人 + 手表打点时间对齐 → 击球热力图 / 跑动轨迹。技术天花板高，最后做。</p></div>
+  <div class="feat"><h4><span class="fid">N13</span> 徽章 / 成就系统 <span class="pri p2">P2</span></h4><p class="dim">借鉴挥拍吧的 3D 徽章增强陪伴粘性。可与 N8 合并演进。</p></div>
+</div>
+
+<!-- ============ 4 ============ -->
+<h2 id="s4"><span class="n">4</span> 信息架构（IA）</h2>
+<div class="grid g2">
+  <div class="card">
+    <h4>⌚ Watch 端（运动主场）</h4>
+    <ul>
+      <li><b>W1</b> 今日首页（快捷开始）</li>
+      <li><b>W2</b> 开始前准备（佩戴手 / 倒计时）</li>
+      <li><b>W3</b> 运动中 · 主表盘（计数/时长/心率/强度）</li>
+      <li><b>W4</b> 运动中 · 节奏页（回合/间歇/强度走势）</li>
+      <li><b>W5</b> 运动中 · 控制页（暂停/结束）</li>
+      <li><b>W6</b> 实时反馈弹层（疲劳/防伤/里程碑）</li>
+      <li><b>W7</b> 结束 · 即时小结</li>
+      <li><b>W8</b> 表端设置</li>
+    </ul>
+    <p class="small">运动中 W3/W4/W5 为横向分页（TabView），左右滑动切换。</p>
+  </div>
+  <div class="card">
+    <h4>📱 iPhone 端（复盘 / 陪伴 / 设置）</h4>
+    <ul>
+      <li><b>P0</b> 引导 Onboarding（权限/佩戴手/模式）</li>
+      <li><b>P1</b> 首页 · 仪表盘（今日/连续打球/进步）</li>
+      <li><b>P2</b> 历史列表（所有场次）</li>
+      <li><b>P3</b> 单场详情（强度曲线/回合/教练点评）</li>
+      <li><b>P4</b> 趋势（周/月/进步叙事）</li>
+      <li><b>P5</b> 成就 · 陪伴（连续打球/里程碑/徽章）</li>
+      <li><b>P6</b> 提醒 · 约球</li>
+      <li><b>P7</b> 设置</li>
+    </ul>
+    <p class="small">底部 Tab：首页 · 历史 · 趋势 · 我的(成就+设置)。</p>
+  </div>
+</div>
+
+<!-- ============ 5 ============ -->
+<h2 id="s5"><span class="n">5</span> Watch 端屏幕规格（W1–W8）</h2>
+<p class="lead">每屏含：目的 / 核心元素 / 数据动态 / 交互 / 边界状态。表盘尺寸按 45–49mm 设计，深色 OLED 优先。</p>
+
+<div class="screen"><div class="sh"><span class="sid">W1</span><b>今日首页</b></div><div class="sbody">
+  <p><span class="lbl">目的</span>一眼看到今日运动量，一键开打。</p>
+  <p><span class="lbl">核心元素</span>顶部"今天"+ 大号挥拍数（今日累计）；中部一行小指标（连续打球 N 天 · 本周场次）；底部超大主按钮 <b>「开始打球」</b>（品牌渐变）。</p>
+  <p><span class="lbl">数据动态</span>今日无数据时大数字显示 0，副文案"今天还没挥拍，去打一场？"。</p>
+  <p><span class="lbl">交互</span>点主按钮→W2；上滑可见"最近一场"小卡（点→表端小结）；左滑→W8 设置。</p>
+  <p><span class="lbl">边界</span>无历史：隐藏"最近一场"，只留鼓励文案 + 开始按钮。</p>
+</div></div>
+
+<div class="screen"><div class="sh"><span class="sid">W2</span><b>开始前准备</b></div><div class="sbody">
+  <p><span class="lbl">目的</span>确认佩戴手 + 给身体一个起拍缓冲。</p>
+  <p><span class="lbl">核心元素</span>当前佩戴手标识（"持拍手 ✋" / "非持拍手"，可点切换）；实时反馈状态小标（"陪练模式 开/关"）；3-2-1 倒计时圈。</p>
+  <p><span class="lbl">交互</span>进入即开始倒计时；倒计时结束自动进 W3；可点中央"立即开始"跳过；返回回到 W1。</p>
+  <p><span class="lbl">边界</span>首次使用且未设佩戴手：先弹一次佩戴手选择再倒计时。</p>
+</div></div>
+
+<div class="screen"><div class="sh"><span class="sid">W3</span><b>运动中 · 主表盘</b></div><div class="sbody">
+  <p><span class="lbl">目的</span>打球时一瞥即得最关键数据。</p>
+  <p><span class="lbl">核心元素</span>正中<b>超大挥拍数</b>（本场累计，主视觉）；其下一行：时长 · 心率(♥ bpm)；底部一条<b>实时强度条/火花线</b>（最近若干拍的强度，随挥拍跳动，低=青绿、高=橙红的热度色）。</p>
+  <p><span class="lbl">数据动态</span>每识别一次挥拍，数字 +1 并轻微脉冲动画；心率随 HealthKit 刷新；息屏(Always-On)显示降采样的静态版。</p>
+  <p><span class="lbl">交互</span>左滑→W4 节奏；再左滑→W5 控制；表冠无操作。</p>
+  <p><span class="lbl">边界</span>心率未就绪显示"--"；长时间无挥拍底部条归零。</p>
+</div></div>
+
+<div class="screen"><div class="sh"><span class="sid">W4</span><b>运动中 · 节奏页</b></div><div class="sbody">
+  <p><span class="lbl">目的</span>感知当前回合与强度走势（陪练数据的实时面）。</p>
+  <p><span class="lbl">核心元素</span>当前/最近回合的拍数（"本回合 7 拍"）；间歇计时（回合结束后开始走"休息 0:12"）；最长连拍；一条小型强度走势 sparkline。</p>
+  <p><span class="lbl">数据动态</span>正在打 → 高亮"回合进行中"；停下 → 切到"间歇中"并计时。</p>
+  <p><span class="lbl">交互</span>右滑回 W3；左滑→W5。</p>
+</div></div>
+
+<div class="screen"><div class="sh"><span class="sid">W5</span><b>运动中 · 控制页</b></div><div class="sbody">
+  <p><span class="lbl">目的</span>暂停 / 继续 / 结束。</p>
+  <p><span class="lbl">核心元素</span>两枚大按钮：<b>暂停/继续</b>（琥珀色）、<b>结束</b>（珊瑚色）；其上小字本场已用时长。</p>
+  <p><span class="lbl">交互</span>点结束→二次确认（防误触）→进 W7；暂停时 W3 顶部显示"已暂停"。</p>
+  <p><span class="lbl">边界</span>结束确认为滑动或长按，避免打球误触。</p>
+</div></div>
+
+<div class="screen"><div class="sh"><span class="sid">W6</span><b>实时反馈弹层</b>（疲劳 / 防伤 / 里程碑）</div><div class="sbody">
+  <p><span class="lbl">目的</span>陪练的"开口说话"时刻——关键节点震动 + 全屏卡片。</p>
+  <p><span class="lbl">核心元素</span>全屏色卡 + 图标 + 一句人话：疲劳=琥珀"你累了，注意动作别变形"；防伤=珊瑚"杀球有点多，护好手腕"；里程碑=薄荷"本场 500 拍达成！"。</p>
+  <p><span class="lbl">数据动态</span>触发逻辑见 §7；伴随对应触觉。2–3 秒后自动消失，回到运动中。</p>
+  <p><span class="lbl">交互</span>抬腕即看到；点一下可立即关闭；"实时反馈开关"为关时，本弹层不出现（事件改记入赛后报告）。</p>
+</div></div>
+
+<div class="screen"><div class="sh"><span class="sid">W7</span><b>结束 · 即时小结</b></div><div class="sbody">
+  <p><span class="lbl">目的</span>结束即给一份手表能看完的成就感小结。</p>
+  <p><span class="lbl">核心元素</span>顶部一句祝贺/陪伴文案；KPI 四宫格：挥拍数 · 时长 · 平均心率 · 卡路里；下方一行：最长连拍 · 平均回合；"详细分析请看手机"提示。</p>
+  <p><span class="lbl">交互</span>「完成」回 W1；上滑可见"本场亮点"（如新纪录）。</p>
+  <p><span class="lbl">边界</span>极短场次(&lt;1 分钟或 0 拍)：提示"这场太短，未保存"，避免脏数据。</p>
+</div></div>
+
+<div class="screen"><div class="sh"><span class="sid">W8</span><b>表端设置</b></div><div class="sbody">
+  <p><span class="lbl">核心元素</span>佩戴手切换；实时反馈开关（总开关）；触觉强度（轻/中/强）；防伤提醒开关。</p>
+  <p><span class="lbl">说明</span>表端只放运动相关高频项；账户、单位、数据导出等放手机端 P7。</p>
+</div></div>
+
+<!-- ============ 6 ============ -->
+<h2 id="s6"><span class="n">6</span> iPhone 端屏幕规格（P0–P7）</h2>
+<p class="lead">手机是"复盘 + 陪伴 + 设置"的主场，承载强度曲线、教练点评、趋势叙事。</p>
+
+<div class="screen"><div class="sh"><span class="sid">P0</span><b>引导 Onboarding</b></div><div class="sbody">
+  <p><span class="lbl">目的</span>讲清价值 + 拿齐权限 + 设好佩戴手与模式。</p>
+  <p><span class="lbl">分页</span>① 价值主张（"会陪练、会护着你、让你坚持"）→ ② 健康权限(HealthKit 读心率/写运动) → ③ 通知权限(提醒) → ④ 选佩戴手(持拍/非持拍) → ⑤ 选模式(实时陪练 / 安静复盘)。</p>
+  <p><span class="lbl">交互</span>每页一句话 + 一张示意图 + 主按钮；权限页解释"为什么要"；可跳过非必需项。</p>
+  <p><span class="lbl">边界</span>拒绝健康权限：明确告知会缺心率/卡路里，并提供去系统设置开启的入口。</p>
+</div></div>
+
+<div class="screen"><div class="sh"><span class="sid">P1</span><b>首页 · 仪表盘</b></div><div class="sbody">
+  <p><span class="lbl">目的</span>进 app 第一眼：今日状态 + 坚持感 + 进步感。</p>
+  <p><span class="lbl">核心元素</span>顶部 Hero 卡：最近一场或今日概览（挥拍数大字 + 缩略强度曲线）；连续打球条（"🔥 连续打球 5 天"）；本周迷你柱状（每天挥拍量）；一条进步/陪伴叙事文案；底部"如何开始"引导（提示在手表上开始）。</p>
+  <p><span class="lbl">交互</span>点 Hero→P3 详情；点本周图→P4 趋势。</p>
+  <p><span class="lbl">边界</span>无任何数据：展示空状态插画 + "戴上 Apple Watch，在手表上开始第一场"。</p>
+</div></div>
+
+<div class="screen"><div class="sh"><span class="sid">P2</span><b>历史列表</b></div><div class="sbody">
+  <p><span class="lbl">核心元素</span>按时间倒序的场次卡：日期/时长 · 挥拍数 · 缩略强度曲线 · 是否有新纪录标记。可按周分组。</p>
+  <p><span class="lbl">交互</span>点任一场→P3；左滑删除（二次确认）。</p>
+  <p><span class="lbl">边界</span>空列表：引导开始第一场。</p>
+</div></div>
+
+<div class="screen"><div class="sh"><span class="sid">P3</span><b>单场详情</b>（核心报告页）</div><div class="sbody">
+  <p><span class="lbl">目的</span>一场球的完整复盘 + 教练点评，是产品最重的页面。</p>
+  <p><span class="lbl">核心元素</span>
+  ① 概览 KPI：挥拍数 / 时长 / 平均·最高心率 / 卡路里 / 运动负荷；
+  ② <b>强度曲线（N2 主图）</b>：横轴时间，纵轴强度，热度配色，可缩放，叠加回合分段底纹；
+  ③ <b>回合节奏（N6）</b>：回合数 · 平均每回合拍数 · 最长连拍 · 打/歇比，配可视化；
+  ④ <b>心率曲线</b>；
+  ⑤ <b>教练点评（B 的灵魂）</b>：1–3 条人话洞察，如"后半场强度下滑明显，体能是短板""杀球占比偏高，注意手腕负荷""平均回合只有 4 拍，多打相持试试"；
+  ⑥ 安静模式下，把当场未实时弹出的疲劳/防伤事件在此回放。</p>
+  <p><span class="lbl">交互</span>分享成绩卡；与上一场对比的小标签。</p>
+</div></div>
+
+<div class="screen"><div class="sh"><span class="sid">P4</span><b>趋势</b></div><div class="sbody">
+  <p><span class="lbl">核心元素</span>周/月切换；累计挥拍 · 打球天数 · 总时长；<b>进步指标曲线</b>：平均回合长度、平均强度、运动负荷随时间变化；<b>进步叙事</b>（"本月平均回合 4.2→6.8 拍，相持能力在涨"）。</p>
+  <p><span class="lbl">交互</span>点某周→该周场次列表。</p>
+</div></div>
+
+<div class="screen"><div class="sh"><span class="sid">P5</span><b>成就 · 陪伴</b></div><div class="sbody">
+  <p><span class="lbl">核心元素</span>连续打球天数大卡 + 日历热力格；里程碑列表（累计挥拍 1k/1w/10w、最长连拍纪录、单场负荷纪录…，含已达成/进度中）；徽章墙（P2，先占位）。</p>
+  <p><span class="lbl">交互</span>达成里程碑可生成分享卡。</p>
+</div></div>
+
+<div class="screen"><div class="sh"><span class="sid">P6</span><b>提醒 · 约球</b></div><div class="sbody">
+  <p><span class="lbl">核心元素</span>每周固定打球提醒（选星期 + 时间）；下次约球时间登记；提醒文案走陪伴语气。</p>
+  <p><span class="lbl">说明</span>复用 MyWatch 通知 + 后台唤醒机制；到点本地通知。</p>
+</div></div>
+
+<div class="screen"><div class="sh"><span class="sid">P7</span><b>设置</b></div><div class="sbody">
+  <p><span class="lbl">核心元素</span>佩戴手；实时反馈模式与各类提醒开关（疲劳/防伤/里程碑分别可控）；触觉强度；单位与偏好；HealthKit 权限状态与跳转；数据导出(CSV)；iCloud 备份开关；关于。</p>
+</div></div>
+
+<!-- ============ 7 ============ -->
+<h2 id="s7"><span class="n">7</span> 实时反馈设计（陪练核心）</h2>
+<p class="lead">这是羽伴区别于所有竞品的灵魂。下游需把"何时震、震什么、说什么"做成可配置且不烦人。</p>
+
+<div class="note warn"><b>第一原则：少而准 &gt; 多而吵。</b>实时反馈宁可漏报也别误报刷屏——打球时被频繁打扰是体验灾难（竞品不敢做的真正原因）。每类反馈一场内有最小触发间隔（冷却）。</div>
+
+<table>
+  <tr><th>反馈</th><th>触发条件（建议初值，需真机调参）</th><th>触觉</th><th>视觉(W6)</th><th>文案示例</th></tr>
+  <tr><td><b>疲劳预警</b><br><span class="small">N5</span></td><td>近 3 个回合峰值强度均值 ≤ 本场前段基线的 75%，且本场已 &gt; 10 分钟。冷却 ≥ 5 分钟。</td><td>双下轻击(soft)</td><td>琥珀卡</td><td>"你累了，注意动作别变形，要不要歇一下？"</td></tr>
+  <tr><td><b>防伤提醒</b><br><span class="small">N7</span></td><td>2 分钟内"大力档"挥拍 ≥ 阈值（如连续高强度杀球多次）。冷却 ≥ 5 分钟。</td><td>三连较强(notify)</td><td>珊瑚卡</td><td>"杀球有点猛，护好手腕和肩膀～"</td></tr>
+  <tr><td><b>里程碑</b><br><span class="small">N8</span></td><td>本场挥拍数跨整数关口(如 500)、或刷新"最长连拍"纪录。</td><td>轻快上扬(success)</td><td>薄荷卡</td><td>"本场 500 拍达成！" / "新纪录：连续 21 拍！"</td></tr>
+  <tr><td><b>心率过高</b><br><span class="small">可选</span></td><td>心率持续超用户上限区间。冷却 ≥ 5 分钟。</td><td>双下轻击</td><td>琥珀卡</td><td>"心率有点高，注意调整呼吸节奏。"</td></tr>
+</table>
+
+<p><b>模式与降级：</b></p>
+<ul>
+  <li><b>实时陪练模式（默认开）</b>：以上反馈即时震动 + W6 弹层。</li>
+  <li><b>安静复盘模式</b>：全程不震不弹；所有本应触发的事件被记录，在 P3 详情页"赛后回放"呈现（"第 23 分钟你开始疲劳"）。</li>
+  <li>每类反馈可在 W8 / P7 单独关闭。</li>
+</ul>
+<div class="note info">所有阈值均为<b>占位初值</b>，必须在真机佩戴实测中标定（用户已有 Apple Watch 真机可测）。UI Agent 无需关心算法，只需把这些反馈做成 §6/§5 中描述的卡片与开关。</div>
+
+<!-- ============ 8 ============ -->
+<h2 id="s8"><span class="n">8</span> 关键用户流程</h2>
+
+<p><b>① 首次使用</b></p>
+<div class="flow">
+  <span class="step">下载 App</span><span class="arr">→</span>
+  <span class="step">P0 引导 + 权限</span><span class="arr">→</span>
+  <span class="step">选佩戴手 / 模式</span><span class="arr">→</span>
+  <span class="step">手表 W1</span><span class="arr">→</span>
+  <span class="step">开始第一场</span>
+</div>
+
+<p><b>② 打一场球（核心闭环）</b></p>
+<div class="flow">
+  <span class="step">W1 开始打球</span><span class="arr">→</span>
+  <span class="step">W2 倒计时</span><span class="arr">→</span>
+  <span class="step">W3/W4 运动中</span><span class="arr">→</span>
+  <span class="step">W6 实时陪练(按需)</span><span class="arr">→</span>
+  <span class="step">W5 结束</span><span class="arr">→</span>
+  <span class="step">W7 即时小结</span><span class="arr">→</span>
+  <span class="step">P3 手机详情复盘</span>
+</div>
+
+<p><b>③ 坚持与回顾（陪伴）</b></p>
+<div class="flow">
+  <span class="step">P6 定时提醒</span><span class="arr">→</span>
+  <span class="step">推送"去打球"</span><span class="arr">→</span>
+  <span class="step">打卡 +1 连续天数</span><span class="arr">→</span>
+  <span class="step">P4 趋势进步</span><span class="arr">→</span>
+  <span class="step">P5 里程碑/分享</span>
+</div>
+
+<!-- ============ 9 ============ -->
+<h2 id="s9"><span class="n">9</span> 视觉设计语言</h2>
+<p class="lead">Watch 与 App 两端 UI Agent 必须共用本规范，保证一致性。气质：<b>运动、清爽、有活力、温暖陪伴</b>，深色为主。</p>
+
+<div class="grid g2">
+<div class="card">
+  <h4>主色与渐变</h4>
+  <div class="swatch"><span class="sw" style="background:linear-gradient(135deg,#A8F06B,#2FD9A6)"></span> 品牌主渐变 Lime→Teal（主按钮/Hero/强调）</div>
+  <div class="swatch"><span class="sw" style="background:#34C97A"></span> 绿 Green <code>#34C97A</code> 正向/达成</div>
+  <div class="swatch"><span class="sw" style="background:#6FE0D0"></span> 青 Cyan <code>#6FE0D0</code> 数据/链接</div>
+  <div class="swatch"><span class="sw" style="background:#FFB24D"></span> 琥珀 Amber <code>#FFB24D</code> 疲劳/暂停/警示</div>
+  <div class="swatch"><span class="sw" style="background:#FF6B6B"></span> 珊瑚 Coral <code>#FF6B6B</code> 防伤/结束/危险</div>
+  <div class="swatch"><span class="sw" style="background:#FFD25A"></span> 金 Gold <code>#FFD25A</code> 纪录/里程碑</div>
+</div>
+<div class="card">
+  <h4>强度热度色阶（用于强度条/曲线）</h4>
+  <div class="swatch"><span class="sw" style="background:linear-gradient(90deg,#2FD9A6,#A8F06B,#FFD25A,#FFB24D,#FF6B6B)"></span> 低→高</div>
+  <p class="small">强度 0–100 映射：低(青绿) → 中(黄) → 高(橙红)。轻挥偏冷色，大力杀球偏暖红。</p>
+  <h4 style="margin-top:14px">背景</h4>
+  <div class="swatch"><span class="sw" style="background:#000"></span> 表端纯黑 <code>#000</code>（OLED 省电/Always-On）</div>
+  <div class="swatch"><span class="sw" style="background:#0b1410"></span> 机端深墨绿 <code>#0b1410</code></div>
+</div>
+</div>
+
+<div class="card">
+  <h4>字体与组件</h4>
+  <ul>
+    <li><b>数字</b>：大号、圆体(SF Rounded)，挥拍数等核心数字是主视觉，要"敢大"。</li>
+    <li><b>正文/文案</b>：San Francisco / PingFang SC；陪伴文案用人话、口语、带温度，少用术语。</li>
+    <li><b>卡片</b>：圆角 16（机）/ 12（表），半透明描边 <code>rgba(255,255,255,.10)</code>。</li>
+    <li><b>图表</b>：线条圆滑、渐变填充；强度曲线用热度色阶；避免花哨网格。</li>
+    <li><b>反馈卡(W6)</b>：全屏单色卡 + 大图标 + 一句话，情绪鲜明。</li>
+    <li><b>图标气质</b>：羽毛球/球拍/羽球元素可点缀，但克制，别卡通过度。</li>
+  </ul>
+</div>
+
+<!-- ============ 10 ============ -->
+<h2 id="s10"><span class="n">10</span> 数据模型（轻量）</h2>
+<p class="lead">供数据/工程 Agent 参考；UI Agent 可据此理解各页字段来源。</p>
+<table>
+  <tr><th>实体</th><th>关键字段</th></tr>
+  <tr><td><b>Session 一场</b></td><td>id、开始/结束时间、佩戴手、模式、挥拍总数、时长、平均/最高心率、卡路里、运动负荷、最长连拍、回合数、平均回合拍数、打歇比、是否含新纪录</td></tr>
+  <tr><td><b>SwingSample 单拍</b></td><td>时间戳、强度(0–100)、强度档(轻/中/重)、所属回合 id</td></tr>
+  <tr><td><b>Rally 回合</b></td><td>id、起止时间、拍数、峰值强度、随后间歇时长</td></tr>
+  <tr><td><b>FeedbackEvent 反馈事件</b></td><td>类型(疲劳/防伤/里程碑/心率)、时间戳、是否实时弹出、关联场次</td></tr>
+  <tr><td><b>Streak / Milestone</b></td><td>连续打球天数、最近打球日期；里程碑类型、目标值、当前进度、达成时间</td></tr>
+  <tr><td><b>UserPrefs</b></td><td>佩戴手、模式、各反馈开关、触觉强度、心率上限、提醒计划、单位</td></tr>
+</table>
+
+<!-- ============ 11 ============ -->
+<h2 id="s11"><span class="n">11</span> 技术约束与依赖</h2>
+<div class="grid g2">
+  <div class="card"><h4>平台 / 框架</h4><ul>
+    <li>watchOS 10+ / iOS 16+；SwiftUI。</li>
+    <li><b>CoreMotion</b>：加速度计 + 陀螺仪做挥拍识别。普通采样(~100Hz)即可数次数；<code>CMBatchedSensorManager</code>(800Hz) 仅 S8/Ultra+，作为高精度增强可选。</li>
+    <li><b>HealthKit</b>：读心率、写 Workout/能量。</li>
+    <li><b>WidgetKit</b>：今日挥拍/连续打球小组件（后续）。</li>
+    <li>表↔机用 WatchConnectivity 同步；本地持久化优先。</li>
+  </ul></div>
+  <div class="card"><h4>硬件 / 边界</h4><ul>
+    <li>需带陀螺仪的 Apple Watch（Series 4+）；强依赖真机测试（模拟器无真实传感器）。</li>
+    <li><b>挥拍识别是规则算法起步</b>（峰值检测），不做动作分类(正反手/杀球细分留到后续 ML)。</li>
+    <li>佩戴手影响波形 → N3 需两套阈值。</li>
+    <li>强度为相对值，<b>不</b>对外宣称绝对球速。</li>
+    <li>耗电：高频采样费电，需控制采样率与时长（竞品耗电是抱怨点）。</li>
+  </ul></div>
+</div>
+
+<!-- ============ 12 ============ -->
+<h2 id="s12"><span class="n">12</span> 范围外 / 未来</h2>
+<ul>
+  <li>动作细分识别（正手/反手/杀球/高远/吊球）——需采数据训 CoreML，后置。</li>
+  <li>击球落点热力图 / 跑动轨迹——需手机摄像头 + 视觉，N12，最后做。</li>
+  <li>对局记分、社交/排行榜/约球地图、3D 徽章——P2 之后。</li>
+  <li>Android / 华为 / Garmin——不在本期范围。</li>
+</ul>
+
+<!-- ============ 13 ============ -->
+<h2 id="s13"><span class="n">13</span> 待定问题（需产品决策）</h2>
+<ol>
+  <li>正式产品名与图标（"羽伴 / RallyMate"为占位）。</li>
+  <li>实时反馈默认开还是默认关？（影响首启体验）建议默认"仅防伤+里程碑开，疲劳可选"。</li>
+  <li>MVP 是否就要表↔机双端，还是先做表端 + 极简手机壳？（当前 PRD 按双端写）</li>
+  <li>是否复用 MyWatch 工程脚手架(XcodeGen) 还是全新独立工程？</li>
+  <li>强度档"轻/中/重"的边界，与各反馈阈值——留待真机标定。</li>
+</ol>
+
+<hr>
+<p class="small center">羽伴 RallyMate · PRD v0.1 草案 · 2026-06 · 基于挥拍吧/开球/球搭子/GoodShot/TennisKeeper 竞品调研提炼 · 供 Watch UI / App UI Agent 接力设计</p>
+
+</div>
+</body>
+</html>

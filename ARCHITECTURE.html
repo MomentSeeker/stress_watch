@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyWatch 架构原理图解</title>
+<style>
+  :root{
+    --bg:#0c1020; --panel:#151a30; --panel2:#1c2340; --line:#2a3358;
+    --ink:#eef2ff; --dim:#9aa6d4; --mut:#6b76a8;
+    --teal:#2AB8C8; --blue:#4F6BF0; --violet:#7B4FE0;
+    --mint:#2FD98C; --amber:#FF9F45; --coral:#FF566E; --cyan:#6FE0FF;
+    --rad:16px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(1200px 700px at 70% -10%, #1b2348 0%, var(--bg) 55%);
+       color:var(--ink);font:15px/1.65 -apple-system,"PingFang SC",Segoe UI,Roboto,sans-serif;
+       padding:0 0 80px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  header.hero{padding:54px 22px 30px;text-align:center}
+  .hero h1{font-size:38px;margin:0 0 8px;font-weight:850;
+    background:linear-gradient(100deg,var(--teal),var(--blue),var(--violet));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{color:var(--dim);max-width:640px;margin:6px auto;font-size:15px}
+  .pill{display:inline-block;margin-top:14px;padding:6px 14px;border-radius:999px;
+    background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--cyan);font-size:13px}
+  h2{font-size:23px;margin:46px 0 6px;display:flex;align-items:center;gap:10px}
+  h2 .n{font-size:14px;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--blue),var(--violet));color:#fff;font-weight:800;flex:none}
+  h2.sub{font-size:18px;margin-top:30px}
+  .lead{color:var(--dim);margin:2px 0 18px}
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);
+    border-radius:var(--rad);padding:20px 22px;margin:14px 0}
+  .grid{display:grid;gap:14px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:1fr 1fr 1fr}
+  @media(max-width:780px){.g2,.g3{grid-template-columns:1fr}}
+  .tag{display:inline-block;font-size:12px;padding:2px 9px;border-radius:7px;font-weight:700;margin-bottom:8px}
+  .t-ui{background:rgba(111,224,255,.16);color:var(--cyan)}
+  .t-logic{background:rgba(79,107,240,.18);color:#9db0ff}
+  .t-store{background:rgba(47,217,140,.16);color:var(--mint)}
+  .t-sys{background:rgba(255,159,69,.16);color:var(--amber)}
+  .t-warn{background:rgba(255,86,110,.16);color:var(--coral)}
+  code{background:rgba(255,255,255,.07);padding:1px 6px;border-radius:5px;font-size:13px;
+    font-family:"SF Mono",ui-monospace,Menlo,monospace;color:#cdd6ff}
+  .mut{color:var(--mut)}
+  .dim{color:var(--dim)}
+  b{color:#fff}
+  ul{margin:8px 0;padding-left:20px}
+  li{margin:5px 0}
+  /* layer diagram */
+  .layers{display:flex;flex-direction:column;gap:10px}
+  .layer{border-radius:14px;padding:14px 16px;border:1px solid var(--line);position:relative}
+  .layer h4{margin:0 0 4px;font-size:15px}
+  .layer .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  .chip{font-size:12.5px;background:rgba(255,255,255,.05);border:1px solid var(--line);
+    padding:5px 10px;border-radius:9px;color:var(--dim)}
+  .chip b{color:#dfe5ff;font-weight:700}
+  .L1{background:linear-gradient(110deg,rgba(111,224,255,.10),transparent)}
+  .L2{background:linear-gradient(110deg,rgba(79,107,240,.12),transparent)}
+  .L3{background:linear-gradient(110deg,rgba(47,217,140,.10),transparent)}
+  .L4{background:linear-gradient(110deg,rgba(255,159,69,.10),transparent)}
+  .arrowcol{text-align:center;color:var(--mut);font-size:18px;margin:-4px 0}
+  /* flow */
+  .flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:6px 0}
+  .step{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:13.5px}
+  .step b{display:block;color:#fff;font-size:13px}
+  .step span{color:var(--mut);font-size:12px}
+  .arr{color:var(--blue);font-weight:800;font-size:16px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--cyan);font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em}
+  td b{color:#fff}
+  .note{border-left:3px solid var(--amber);background:rgba(255,159,69,.07);
+    padding:12px 16px;border-radius:0 10px 10px 0;margin:14px 0;color:#ffe6c9;font-size:14px}
+  .note.warn{border-color:var(--coral);background:rgba(255,86,110,.08);color:#ffd6dd}
+  .note.ok{border-color:var(--mint);background:rgba(47,217,140,.08);color:#c9ffe6}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:780px){.two-col{grid-template-columns:1fr}}
+  .device{border:1px solid var(--line);border-radius:18px;padding:16px;background:var(--panel)}
+  .device h4{margin:0 0 10px;display:flex;align-items:center;gap:8px}
+  .box{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:8px 0;font-size:13px}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;margin:10px 0;font-size:12.5px;color:var(--dim)}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+  hr{border:0;border-top:1px solid var(--line);margin:40px 0}
+  .small{font-size:12.5px;color:var(--mut)}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>MyWatch 架构原理图解</h1>
+  <p>一个 <b>纯 Apple Watch 独立应用</b>(没有 iPhone 端)。这页把 UI、渲染、逻辑、存储，以及 watchOS 的通知 / HealthKit / Widget 机制全部图解给非 iOS 背景的你看。</p>
+  <span class="pill">SwiftUI · watchOS 10+ · 无 iOS 配套 App</span>
+</header>
+
+<div class="wrap">
+
+<!-- 0 一句话 -->
+<div class="card">
+  <span class="tag t-logic">先看这一句</span>
+  <p style="margin:0;font-size:16px">
+  <b>系统框架</b>(HealthKit 给数据、通知中心管提醒、WidgetKit 画卡片)
+  → <b>HealthManager / NotificationManager</b> 把它们包装好
+  → <b>AppStore</b>(唯一的"大脑"，存所有状态)
+  → 一边喂 <b>SwiftUI 界面</b>渲染，一边把状态存进 <b>UserDefaults</b>，
+  还把精简快照塞进 <b>App Group</b> 共享区给 <b>Widget</b> 画卡片。
+  </p>
+</div>
+
+<!-- 1 分层架构 -->
+<h2><span class="n">1</span>分层架构</h2>
+<p class="lead">从上到下：用户看到的界面 → 业务大脑 → 本地存储 → 系统能力。箭头是数据/调用的方向。</p>
+<div class="card">
+<div class="layers">
+  <div class="layer L1">
+    <span class="tag t-ui">表现层 UI（SwiftUI）</span>
+    <h4>用户看到、点到的一切</h4>
+    <div class="chips">
+      <span class="chip"><b>ContentView</b> 竖向翻页 TabView</span>
+      <span class="chip"><b>StressView</b> 压力环 + 12h 图</span>
+      <span class="chip"><b>HydrationView</b> 喝水 + 提醒编辑</span>
+      <span class="chip"><b>Medication/Meal</b></span>
+      <span class="chip"><b>Components</b> 圆环/按钮/卡片</span>
+    </div>
+  </div>
+  <div class="arrowcol">▲ 读状态画界面　｜　▼ 用户操作调用方法</div>
+  <div class="layer L2">
+    <span class="tag t-logic">逻辑层（业务大脑）</span>
+    <h4>AppStore —— 唯一事实源 (Single Source of Truth)</h4>
+    <div class="chips">
+      <span class="chip"><b>@Published</b> 状态：压力/喝水/药/餐/12h曲线</span>
+      <span class="chip"><b>StressMeasurementSession</b> 60秒活体测量</span>
+      <span class="chip">业务方法：addWater() / startMeasurement() …</span>
+    </div>
+  </div>
+  <div class="arrowcol">▲ 返回数据　｜　▼ 调用封装</div>
+  <div class="layer L3">
+    <span class="tag t-store">存储层 + 适配层</span>
+    <h4>本地存盘 & 系统能力封装</h4>
+    <div class="chips">
+      <span class="chip"><b>UserDefaults</b> JSON 本地持久化</span>
+      <span class="chip"><b>App Group</b> 跨进程共享快照</span>
+      <span class="chip"><b>HealthManager</b> 读 HRV/心率</span>
+      <span class="chip"><b>NotificationManager</b> 排提醒</span>
+    </div>
+  </div>
+  <div class="arrowcol">▼ 调用 Apple 系统框架</div>
+  <div class="layer L4">
+    <span class="tag t-sys">系统层（Apple 框架 / 硬件）</span>
+    <div class="chips">
+      <span class="chip"><b>HealthKit</b> 心率/HRV 数据库</span>
+      <span class="chip"><b>UserNotifications</b> 通知中心</span>
+      <span class="chip"><b>WidgetKit</b> Smart Stack 卡片</span>
+      <span class="chip"><b>HealthKit Workout</b> 运动会话取逐拍</span>
+      <span class="chip">⌚️ 传感器：光学心率</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="note">这套叫 <b>MVVM 思想</b>：界面(View)只负责"长什么样"，不存数据；所有数据和规则集中在 AppStore(相当于 ViewModel/Store)。好处：界面随便改，数据逻辑不动；状态只有一份，不会出现"这个页显示 3 那个页显示 5"。</div>
+
+<!-- 2 UI 与渲染 -->
+<h2><span class="n">2</span>UI 是怎么渲染的</h2>
+<p class="lead">SwiftUI 是<b>声明式</b>：你描述"界面应该长成什么样"，系统负责把它变成像素，并在数据变化时自动重画。</p>
+<div class="grid g2">
+  <div class="card">
+    <span class="tag t-ui">声明式 vs 命令式</span>
+    <p class="dim" style="margin-top:0">传统(命令式)：手动 "把这个 label 文字改成 42"。<br>
+    SwiftUI(声明式)：你写 <code>Text("\(score)")</code>，只要 <code>score</code> 变了，文字<b>自动</b>更新，你不用手动去改。</p>
+  </div>
+  <div class="card">
+    <span class="tag t-ui">自动重画的开关</span>
+    <ul style="margin-top:0">
+      <li><code>@Published</code>：AppStore 里的状态，一变就通知</li>
+      <li><code>@EnvironmentObject</code>：各页面"订阅"同一个 AppStore</li>
+      <li>状态变 → SwiftUI <b>对比新旧</b> → 只重画变化的部分(高效)</li>
+    </ul>
+  </div>
+</div>
+<div class="card">
+  <span class="tag t-ui">本 App 的渲染要点</span>
+  <div class="flow">
+    <div class="step"><b>TabView .verticalPage</b><span>表冠上下翻页，watchOS 标准导航</span></div>
+    <span class="arr">→</span>
+    <div class="step"><b>圆环 RingView</b><span>用 Circle().trim 画进度弧 + 渐变描边</span></div>
+    <span class="arr">→</span>
+    <div class="step"><b>12h 曲线 Swift Charts</b><span>LineMark/PointMark + 压力分区色带</span></div>
+    <span class="arr">→</span>
+    <div class="step"><b>水波球 WaveFill</b><span>正弦曲线 Path 填充，裁剪成圆</span></div>
+  </div>
+  <p class="small">这些都是纯代码画的矢量图形，没有用图片素材，所以在任何表盘尺寸都清晰。</p>
+</div>
+
+<!-- 3 数据流 -->
+<h2><span class="n">3</span>关键数据流（时序图）</h2>
+<p class="lead">三个最重要的场景，看数据是怎么一步步流动的。</p>
+
+<div class="card">
+  <span class="tag t-logic">场景 A · App 启动</span>
+  <div class="flow">
+    <div class="step"><b>bootstrap()</b><span>启动</span></div><span class="arr">→</span>
+    <div class="step"><b>load()</b><span>从 UserDefaults 读回上次状态</span></div><span class="arr">→</span>
+    <div class="step"><b>请求权限</b><span>通知 + HealthKit</span></div><span class="arr">→</span>
+    <div class="step"><b>refreshStress()</b><span>读 HealthKit 算压力</span></div><span class="arr">→</span>
+    <div class="step"><b>注册被动监听</b><span>HRV 有新样本就自动刷新</span></div><span class="arr">→</span>
+    <div class="step"><b>排好所有提醒</b></div>
+  </div>
+</div>
+
+<div class="card">
+  <span class="tag t-sys">场景 B · 点 "Measure now" 测真实 HRV</span>
+  <div class="flow">
+    <div class="step"><b>开 60s 正念运动会话</b><span>HKWorkoutSession</span></div><span class="arr">→</span>
+    <div class="step"><b>实时心率流</b><span>界面跳动 bpm + 倒计时</span></div><span class="arr">→</span>
+    <div class="step"><b>结束保存 workout</b><span>才能取逐拍数据</span></div><span class="arr">→</span>
+    <div class="step"><b>取心跳序列算 SDNN</b><span>R-R 间期 → 真 HRV</span></div><span class="arr">→</span>
+    <div class="step"><b>删掉 workout</b><span>不污染健康 App</span></div><span class="arr">→</span>
+    <div class="step"><b>写回 AppStore + 卡片</b></div>
+  </div>
+  <p class="small">原理：Apple Watch 只有在"运动会话"里才会高频采心率并记录逐拍间隔，平时不记。所以借一个会话拿到逐拍，算完即删。</p>
+</div>
+
+<div class="card">
+  <span class="tag t-store">场景 C · 喝口水 → 卡片立刻更新</span>
+  <div class="flow">
+    <div class="step"><b>点 +200ml</b></div><span class="arr">→</span>
+    <div class="step"><b>addWater()</b><span>改 AppStore 状态</span></div><span class="arr">→</span>
+    <div class="step"><b>界面自动重画</b><span>@Published 触发</span></div><span class="arr">→</span>
+    <div class="step"><b>save()</b><span>存 UserDefaults</span></div><span class="arr">→</span>
+    <div class="step"><b>写 App Group 快照</b></div><span class="arr">→</span>
+    <div class="step"><b>WidgetCenter.reload</b><span>卡片刷新</span></div>
+  </div>
+</div>
+
+<!-- 4 存储 -->
+<h2><span class="n">4</span>数据存在哪（自己的数据）</h2>
+<p class="lead">这个 App 的数据分三类去处，各管一段。</p>
+<div class="card">
+<table>
+  <tr><th>数据</th><th>存在哪</th><th>格式 / 机制</th><th>谁能读</th></tr>
+  <tr><td><b>喝水量、药、餐、提醒次数、压力历史</b></td><td><b>UserDefaults</b><br><span class="small">App 沙盒内的小型键值库</span></td><td>整体打包成一个 JSON，存在 key <code>mywatch.state.v1</code></td><td>只有主 App</td></tr>
+  <tr><td><b>给卡片看的精简快照</b><br><span class="small">压力分/喝水进度/下次提醒</span></td><td><b>App Group</b><br><span class="small">group.com.lichaochen.mywatch</span></td><td>JSON，存在共享的 UserDefaults(suiteName:)</td><td>主 App + Widget</td></tr>
+  <tr><td><b>心率 / HRV 原始健康数据</b></td><td><b>HealthKit 数据库</b><br><span class="small">系统级，不在 App 沙盒</span></td><td>系统统一管理，App 只是"申请读取"</td><td>所有获授权的 App</td></tr>
+</table>
+</div>
+<div class="note ok"><b>沙盒概念</b>：每个 App 有自己独立的私有文件夹(沙盒)，互相看不到。UserDefaults 就在沙盒里。<b>App Group</b> 是 Apple 开的一道"共享小门"，让主 App 和它的 Widget 扩展能读同一块地方——这就是卡片能拿到最新数字的原理。</div>
+
+<!-- 5 watchOS 机制 -->
+<h2><span class="n">5</span>watchOS 三大机制详解</h2>
+
+<h2 class="sub">5.1 本地通知（提醒）</h2>
+<div class="card">
+  <div class="flow">
+    <div class="step"><b>排程</b><span>UNCalendarNotificationTrigger</span></div><span class="arr">→</span>
+    <div class="step"><b>交给系统时钟</b><span>每天到点自动触发</span></div><span class="arr">→</span>
+    <div class="step"><b>系统弹横幅+震动</b><span>跟 App 开不开无关</span></div>
+  </div>
+  <ul>
+    <li><b>本地通知</b>(不是推送)：不需要服务器，提醒时间存在系统里，到点系统自己弹。即使 App 没运行、手表锁屏也会响。</li>
+    <li><b>前台也能弹</b>：默认 App 在前台时通知会被吞，我实现了 <code>willPresent</code> 代理强制显示——这就是你"Send test in 5s"能看到的原因。</li>
+    <li><b>"Send test in 5s"</b>用的是 <code>UNTimeIntervalNotificationTrigger</code>(几秒后一次性)，专门用来验证权限通了没。</li>
+  </ul>
+</div>
+
+<h2 class="sub">5.2 HealthKit（健康数据获取）</h2>
+<div class="card">
+  <div class="grid g3">
+    <div class="box"><b>① 申请授权</b><br><span class="dim">第一次弹窗问你要不要给读心率/HRV。用户不同意就读不到。</span></div>
+    <div class="box"><b>② 被动读取</b><br><span class="dim">手表平时(睡眠/静息/呼吸)自动记 HRV 到 HealthKit，App 直接查历史。</span></div>
+    <div class="box"><b>③ 主动测量</b><br><span class="dim">Measure now 开运动会话拿逐拍，算真 SDNN。</span></div>
+  </div>
+  <div class="flow" style="margin-top:14px">
+    <div class="step"><b>HKObserverQuery</b><span>注册"有新HRV叫醒我"</span></div><span class="arr">→</span>
+    <div class="step"><b>enableBackgroundDelivery</b><span>后台投递</span></div><span class="arr">→</span>
+    <div class="step"><b>系统唤醒 App</b><span>重算压力</span></div><span class="arr">→</span>
+    <div class="step"><b>刷新曲线+卡片</b><span>不用你开 App</span></div>
+  </div>
+  <p class="small">关键：App <b>不能强迫</b>手表更频繁地采 HRV，采样频率由系统决定(平时较稀疏)。App 只能① 读系统已记录的；② 想要密集数据就开运动会话主动测。</p>
+</div>
+<div class="note warn"><b>免费开发者账号限制</b>：HealthKit"后台投递"需要专门 entitlement，免费账号没有，所以 App 被系统回收后后台唤醒不保证；但只要你抬腕打开过一次 App，就会拉全当天所有真实样本。转正式账号($99/年)可彻底解决。</div>
+
+<h2 class="sub">5.3 Widget / Smart Stack 卡片</h2>
+<div class="card">
+  <p style="margin-top:0">Widget 是一个<b>独立的扩展进程</b>，和主 App 是两个程序，<b>读不到</b>对方的内存。所以靠 App Group 共享快照通信。</p>
+  <div class="flow">
+    <div class="step"><b>主 App 状态变</b></div><span class="arr">→</span>
+    <div class="step"><b>写快照到 App Group</b></div><span class="arr">→</span>
+    <div class="step"><b>WidgetCenter.reload</b><span>通知系统</span></div><span class="arr">→</span>
+    <div class="step"><b>Widget 进程被唤醒</b><span>TimelineProvider</span></div><span class="arr">→</span>
+    <div class="step"><b>读快照 → 画卡片</b></div>
+  </div>
+  <p class="small">兜底：即使主 App 一直没开，Widget 每 30 分钟也自己刷新一次(Timeline policy)。卡片支持矩形/圆形/行内三种尺寸自动适配。</p>
+</div>
+
+<!-- 6 iOS 关系 -->
+<h2><span class="n">6</span>和 iPhone App 的关系</h2>
+<div class="note warn" style="font-size:15px"><b>现状：本 App 没有任何 iPhone 端。</b>它是 <code>WKWatchOnly: true</code> 的纯手表独立应用——直接装进手表、独立运行、独立存数据。所以目前"iOS 数据存哪"这个问题：<b>不存在 iOS 数据</b>，所有数据都在手表上。</div>
+
+<div class="two-col">
+  <div class="device">
+    <h4>📱 现状</h4>
+    <div class="box">没有 iPhone App</div>
+    <div class="box">⌚️ 手表独立运行</div>
+    <div class="box">数据全在手表的 UserDefaults + 手表的 HealthKit</div>
+    <p class="small">你装 App 时也只装到手表，iPhone 上看不到图标。</p>
+  </div>
+  <div class="device">
+    <h4>📱⌚️ 如果将来加 iPhone App</h4>
+    <div class="box"><b>WatchConnectivity</b>：两端互发消息/同步状态</div>
+    <div class="box"><b>各自独立沙盒</b>：iPhone 和手表数据<u>不自动共享</u>，App Group 也<b>不跨设备</b>(只在同一设备内)</div>
+    <div class="box"><b>HealthKit 会自动同步</b>：手表测的心率/HRV 会通过 iCloud 同步到 iPhone 的健康 App</div>
+    <div class="box"><b>iCloud / 服务器</b>：要真正跨设备同步自己的业务数据，得用 CloudKit 或自建后端</div>
+  </div>
+</div>
+<div class="card">
+  <span class="tag t-logic">三种"数据互通"的层次，别混淆</span>
+  <table>
+    <tr><th>机制</th><th>范围</th><th>用途</th></tr>
+    <tr><td><b>UserDefaults</b></td><td>单个 App 沙盒内</td><td>自己存自己的设置/状态</td></tr>
+    <tr><td><b>App Group</b></td><td>同一设备内，主 App ↔ 它的扩展(Widget)</td><td>给卡片喂数据</td></tr>
+    <tr><td><b>WatchConnectivity</b></td><td>iPhone ↔ 配对的手表</td><td>手机端和表端实时同步(本 App 暂没用，因为没手机端)</td></tr>
+    <tr><td><b>HealthKit + iCloud</b></td><td>同账号所有设备</td><td>健康数据(心率/HRV)系统级自动同步</td></tr>
+    <tr><td><b>CloudKit / 后端</b></td><td>跨设备、跨用户</td><td>账号体系、云备份(本 App 暂没用)</td></tr>
+  </table>
+</div>
+
+<!-- 7 构建部署 -->
+<h2><span class="n">7</span>从代码到手表（构建链）</h2>
+<div class="card">
+  <div class="flow">
+    <div class="step"><b>project.yml</b><span>项目配方</span></div><span class="arr">→</span>
+    <div class="step"><b>xcodegen</b><span>生成 .xcodeproj</span></div><span class="arr">→</span>
+    <div class="step"><b>xcodebuild</b><span>编译+签名→.app</span></div><span class="arr">→</span>
+    <div class="step"><b>devicectl / simctl</b><span>装真机 / 模拟器</span></div><span class="arr">→</span>
+    <div class="step"><b>launch</b><span>启动</span></div>
+  </div>
+  <table>
+    <tr><th></th><th>真机</th><th>模拟器</th></tr>
+    <tr><td><b>芯片指令</b></td><td>arm64(真实手表)</td><td>跑在你 Mac 上(arm64/x86)</td></tr>
+    <tr><td><b>安装工具</b></td><td><code>xcrun devicectl</code> 无线隧道</td><td><code>xcrun simctl</code></td></tr>
+    <tr><td><b>传感器</b></td><td>真实心率/HRV</td><td>无 → 走模拟值/兜底</td></tr>
+    <tr><td><b>签名</b></td><td>需开发者证书，免费号7天过期</td><td>本地签名即可</td></tr>
+  </table>
+  <p class="small">所以真机版和模拟器版要分别编译——这就是之前"模拟器还是老 build"的原因：之前编的都是真机版。</p>
+</div>
+
+<hr>
+<p class="small" style="text-align:center">MyWatch · 由 Claude 生成的架构图解 · 双击本文件即可在浏览器查看</p>
+
+</div>
+</body>
+</html>
